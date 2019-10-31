@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.7.8/semantic.min.css">
+  <link rel="stylesheet" href="./json/prism.css">
+  <style>
+    .form-container {
+      max-width: 1000px;
+      margin: 50px auto;
+    }
+
+    .result-container {}
+  </style>
+  <title>semantic-ui</title>
+</head>
+
+<body>
+  <section class="form-container">
+    <form class="ui form">
+      <div class="field">
+        <div class="field">
+          <label for="language">选择一门你喜欢的语言</label>
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input type="radio" name="language" value="JavaScript">
+              <label>JavaScript</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input type="radio" name="language" value="PHP">
+              <label>PHP</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input type="radio" name="language" value="Java">
+              <label>Java</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input type="radio" name="language" value="Python">
+              <label>Python</label>
+            </div>
+          </div>
+        </div>
+        <p>其他</p>
+        <div class="field">
+          <input type="text" name="language1" id="input">
+        </div>
+      </div>
+      <div class="field">
+        <div class="field">
+          <div class="field">
+            <label for="books">选择你喜欢的书籍</label>
+            <div class="field">
+              <div class="ui checkbox">
+                <input type="checkbox" name="books[]" value="浮生六记">
+                <label>浮生六记</label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui checkbox">
+                <input type="checkbox" name="books[]" value="走在人生边上">
+                <label>走在人生边上</label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui checkbox">
+                <input type="checkbox" name="books[]" value="自传">
+                <label>自传</label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui checkbox">
+                <input type="checkbox" name="books[]" value="诗词">
+                <label>诗词</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="result-container">
+        <pre>
+          <code class="language-json">
+            <!-- 字段名： -->
+            {
+              language: '选择的语言 单选',
+              book: '喜欢的书籍 多选'
+            }
+          </code>
+        </pre>
+      </div>
+      <div class="ui submit button">Submit</div>
+      <div class="ui reset button">Reset</div>
+      <div class="ui clear button">Clear</div>
+      <div class="ui error message"></div>
+    </form>
+  </section>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.7.8/semantic.min.js"></script>
+  <script src="./json/prism.js"></script>
+  <script>
+    $(() => {
+      // 初始化
+      $('.ui.checkbox').checkbox()
+
+      $('.ui.form').form({
+        on: 'blur',
+        inline: true,
+        fields: {
+          language: {
+            identifier: 'language',
+            rules: [{
+              type: 'checked',
+              prompt: '选择一门你喜欢的语言'
+            }]
+          },
+          books: {
+            identifier: 'books[]',
+            rules: [{
+              type: 'checked',
+              prompt: '选择喜欢的书籍'
+            }]
+          }
+        },
+        onSuccess(event, fields) {
+          /*
+           * 可以发送 ajax 
+           */
+          const obj = {}
+          for (const item in fields) {
+            const val = fields[item]
+            /**
+             * 同一个意思，通过对一个字段加上1来进行区分是否是其他
+            */
+            if (item.lastIndexOf('1') === -1) {
+              obj[item] = fields[item] ? (Array.isArray(fields[item]) ? fields[item].filter(item => item).join(',') : fields[item]) : fields[item+'1']
+            }
+          }
+          $('.language-json').text(JSON.stringify(obj))
+          return false
+        },
+        onFailure(formErrors, fields) {
+          setTimeout(function () {
+            var res = $('.field.error')[0].getBoundingClientRect()
+            var top = document.scrollingElement.scrollTop + res.y
+            scrollSmoothTo(2, top - 120, document.scrollingElement)
+          }, 50)
+          return false
+        }
+      })
+    })
+
+    $('#input').on('input', (e) => {
+      const value = e.target.value
+      if (value) {
+        $('.ui.form').form('remove rule', 'language')
+      } else {
+        $('.ui.form').form('add rule', 'language', {
+          rules: [{
+            type: 'checked',
+            prompt: '选择一门你喜欢的语言'
+          }]
+        })
+      }
+      $('.ui.form').form('validate field', 'language')
+    })
+
+    /**
+     * @description:
+     * @param {number} rate 滚动速率
+     * @param {number} num 滚动的位置
+     * @param {node} element 需要滚动的元素
+     */
+    function scrollSmoothTo (rate = 2, num = 0, element = {}) {
+      const doc = element
+      // 距离顶部的值
+      let scrollTop = doc.scrollTop
+      const top = function () {
+        scrollTop = scrollTop + (num - scrollTop) / (rate || 2)
+        // 临界判断，终止动画
+        if (scrollTop < (num + 1)) {
+          doc.scrollTop = num
+          return
+        }
+        doc.scrollTop = scrollTop
+        // animate
+        requestAnimationFrame(top)
+      }
+      top()
+    }
+  </script>
+</body>
+
+</html>
