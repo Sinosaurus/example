@@ -145,7 +145,8 @@
               obj[item] = fields[item] ? (Array.isArray(fields[item]) ? fields[item].filter(item => item).join(',') : fields[item]) : fields[item+'1']
             }
           }
-          $('.language-json').text(JSON.stringify(obj))
+          const str = JSON.stringify(obj, null, 2)
+          $('.language-json').text(str)
           return false
         },
         onFailure(formErrors, fields) {
