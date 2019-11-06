@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.7.8/semantic.min.css">
+  <title>anchor</title>
+  <style>
+    html,body {
+      /* scroll-behavior: smooth; */
+    }
+    .wide {
+      padding: 20px;
+      border: 1px solid transparent;
+    }
+
+    .wide:target {
+      border: 1px solid red;
+      box-shadow: 0 0 0 .2em pink;
+    }
+
+    .wide+.wide {
+      margin-top: 60px;
+    }
+
+    #top {
+      position: fixed;
+      right: 30px;
+      bottom: 30px;
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      line-height: 50px;
+      border-radius: 8px;
+      background-color: #eee;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="ui container relaxed divided list">
+    <h1>点击链接跳转到指定的位置</h1>
+    <div class="item">
+      <i class="large aws middle aligned icon"></i>
+      <div class="content">
+        <a href="./base.html#one" class="header">one</a>
+        <div class="description">跳转到 <code>id="one"</code> </div>
+      </div>
+    </div>
+    <div class="item">
+      <i class="large github middle aligned icon"></i>
+      <div class="content">
+        <a href="./base.html#two" class="header">two</a>
+        <div class="description">跳转到 <code>id="two"</code></div>
+      </div>
+    </div>
+    <div class="item">
+      <i class="large apple middle aligned icon"></i>
+      <div class="content">
+        <a href="./base.html#three" class="header">three</a>
+        <div class="description">跳转到 <code>id="three"</code></div>
+      </div>
+    </div>
+    <div class="item">
+      <i class="large google middle aligned icon"></i>
+      <div class="content">
+        <a href="./base.html#four" class="header">four</a>
+        <div class="description">跳转到 <code>id="four"</code></div>
+      </div>
+    </div>
+    <div class="item">
+      <i class="large microsoft middle aligned icon"></i>
+      <div class="content">
+        <a href="./base.html#five" class="header">five</a>
+        <div class="description">跳转到 <code>id="five"</code></div>
+      </div>
+    </div>
+  </div>
+  <div id="top">
+    <i class="arrow up icon"></i>
+  </div>
+</body>
+<script src="./smoothscroll.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.7.8/semantic.min.js"></script>
+<script>
+  $(() => {
+    $('#top').click(() => {
+      $(document).scrollTop(0)
+    })
+  })
+</script>
+
+</html>
