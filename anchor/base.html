@@ -38,47 +38,15 @@
       background-color: #eee;
       cursor: pointer;
     }
+    .base {
+      margin-bottom: calc(2rem - .1428571428571429em);
+    }
   </style>
 </head>
 
 <body>
-  <div class="ui container relaxed divided list">
-    <h1>点击链接跳转到指定的位置</h1>
-    <div class="item">
-      <i class="large aws middle aligned icon"></i>
-      <div class="content">
-        <a href="#one" class="header">one</a>
-        <div class="description">跳转到 <code>id="one"</code> </div>
-      </div>
-    </div>
-    <div class="item">
-      <i class="large github middle aligned icon"></i>
-      <div class="content">
-        <a href="#two" class="header">two</a>
-        <div class="description">跳转到 <code>id="two"</code></div>
-      </div>
-    </div>
-    <div class="item">
-      <i class="large apple middle aligned icon"></i>
-      <div class="content">
-        <a href="#three" class="header">three</a>
-        <div class="description">跳转到 <code>id="three"</code></div>
-      </div>
-    </div>
-    <div class="item">
-      <i class="large google middle aligned icon"></i>
-      <div class="content">
-        <a href="#four" class="header">four</a>
-        <div class="description">跳转到 <code>id="four"</code></div>
-      </div>
-    </div>
-    <div class="item">
-      <i class="large microsoft middle aligned icon"></i>
-      <div class="content">
-        <a href="#five" class="header">five</a>
-        <div class="description">跳转到 <code>id="five"</code></div>
-      </div>
-    </div>
+  <div class="ui container base">
+    <h1>使用 <code>hash</code> 模式进行页面定位</h1>
   </div>
   <div class="ui container">
     <div class="wide segment" id="one">

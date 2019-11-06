@@ -9,15 +9,18 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.7.8/semantic.min.css">
   <title>anchor</title>
   <style>
-    html,body {
-      /* scroll-behavior: smooth; */
-    }
+    /* html, body {
+      height: auto !important;
+    } */
     .wide {
-      padding: 20px;
-      border: 1px solid transparent;
+      border: 1px solid #333;
     }
 
-    .wide:target {
+    .wide .sc {
+      padding: 20px;
+    }
+
+    .wide:target .sc {
       border: 1px solid red;
       box-shadow: 0 0 0 .2em pink;
     }
@@ -38,103 +41,120 @@
       background-color: #eee;
       cursor: pointer;
     }
+
+    .base {
+      margin-bottom: calc(2rem - .1428571428571429em);
+    }
   </style>
 </head>
 
 <body>
+  <div class="ui container base">
+    <h1>使用 <code>js</code> 获取 <code>url</code> 上的 <code>id</code> 进行页面定位</h1>
+  </div>
   <div class="ui container">
     <div class="wide segment" id="one">
       <h2>one</h2>
-      <div class="ui placeholder fluid active inverted">
-        <div class="image header">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
-        <div class="paragraph">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
+      <div class="sc">
+        <div class="ui placeholder fluid active inverted">
+          <div class="image header">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="paragraph">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
         </div>
       </div>
     </div>
     <div class="wide " id="two">
       <h2>two</h2>
-      <div class="ui placeholder fluid">
-        <div class="image header">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
-        <div class="paragraph">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
+      <div class="sc">
+        <div class="ui placeholder fluid">
+          <div class="image header">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="paragraph">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
         </div>
       </div>
     </div>
     <div class="wide" id="three">
       <h2>three</h2>
-      <div class="ui placeholder fluid active inverted">
-        <div class="image header">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
-        <div class="paragraph">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
+      <div class="sc">
+        <div class="ui placeholder fluid active inverted">
+          <div class="image header">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="paragraph">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
         </div>
       </div>
     </div>
     <div class="wide" id="four">
       <h2>four</h2>
-      <div class="ui placeholder fluid">
-        <div class="image header">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
-        <div class="paragraph">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
+      <div class="sc">
+        <div class="ui placeholder fluid">
+          <div class="image header">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="paragraph">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
         </div>
       </div>
     </div>
     <div class="wide" id="five">
       <h2>five</h2>
-      <div class="ui placeholder fluid active inverted">
-        <div class="image header">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
-        <div class="paragraph">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
+      <div class="sc">
+        <div class="ui placeholder fluid active inverted">
+          <div class="image header">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="paragraph">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -149,6 +169,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.7.8/semantic.min.js"></script>
 <script>
+  // 消除chrome记录滚动位置
+  console.dir(window.history)
+  // if ('scrollRestoration' in history) {
+  //   history.scrollRestoration = 'manual';
+  // }
   $(() => {
 
     /**
@@ -157,10 +182,8 @@
      * 因而需要进行计算方可
      */
 
-    $('#top').click(() => {
-      $(document).scrollTop(0)
-    })
-    
+
+
     // 链接改变页面不刷新
     const changeUrl = () => {
       const firstTop = document.scrollingElement.scrollTop
@@ -168,14 +191,42 @@
       window.history.replaceState(null, null, window.location.pathname + window.location.search)
       document.scrollingElement.scrollTop = firstTop
     }
+    const getUrlId = () => {
+      const urlId = location.href.split('#')[1]
+      if (!urlId) return
+      const el = document.getElementById(urlId.replace(/\?.*/, ''))
+      console.log(el.getBoundingClientRect(), document.scrollingElement.scrollTop)
+      console.log(el)
+      window.scrollTo({
+        top: el.getBoundingClientRect().top > 0 ? el.getBoundingClientRect().top : el.getBoundingClientRect().bottom + document.scrollingElement.scrollTop - 40
+      })
+      // if (location.href.indexOf('?') > -1) {
+      //   /**
+      //    * 若是携带参数，如何让其具有focus效果
+      //    * 
+      //    */
+      //   const el = document.getElementById(urlId.replace(/\?.*/, ''))
+      //   console.log(el.getBoundingClientRect(), document.scrollingElement.scrollTop)
+
+      //   el.scrollIntoView()
+
+      // } else {
+
+      // }
+    }
     /**
      * @description: 若是通过链接进入当前页面，最好使用 `one`
      * 如此事件只执行一次即可
      * https://github.com/iamdustan/smoothscroll
      */
+    getUrlId()
     $(document).on('click', function () {
-      changeUrl()
+      // changeUrl()
     })
+    $('#top').click(() => {
+      $(document).scrollTop(0)
+    })
+
   })
 </script>
 
