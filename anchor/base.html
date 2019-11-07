@@ -9,15 +9,22 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.7.8/semantic.min.css">
   <title>anchor</title>
   <style>
-    html,body {
+    html,
+    body {
       /* scroll-behavior: smooth; */
     }
+
     .wide {
+      padding: 20px;
+      border: 1px solid #333;
+    }
+
+    .wide .sc {
       padding: 20px;
       border: 1px solid transparent;
     }
 
-    .wide:target {
+    .wide:target .sc {
       border: 1px solid red;
       box-shadow: 0 0 0 .2em pink;
     }
@@ -38,6 +45,7 @@
       background-color: #eee;
       cursor: pointer;
     }
+
     .base {
       margin-bottom: calc(2rem - .1428571428571429em);
     }
@@ -51,96 +59,107 @@
   <div class="ui container">
     <div class="wide segment" id="one">
       <h2>one</h2>
-      <div class="ui placeholder fluid active inverted">
-        <div class="image header">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
-        <div class="paragraph">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
+      <div class="sc">
+        <div class="ui placeholder fluid active inverted">
+          <div class="image header">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="paragraph">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
         </div>
       </div>
     </div>
     <div class="wide " id="two">
       <h2>two</h2>
-      <div class="ui placeholder fluid">
-        <div class="image header">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
-        <div class="paragraph">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
+      <div class="sc">
+        <div class="ui placeholder fluid">
+          <div class="image header">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="paragraph">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
         </div>
       </div>
+
     </div>
     <div class="wide" id="three">
       <h2>three</h2>
-      <div class="ui placeholder fluid active inverted">
-        <div class="image header">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
-        <div class="paragraph">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
+      <div class="sc">
+        <div class="ui placeholder fluid active inverted">
+          <div class="image header">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="paragraph">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
         </div>
       </div>
     </div>
     <div class="wide" id="four">
       <h2>four</h2>
-      <div class="ui placeholder fluid">
-        <div class="image header">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
-        <div class="paragraph">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
+      <div class="sc">
+        <div class="ui placeholder fluid">
+          <div class="image header">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="paragraph">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
         </div>
       </div>
     </div>
     <div class="wide" id="five">
       <h2>five</h2>
-      <div class="ui placeholder fluid active inverted">
-        <div class="image header">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
-        <div class="paragraph">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
+      <div class="sc">
+        <div class="ui placeholder fluid active inverted">
+          <div class="image header">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="paragraph">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -159,7 +178,7 @@
     $('#top').click(() => {
       $(document).scrollTop(0)
     })
-    
+
     // 链接改变页面不刷新
     const changeUrl = () => {
       const firstTop = document.scrollingElement.scrollTop
@@ -170,7 +189,6 @@
     /**
      * @description: 若是通过链接进入当前页面，最好使用 `one`
      * 如此事件只执行一次即可
-     * https://github.com/iamdustan/smoothscroll
      */
     $(document).on('click', function () {
       changeUrl()
