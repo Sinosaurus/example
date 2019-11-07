@@ -193,7 +193,7 @@
     /**
      * @description: 初始进入页面跳转到指定位置，同时生成focus效果
      */
-     const getUrlId = () => {
+     const elScroll = () => {
       const el = getEl()
       if (!el) return
       
@@ -215,7 +215,7 @@
      */
     const listenHashChange = () => {
       window.addEventListener('hashchange', () => {
-        getUrlId()
+        elScroll()
       }, false)
     }
     // 链接改变页面不刷新 https://stackoverflow.com/questions/1397329/how-to-remove-the-hash-from-window-location-url-with-javascript-without-page-r/5298684#5298684
@@ -233,7 +233,7 @@
      
     }
 
-    getUrlId()
+    elScroll()
     listenHashChange()
      /**
      * @description: 若是通过链接进入当前页面，最好使用 `one`
