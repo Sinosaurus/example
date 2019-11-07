@@ -224,7 +224,7 @@
      */
     const changeUrl = () => {
       // 回退时，可以再次选中
-      getEl() && getEl().addClass('target')
+      getEl() && $(getEl()).addClass('target')
 
       const firstTop = document.scrollingElement.scrollTop
       window.location.hash = ""
@@ -240,7 +240,7 @@
      * 如此事件只执行一次即可
      * https://github.com/iamdustan/smoothscroll
      */
-    
+
     $(document).on('click', function () {
       changeUrl()
     })
