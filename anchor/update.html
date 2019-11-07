@@ -223,8 +223,8 @@
      * @description: 地址栏改变页面不刷新
      */
     const changeUrl = () => {
-      // 回退时，可以再次选中
-      getEl() && $(getEl()).addClass('target')
+      // 移除选中效果
+      getEl() && $(getEl()).removeClass('target')
 
       const firstTop = document.scrollingElement.scrollTop
       window.location.hash = ""
