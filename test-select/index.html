@@ -6,446 +6,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <link rel="stylesheet" href="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css">
+  <!-- <link rel="stylesheet" href="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css"> -->
   <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
   <link rel="stylesheet/less" type="text/css" href="index.less">
   <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./../lib/json/prism.css">
 </head>
 
 <body>
-
-  <section id="product-bms">
-    <section class="bms-header">
-      <h2 class="h2">裸金属物理服务器 BMS</h2>
-    </section>
-    <section class="bms-body" v-loading="isLoading">
-      <el-tabs>
-        <el-tab-pane>
-          <span slot="label"><i class="el-icon-shopping-cart-2"></i> 自定义购买</span>
-          <el-form size="small">
-            <section class="first-body">
-              <div class="body-item body-item-1">
-                <div class="body-item__left">
-                  <div class="icon icon-1"></div>
-                  <p class="icon-info">数据中心</p>
-                </div>
-                <div class="body-item__right flex">
-                  <el-button type="primary" size="mini" plain class="btn">中国大陆</el-button>
-                  <el-radio-group v-model="form.type" size="mini">
-                    <el-radio-button label="上海"></el-radio-button>
-                    <el-radio-button label="北京"></el-radio-button>
-                    <el-radio-button label="广州"></el-radio-button>
-                    <el-radio-button label="深圳"></el-radio-button>
-                  </el-radio-group>
-                </div>
-              </div>
-              <div class="body-item body-item-2">
-                <div class="body-item__left">
-                  <div class="icon icon-2"></div>
-                  <p class="icon-info">机型</p>
-                </div>
-                <div class="body-item__right">
-                  <!-- 
-                      TODO:
-                      此处需要注意 在table和list形式下，需要找到指定的选项，以便进行触发锁定
-                     -->
-                  <div class="item-2-top">显示方式：
-                    <span @click="isShowTable = 1" :class="isShowTable === 1 ? 'active' : ''"><i
-                        class="el-icon-menu"></i></span>
-                    <span @click="isShowTable = 0" :class="isShowTable === 0 ? 'active' : ''"><i
-                        class="el-icon-s-grid"></i></span>
-                  </div>
-                  <div class="item-2-container">
-                    <transition name="fade-table" mode="out-in">
-                      <template v-if="isShowTable">
-                        <ul class="item-2-content">
-                          <li class="item-2 active">
-                            <h5 class="item--title">光环云H16型</h5>
-                            <div class="item--info">
-                              <span class="item-info__key">CPU</span>
-                              <span class="item-info__value">英特尔至强D1541</span>
-                            </div>
-                            <div class="item--info">
-                              <span class="item-info__key">内核</span>
-                              <span class="item-info__content">
-                                <span class="item-info__number">16</span>
-                                <span class="item-info__value">G</span>
-                              </span>
-                            </div>
-                            <div class="item--info">
-                              <span class="item-info__key">内存</span>
-                              <span class="item-info__content">
-                                <span class="item-info__number">16</span>
-                                <span class="item-info__value">G DDR4 2400MHz</span>
-                              </span>
-                            </div>
-                          </li>
-                          <li class="item-2 active">
-                            <h5 class="item--title">光环云H16型</h5>
-                            <div class="item--info">
-                              <span class="item-info__key">CPU</span>
-                              <span class="item-info__value">英特尔至强D1541</span>
-                            </div>
-                            <div class="item--info">
-                              <span class="item-info__key">内核</span>
-                              <span class="item-info__content">
-                                <span class="item-info__number">16</span>
-                                <span class="item-info__value">G</span>
-                              </span>
-                            </div>
-                            <div class="item--info">
-                              <span class="item-info__key">内存</span>
-                              <span class="item-info__content">
-                                <span class="item-info__number">16</span>
-                                <span class="item-info__value">G DDR4 2400MHz</span>
-                              </span>
-                            </div>
-                          </li>
-                          <li class="item-2 active">
-                            <h5 class="item--title">光环云H16型</h5>
-                            <div class="item--info">
-                              <span class="item-info__key">CPU</span>
-                              <span class="item-info__value">英特尔至强D1541</span>
-                            </div>
-                            <div class="item--info">
-                              <span class="item-info__key">内核</span>
-                              <span class="item-info__content">
-                                <span class="item-info__number">16</span>
-                                <span class="item-info__value">G</span>
-                              </span>
-                            </div>
-                            <div class="item--info">
-                              <span class="item-info__key">内存</span>
-                              <span class="item-info__content">
-                                <span class="item-info__number">16</span>
-                                <span class="item-info__value">G DDR4 2400MHz</span>
-                              </span>
-                            </div>
-                          </li>
-                          <li class="item-2 active">
-                            <h5 class="item--title">光环云H16型</h5>
-                            <div class="item--info">
-                              <span class="item-info__key">CPU</span>
-                              <span class="item-info__value">英特尔至强D1541</span>
-                            </div>
-                            <div class="item--info">
-                              <span class="item-info__key">内核</span>
-                              <span class="item-info__content">
-                                <span class="item-info__number">16</span>
-                                <span class="item-info__value">G</span>
-                              </span>
-                            </div>
-                            <div class="item--info">
-                              <span class="item-info__key">内存</span>
-                              <span class="item-info__content">
-                                <span class="item-info__number">16</span>
-                                <span class="item-info__value">G DDR4 2400MHz</span>
-                              </span>
-                            </div>
-                          </li>
-                        </ul>
-                      </template>
-                      <template v-else>
-                        <el-table ref="el_table" size="mini" max-height="300px" :data="tableData" style="width: 100%"
-                          highlight-current-row @current-change="handleCurrentChange"
-                          header-row-class-name="table-header">
-                          <el-table-column width="55">
-                            <template slot-scope="scope">
-                              <el-radio class="table-radio" v-model="scope.row.isChecked" :label="true"></el-radio>
-                            </template>
-                          </el-table-column>
-                          <el-table-column label="名称" width="120">
-                            <template slot-scope="scope">{{ scope.row.date }}</template>
-                          </el-table-column>
-                          <el-table-column prop="CPU" label="CPU" width="120">
-                          </el-table-column>
-                          <el-table-column prop="内核数" label="内核数" show-overflow-tooltip>
-                          </el-table-column>
-                          <el-table-column prop="内存" label="内存" show-overflow-tooltip>
-                          </el-table-column>
-                          <el-table-column prop="内存型号" label="内存型号" show-overflow-tooltip>
-                          </el-table-column>
-                          <el-table-column prop="用户" label="用户" show-overflow-tooltip>
-                          </el-table-column>
-                          <el-table-column prop="网卡" label="网卡" show-overflow-tooltip>
-                          </el-table-column>
-                          <el-table-column prop="状态" label="状态" show-overflow-tooltip>
-                          </el-table-column>
-                          <el-table-column prop="月付（元）" label="月付（元）" show-overflow-tooltip>
-                          </el-table-column>
-                        </el-table>
-                      </template>
-                    </transition>
-                  </div>
-                </div>
-              </div>
-              <div class="body-item body-item-3">
-                <div class="body-item__left">
-                  <div class="icon icon-3"></div>
-                  <p class="icon-info">存储</p>
-                </div>
-                <div class="body-item__right">
-                  <div class="item-3"><span class="item-3__key">系统盘：</span> <span class="item-3__value"> 超级NVMe SSD云盘
-                      128G </span></div>
-                  <div class="item-3-content">
-                    <div class="item-3-content__item">
-                      <!-- 
-                          下拉框的下拉框错位，需要及时找出问题所在
-                          
-                         -->
-                      <el-form-item style="max-width: 180px">
-                        <el-select v-model="form.test">
-                          <el-option v-for="item in initData.cities" :key="item.value" :label="item.label"
-                            :value="item.value">
-                          </el-option>
-                        </el-select>
-                      </el-form-item>
-                      <el-form-item style="max-width: 90px">
-                        <el-input disabled>
-                          <span slot="suffix">G</span>
-                        </el-input>
-                      </el-form-item>
-                      <span class="info">免费赠送128G容量 ， 单盘最大容量高达20T，读吞吐最大性能：1700MB/s，写吞吐最大性能：500MB/s</span>
-                    </div>
-                  </div>
-                  <div class="item-3">
-                    <span class="item-3__key">数据盘：</span>
-                    <span class="item-3__value">已选<span class="num">1</span>块盘，可选<span class="num">4</span>块盘</span>
-                  </div>
-                  <div class="item-3-content">
-                    <div class="item-3-content__item">
-                      <el-button type="primary" size="small" class="btn">
-                        <i class="el-icon-minus"></i>
-                      </el-button>
-                      <el-form-item style="max-width: 180px">
-                        <el-select>
-                          <el-option>111</el-option>
-                        </el-select>
-                      </el-form-item>
-                      <el-form-item style="max-width: 140px">
-                        <el-input>
-                          <el-select slot="append" placeholder="GB">
-                            <el-option label="餐厅名" value="1"></el-option>
-                            <el-option label="订单号" value="2"></el-option>
-                            <el-option label="用户电话" value="3"></el-option>
-                          </el-select>
-                        </el-input>
-                      </el-form-item>
-                      <span class="info">免费赠送128G容量 ， 单盘最大容量高达20T，读吞吐最大性能：1700MB/s，写吞吐最大性能：500MB/s</span>
-                    </div>
-                    <div class="item-3-content__item">
-                      <el-button size="small" type="primary" class="btn">
-                        <i class="el-icon-plus"></i>
-                      </el-button>
-                      <span class="info primary">添加一块数据盘</span>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-              <div class="body-item body-item-4">
-                <div class="body-item__left">
-                  <div class="icon icon-4"></div>
-                  <p class="icon-info">镜像</p>
-                </div>
-                <div class="body-item__right">
-                  <el-form-item>
-                    <el-button type="primary" plain>公有镜像</el-button>
-                  </el-form-item>
-                  <el-form-item>
-                    <div class="flex">
-                      <el-form-item style="max-width: 180px">
-                        <el-select v-model="form.test" placeholder="请选择操作系统">
-                          <span slot="prefix"><i :class="0 ? 'el-icon-s-goods' : ''"></i></span>
-                          <el-option v-for="item in initData.cities" :key="item.value" :label="item.label"
-                            :value="item.value">
-                            <span>
-                              <i class="el-icon-s-goods"></i>
-                            </span>
-                            <span>{{item.value}}</span>
-                          </el-option>
-                        </el-select>
-                      </el-form-item>
-                      <el-form-item style="max-width: 180px">
-                        <el-select>
-                          <el-option></el-option>
-                        </el-select>
-                      </el-form-item>
-                    </div>
-                    <div></div>
-                  </el-form-item>
-                  <el-form-item>
-                    <el-checkbox></el-checkbox>
-                    自定义登录密码。若不勾选，则系统自动分配随机登录密码
-                  </el-form-item>
-                  <!-- TODO: 需要判断是否选中，从而来决定是否显示 -->
-                  <template>
-                    <el-form-item label="登录密码：">
-                      <el-input style="max-width: 300px;"></el-input>
-                    </el-form-item>
-                    <el-form-item label="确认密码：">
-                      <el-input style="max-width: 300px;"></el-input>
-                    </el-form-item>
-                  </template>
-                </div>
-              </div>
-              <div class="body-item body-item-5">
-                <div class="body-item__left">
-                  <div class="icon icon-5"></div>
-                  <p class="icon-info">
-                    网络
-                  </p>
-                </div>
-                <div class="body-item__right">
-                  <el-form-item label="网络类型：">
-                    <el-button type="primary" plain style="width: 120px;">VPC专有网络</el-button>
-                  </el-form-item>
-                  <el-form-item label="NAT规格：">
-                    <el-button type="primary" plain style="width: 120px;">免费型NAT</el-button>
-                  </el-form-item>
-                  <el-form-item label="内网IP段：">
-                    <el-select style="max-width: 180px;">
-                      <el-option></el-option>
-                    </el-select>
-                  </el-form-item>
-                </div>
-              </div>
-              <div class="body-item body-item-6">
-                <div class="body-item__left">
-                  <div class="icon icon-6"></div>
-                  <p class="icon-info">带宽</p>
-                </div>
-                <div class="body-item__right">
-                  <el-form-item label="公网带宽：">
-                    <el-radio>购买</el-radio>
-                    <el-radio>不购买</el-radio>
-                  </el-form-item>
-                  <el-form-item label="线路选择：">
-                    <el-button type="primary" plain>北京双线BGP线路（CT/CU）</el-button>
-                    <span class="info">China Dedicated Internet Access(BJIA) 北京中国电信</span>
-                  </el-form-item>
-                  <el-form-item label="公网带宽：">
-                    <el-input style="max-width: 120px">
-                      <span slot="suffix">M</span>
-                    </el-input>
-                  </el-form-item>
-                </div>
-              </div>
-              <div class="body-item body-item-7">
-                <div class="body-item__left">
-                  <div class="icon icon-7"></div>
-                  <p class="icon-info">公网IP</p>
-                </div>
-                <div class="body-item__right flex">
-                  <el-form-item label="公网IP：">
-                    <el-input style="max-width: 120px;">
-                      <span slot="suffix">个</span>
-                    </el-input>
-                  </el-form-item>
-                </div>
-              </div>
-              <div class="body-item body-item-8">
-                <div class="body-item__left">
-                  <div class="icon icon-8"></div>
-                  <p class="icon-info">购买量</p>
-                </div>
-                <div class="body-item__right">
-                  <el-form-item label="购买时长：" class="flex">
-                    <el-select style="max-width: 120px;">
-                      <el-option>
-                        <el-option>
-                    </el-select>
-                    <el-form-item class="eight-checkbox">
-                      <el-checkbox></el-checkbox>
-                      自动续费
-                    </el-form-item>
-                  </el-form-item>
-                  <el-form-item label="购买数量：" class="flex">
-                    <el-input style="max-width: 120px;">
-                      <span slot="suffix">台</span>
-                    </el-input>
-                    <span class="info">单次最多开通10台，如超过10台，请与客服联系</span>
-                  </el-form-item>
-                </div>
-              </div>
-            </section>
-          </el-form>
-          <section class="bms-footer">
-            <div class="bms-footer__left">
-              <div class="bms-footer__container">
-                <ul class="bms-footer__content">
-                  <li class="bms-footer__item">
-                    <span class="bms-footer__key">数据中心：</span>
-                    <span class="bms-footer__value">北京光环新网A区</span>
-                  </li>
-                  <li class="bms-footer__item">
-                    <span class="bms-footer__key">机型：</span>
-                    <span class="bms-footer__value">光环云H16型</span>
-                  </li>
-                  <li class="bms-footer__item">
-                    <span class="bms-footer__key">系统盘：</span>
-                    <span class="bms-footer__value">超级NVMe SSD云盘 128G</span>
-                  </li>
-                  <li class="bms-footer__item">
-                    <span class="bms-footer__key">数据盘：</span>
-                    <span class="bms-footer__value">1块， 共1G</span>
-                  </li>
-                  <li class="bms-footer__item">
-                    <span class="bms-footer__key">公有镜像：</span>
-                    <span class="bms-footer__value">Server 2008 R2 企业版 64位 简体中文</span>
-                  </li>
-                </ul>
-              </div>
-              <div class="bms-footer__container">
-                <ul class="bms-footer__content">
-                  <li class="bms-footer__item">
-                    <span class="bms-footer__key">网络：</span>
-                    <span class="bms-footer__value">VPC专有网络</span>
-                  </li>
-                  <li class="bms-footer__item">
-                    <span class="bms-footer__key">公网带宽：</span>
-                    <span class="bms-footer__value">北京双线BGP线路（CT/CU）-1M</span>
-                  </li>
-                  <li class="bms-footer__item">
-                    <span class="bms-footer__key">公网IP：</span>
-                    <span class="bms-footer__value"></span>
-                  </li>
-                  <li class="bms-footer__item">
-                    <span class="bms-footer__key">购买量：</span>
-                    <span class="bms-footer__value">1台 (自动续费)</span>
-                  </li>
-                  <li class="bms-footer__item">
-                    <span class="bms-footer__key">购买时长：</span>
-                    <span class="bms-footer__value">1个月</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="bms-footer__right">
-              <div class="bms-footer__price">
-                <span class="price-key">配置费用：</span>
-                <span class="price-value">￥868.13</span>
-              </div>
-              <el-button>加入购物车</el-button>
-              <el-button type="primary">立即购买</el-button>
-            </div>
-          </section>
-        </el-tab-pane>
-        <el-tab-pane>
-          <span slot="label"><i class="el-icon-s-order"></i> 应用场景套餐购买</span>
-          <section class="second-body">
-            1111111111111
-          </section>
-        </el-tab-pane>
-      </el-tabs>
-    </section>
-
-  </section>
-
   <div id="app">
-
-
+    <h1><code class="language-js">element-ui</code> select下拉框位置偏移</h1>
+    <pre>
+      <code class="language-html">
+        {{html}}
+      </code>
+    </pre>
+    <pre>
+      <code class="language-css">
+        {{`
+          body {
+            position: relative;
+          }
+          #app {
+            margin-top: 70px;
+          }`}}</code>
+    </pre>
+    <p>
+      使用 <code class="language-css">{{` body {
+          position: relative;
+        }`}}</code> 时，会导致下拉框出现定位问题，特别是对 <code class="language-css">{{` #app {
+            margin-top: 70px;
+          }`}}</code> 便会出现下拉框离目标位置偏离
+    </p>
     <div>
       <el-select v-model="value" placeholder="请选择">
         <el-option v-for="item in options" :key="item.code" :label="item.name" :value="item.name">
@@ -453,29 +46,38 @@
       </el-select>
     </div>
 
-    <div>
-      <label class="typo__label">Tagging</label>
-      <vue-multiselect v-model="value" label="name" :options="options">
-
-        <template slot="singleLabel" slot-scope="props">
-          + {{props.option.name}}
-        </template>
-        <template slot="option" slot-scope="props">
-          + {{ props.option.name }}
-        </template>
-      </vue-multiselect>
+  </div>
+  <div id="demo">
+    <pre>
+          <code class="language-css">
+            .item {
+              overflow: auto;
+            }
+          </code>
+        </pre>
+    <p>使用了<code class="language-css">overflow:auto</code>导致下拉框在盒子内部，而目前我使用是因为，避免布局出现错乱，不得不使用，从而导致添加<code
+        class="language-js">:popper-append-to-body="false"</code>不适用</p>
+    <div class="item">
+      <el-select v-model="value" placeholder="请选择" :popper-append-to-body="false">
+        <el-option v-for="item in options" :key="item.code" :label="item.name" :value="item.name">
+        </el-option>
+      </el-select>
     </div>
-
   </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 <script src="https://unpkg.com/vue-multiselect@2.1.0"></script>
+<script src="./../lib/json/prism.js"></script>
 <script>
   Vue.component('vue-multiselect', window.VueMultiselect.default)
   new Vue({
     el: '#app',
     data: {
+      html: `<el-select v-model="value" placeholder="请选择">
+          <el-option v-for="item in options" :key="item.code" :label="item.name" :value="item.name">
+          </el-option>
+        </el-select>`,
       form: {
 
       },
@@ -496,83 +98,23 @@
     }
   })
 
-
   new Vue({
-    el: '#product-bms',
+    el: '#demo',
     data: {
-      isLoading: false,
-      form: {
-        type: '',
-        test: ''
-      },
-      tableData: [{
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-04',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-01',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-08',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-06',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-07',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }],
-      initData: {
-        cities: [{
-          value: 'Beijing',
-          label: '北京'
-        }, {
-          value: 'Shanghai',
-          label: '上海'
-        }, {
-          value: 'Nanjing',
-          label: '南京'
-        }, {
-          value: 'Chengdu',
-          label: '成都'
-        }, {
-          value: 'Shenzhen',
-          label: '深圳'
-        }, {
-          value: 'Guangzhou',
-          label: '广州'
-        }]
-      },
-      // 机型 是列表还是table
-      isShowTable: false,
-      // 选中的行
-      currentRow: null
-    },
-    computed: {
-
-    },
-    methods: {
-      handleCurrentChange: function (val) {
-        console.log(val)
-        this.tableData.forEach(item => item.isChecked = false)
-        val.isChecked = true
-        this.currentRow = val
-      }
-    },
-    created: function () {
-      // 数据请求
+      value: '',
+      options: [{
+          name: 'Vue.js',
+          code: 'vu'
+        },
+        {
+          name: 'Javascript',
+          code: 'js'
+        },
+        {
+          name: 'Open Source',
+          code: 'os'
+        }
+      ]
     }
   })
 </script>
