@@ -16,7 +16,8 @@
     "isolatedModules": false,
     "experimentalDecorators": true,
     "declaration": false,
-    "suppressImplicitAnyIndexErrors": true
+    "suppressImplicitAnyIndexErrors": true,
+    "strictNullChecks": true
   },
   "include": [
     "./src/**/*",

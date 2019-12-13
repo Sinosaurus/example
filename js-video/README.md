@@ -21,3 +21,11 @@
 
 + [AudioContext](https://developer.mozilla.org/zh-CN/docs/Web/API/AudioContext)
   - [demo](https://codepen.io/Rumyra/pen/qyMzqN/?__cf_chl_jschl_tk__=a8323470f7f57cac056d092df65482fb96b07ba1-1575883861-0-AYmecv7w0R1pMYusyly1nKAh_h2oHnDVRwJCIK_fAfn91RaU2RH8a1v2-olBkj6Im4-RhdxRxOjmN-KgaNfDE1NHbDwCmdYcyRGjU3GhRZ8Ii6tYeNIYFN2JrF-gvplj0sXADUvOy5PUH19CNo79MGxl-mL8mqUu3wZylaiNMyon05Qsy2FoQe7jD1JeYTutkKfLLXDMVoY9BB-vSdP9K8i8ga_hPEVxaMh8zuT-HKj_nehwJnW-UiiaKFDE76fJIsVwFwqgjA4_Sff5-lW_17tc7HDtcqAPPoFe6ZUU6dqcTcwnhRVYmNxG7P61-Fxm4ZaS6vXK9XpE5UPJblFvL-HHV5sh-wdTt_0eJE6IWuUe)
+
+
+> youtube [iframe_api](https://developers.google.com/youtube/iframe_api_reference)
+
+
+## 总结
+鉴于目前而言，很少有网页播放时，直接出现视频和声音的，都需要用户进行交互，点击后才会出现声音，暂时没看到好的方法。
+即使是`youtube`做到了可以**自动播放且有声音**，但是只能播放`7s`便暂停了
