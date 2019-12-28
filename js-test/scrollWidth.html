@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+
+<head>
+  <title>Example</title>
+  <style>
+
+    #aDiv {
+      width: 167px;
+    }
+    .el-tooltip {
+      white-space: nowrap;
+      min-width: 50px;
+    }
+    .cell {
+      padding: 0 10px;
+      position: relative;
+      height: 61px;
+      line-height: 61px;
+      font-size: 12px;
+      text-align: center;
+      /* box-sizing: border-box; */
+      word-break: break-all;
+      overflow: hidden;
+      text-overflow: ellipsis; 
+    }
+
+    button {
+      margin-bottom: 2em;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="aDiv" class="cell el-tooltip">
+    <!-- FooBar-FooBar-FooBar-FooBar -->
+    成都三泰控股集团股份有限公司
+    <!-- 成都三泰控股集团股份有限公司
+    成都三泰控股集团股份有限公司
+    成都三泰控股集团股份有限公司 -->
+  </div>
+  <button id="aButton">
+    Check for overflow
+  </button>
+
+  <div id="anotherDiv">
+    FooBar-FooBar-FooBar-FooBar
+  </div>
+  <button id="anotherButton">
+    Check for overflow
+  </button>
+</body>
+<script>
+  var buttonOne = document.getElementById('aButton'),
+    buttonTwo = document.getElementById('anotherButton'),
+    divOne = document.getElementById('aDiv'),
+    divTwo = document.getElementById('anotherDiv');
+
+  //check to determine if an overflow is happening
+  function isOverflowing(element) {
+    // console.log(element.getBoundingClientRect())
+    console.log(element.scrollWidth, element.offsetWidth)
+    /**
+     * 此处需要获取内容宽度，如此最为稳妥
+     */
+    return (Number(element.scrollWidth) + 1 > element.offsetWidth);
+  }
+
+  function alertOverflow(element) {
+    if (isOverflowing(element)) {
+      alert('Contents are overflowing the container.');
+    } else {
+      alert('No overflows!');
+    }
+  }
+
+  buttonOne.addEventListener('click', function () {
+    alertOverflow(divOne);
+  });
+
+  buttonTwo.addEventListener('click', function () {
+    alertOverflow(divTwo);
+  });
+</script>
+
+</html>

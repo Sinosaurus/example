@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>call,apply,bind,this</h1>
+
+  <script>
+    const obj = {
+      a: '1',
+      fn () {
+        console.log('three', 'obj')
+      }
+    }
+    function first (cb, a, b) {
+      this.a = 1222
+      // 改变this指向
+      cb && cb.call(obj, a, b)
+      console.log(this, 'first')
+    }
+
+    function second (a, b) {
+      console.log(this, 'second', a, b)
+      this.fn()
+      console.log(this)
+    }
+
+    first(second, '1', '2')
+
+  </script>
+</body>
+
+</html>

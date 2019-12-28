@@ -1,0 +1,16 @@
+{
+  "name": "js-excle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "juejin",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^2.6.10",
+    "xlsx": "^0.15.1"
+  }
+}
