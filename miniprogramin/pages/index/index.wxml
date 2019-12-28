@@ -1,0 +1,16 @@
+<scroll-view
+  scroll-y="true"
+  scroll-top="{{scrollTop}}"
+  bindscroll="scroll"
+  
+>
+  <view id="demo1" class="scroll-view-item demo-text-1"></view>
+  <view id="demo2"  class="scroll-view-item demo-text-2"></view>
+  <view id="demo3" class="scroll-view-item demo-text-3"></view>
+  <view id="demo4" class="scroll-view-item demo-text-4"></view>
+  <view bindtap="tap" id="demo5" class="scroll-view-item demo-text-5"></view>
+<navigator url="/pages/logs/logs" hover-class="navigator-hover">
+  <button>日志</button>
+</navigator>
+</scroll-view>
+
