@@ -28,4 +28,21 @@
 
 ## 总结
 鉴于目前而言，很少有网页播放时，直接出现视频和声音的，都需要用户进行交互，点击后才会出现声音，暂时没看到好的方法。
-即使是`youtube`做到了可以**自动播放且有声音**，但是只能播放`7s`便暂停了
+即使是`youtube`做到了可以**自动播放且有声音**，但是只能播放`7s`便暂停了 
+
+## 问题
+为何广告却可以播放一分钟还带声音，而视频却不行
+
+## 音频
+
+```html
+ <audio src="./夏喘喘 - 春日宴.mp3" controls autoplay> </audio>
+ <iframe src="./夏喘喘 - 春日宴.mp3" frameborder="0"></iframe>
+```
+
+> result
+
+| browser | autoplay | attribute [autoplay:true] |
+| --- | --- | --- |
+| chrome 78  | true | iframe, audio['autoplay'] |
+| Firefox 71  | false | audio['autoplay', 'muted']  |

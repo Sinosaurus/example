@@ -11,7 +11,7 @@
       box-sizing: border-box;
     }
     .item {
-      max-width: 200px;
+      max-width: 90px;
       min-height: 100px;
       margin-top: 50px;
       box-shadow: 0 0 8px 0 rgba(0, 0, 0, .2);
@@ -41,7 +41,7 @@
   <p>同问<a href="https://segmentfault.com/q/1010000000724476">link</a></p>
   <div class="item">
     <p class="ellipsis">
-      <span>我是否会有省略号呢略号呢呢</span>
+      <span>2016-05-03</span>
     </p>
     <!-- <p class="result">
 
@@ -49,7 +49,7 @@
   </div>
   <div class="item">
     <p class="ellipsis">
-      我是否会有省略号呢略号呢
+      2016-05-03
     </p>
   </div>
   <div class="item"></div>
@@ -66,12 +66,12 @@
        * 嵌套 span
        */
       var ellipsis0 = $('#item0').querySelector('.ellipsis')
-      console.dir(ellipsis0.children[0])
       var offsetWidth0 = ellipsis0.offsetWidth
       var scrollWidth0 = ellipsis0.scrollWidth
       console.log(
-          'offsetWidth0:' + offsetWidth0,
-          'scrollWidth0:' + scrollWidth0
+          '使用span进行包裹 \n',
+          'offsetWidth0: ' + offsetWidth0 + '\n',
+          'scrollWidth0: ' + scrollWidth0
         )
       // E
       // B
@@ -79,12 +79,12 @@
        * 直接判断
        */
       var ellipsis1 = $('#item1').querySelector('.ellipsis')
-      console.dir(ellipsis1.children[1])
       var offsetWidth1 = ellipsis1.offsetWidth
       var scrollWidth1 = ellipsis1.scrollWidth
       console.log(
-        'offsetWidth1:' + offsetWidth1,
-        'scrollWidth1:' + scrollWidth1
+        '只是使用p进行包裹 \n',
+        'offsetWidth1: ' + offsetWidth1+ '\n',
+        'scrollWidth1: ' + scrollWidth1
       )
       // E
 
@@ -95,12 +95,12 @@
        * 考虑通过计算文字宽度来进行判断是否隐藏
        * @result 并不理想
        */
-      console.log(window.getComputedStyle(ellipsis0.children[0]))
-      console.dir(ellipsis0.children[0].getBoundingClientRect())
-      var res = ellipsis0.children[0].getClientRects()
-      console.dir(res)
-      var width = res.width || (res.right - res.left) - res.left
-      console.log(width)
+      // console.log(window.getComputedStyle(ellipsis0.children[0]))
+      // console.dir(ellipsis0.children[0].getBoundingClientRect())
+      // var res = ellipsis0.children[0].getClientRects()
+      // console.dir(res)
+      // var width = res.width || (res.right - res.left) - res.left
+      // console.log(width)
 
     }, false)
   </script>
