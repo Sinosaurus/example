@@ -30,6 +30,7 @@
       white-space: nowrap;
       word-break: break-all;
       overflow: hidden;
+      
       text-overflow: ellipsis;
       line-height: 23px;
       padding:0 10px;
@@ -41,7 +42,7 @@
   <p>同问<a href="https://segmentfault.com/q/1010000000724476">link</a></p>
   <div class="item">
     <p class="ellipsis">
-      <span>我是否会有省略号呢略号呢呢</span>
+      <span>我是否会哦我呢呢</span>
     </p>
     <!-- <p class="result">
 
@@ -86,6 +87,10 @@
         'offsetWidth1:' + offsetWidth1,
         'scrollWidth1:' + scrollWidth1
       )
+
+      if (scrollWidth1 >= offsetWidth1) {
+        console.log('hidden', 'item1')
+      }
       // E
 
 
@@ -95,7 +100,7 @@
        * 考虑通过计算文字宽度来进行判断是否隐藏
        * @result 并不理想
        */
-      console.log(window.getComputedStyle(ellipsis0.children[0]))
+      console.log(window.getComputedStyle(ellipsis0.children[0]).overflow)
       console.dir(ellipsis0.children[0].getBoundingClientRect())
       var res = ellipsis0.children[0].getClientRects()
       console.dir(res)
