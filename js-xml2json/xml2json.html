@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .container {
+      padding: 10px;
+      min-height: 200px;
+      background-color: skyblue;
+    }
+
+    .item {
+      padding: 20px;
+    }
+
+    textarea {
+      padding: 10px;
+      width: 100%;
+      font-size: 16px;
+    }
+
+    button {
+      height: 40px;
+      padding-left: 20px;
+      padding-right: 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <div class="item">
+      <textarea id="xml" cols="40" rows="20"></textarea>
+      <p>xml</p>
+    </div>
+    <div class="item">
+      <button id="transform_btn">转化</button>
+    </div>
+    <div class="item">
+      <textarea id="json" cols="40" rows="20"></textarea>
+      <p>json</p>
+    </div>
+  </main>
+  <!-- https://www.ruanyifeng.com/blog/2015/05/commonjs-in-browser.html -->
+  <script src="./xmlToJson.js"></script>
+</body>
+<script>
+  const btn = document.getElementById('transform_btn')
+  const xml = document.getElementById('xml')
+  const json = document.getElementById('json')
+  btn.addEventListener('click', function () {
+    const xml_value = document.getElementById('xml').value
+    const tree = xmlToJSON.parseString(xml_value)
+    console.log(tree)
+    json.value = JSON.stringify(tree, null, 2)
+  }, false)
+</script>
+
+</html>

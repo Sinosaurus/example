@@ -1,0 +1,20 @@
+{
+  "name": "node-database",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsc -w",
+    "start": "nodemon './dist/app.js'"
+  },
+  "keywords": [],
+  "author": "Sinosaurus",
+  "license": "ISC",
+  "dependencies": {
+    "@types/hapi": "^18.0.3",
+    "hapi": "^18.1.0",
+    "mariadb": "^2.1.4",
+    "nodemon": "^2.0.2",
+    "typescript": "^3.7.4"
+  }
+}

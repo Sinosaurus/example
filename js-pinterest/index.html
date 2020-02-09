@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .grid {
+      max-width: 800px;
+      margin: 100px auto;
+    }
+
+    .grid-item {
+      margin-bottom: 10px;
+      width: 200px;
+
+    }
+
+    .grid-item--width2 {
+      width: 200px;
+    }
+
+    .one {
+      height: 100px;
+      background-image: linear-gradient(135deg, #FFA8A8 10%, #FCFF00 100%);
+    }
+
+    .two {
+      height: 300px;
+      background-image: linear-gradient(135deg, #6B73FF 10%, #000DFF 100%);
+    }
+
+    .three {
+      height: 160px;
+      background-image: linear-gradient(135deg, #70F570 10%, #49C628 100%);
+    }
+  </style>
+</head>
+
+<body>
+  <ul id="ul">
+  </ul>
+  <div class="grid">
+    <div class="grid-item">
+      <div class="one"></div>
+    </div>
+    <div class="grid-item grid-item--width2">
+      <div class="two"></div>
+    </div>
+    <div class="grid-item">
+      <div class="three"></div>
+    </div>
+    <div class="grid-item">
+      <div class="one"></div>
+    </div>
+    <div class="grid-item grid-item--width2">
+      <div class="two"></div>
+    </div>
+    <div class="grid-item">
+      <div class="three"></div>
+    </div>
+    <div class="grid-item">
+      <div class="one"></div>
+    </div>
+    <div class="grid-item grid-item--width2">
+      <div class="two"></div>
+    </div>
+    <div class="grid-item">
+      <div class="three"></div>
+    </div>
+    <div class="grid-item">
+      <div class="one"></div>
+    </div>
+    <div class="grid-item grid-item--width2">
+      <div class="two"></div>
+    </div>
+    <div class="grid-item">
+      <div class="three"></div>
+    </div>
+  </div>
+</body>
+<script src="./../lib/jquery/jquery.js"></script>
+<script src="./lib/masonry/masonry.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const grid = document.querySelector('.grid')
+    const mas = new Masonry(grid, {
+      // options
+      itemSelector: '.grid-item',
+      columnWidth: 200,
+      gutter: 10,
+      transitionDuration: '0.2s',
+      // slow transitions
+      transitionDuration: '0.8s'
+    });
+
+    function delay(func, wait, ...args) {
+      if (typeof func !== 'function') {
+        throw new TypeError('Expected a function')
+      }
+      return setTimeout(func, +wait || 0, ...args)
+    }
+    window.onscroll = function () {
+
+      delay(function () {
+        // debugger
+        const fragment = document.createDocumentFragment()
+        for (let i = 0; i < 3; i++) {
+          const map = {
+            '0': 'one',
+            '1': 'two',
+            '2': 'three',
+          }
+          const div = document.createElement('div')
+          div.setAttribute('class', 'grid-item' + (i === 1 ? ' grid-item--width2' : ''))
+          const div1 = document.createElement('div')
+          div1.setAttribute('class', map[String(i)])
+          div.appendChild(div1)
+          fragment.appendChild(div)
+        }
+        /**
+         * 为何会出现上面的情况，目前看起来是因为该插件没有考虑到会使用 createDocumentFragment
+         * 从而导致无法准备拿到对应插入的元素
+         * @describe 在使用 `createDocumentFragment` 需要注意几点情况
+         * 1. 使用时，无法直接拿到添加的元素，需要通过获取节点方法来拿到新增的元素
+         * 2. 使用时，不能被添加到document中，若是添加了，便会被清空
+         * @describe 使用 masonry 插件时注意事项
+         * 分jquery和js两种使用使用方式
+         * 使用js时需要注意事项
+         * 1. 由于没有对 DocumentFragment 方式的使用，因而在进行 `appended` 新增节点识别时，需要主动告知新增了哪些节点
+         * 2. 由于提供的示例，并不有效，需要改变前后顺序
+         *  ```
+         * grid.appendChild(ele)
+         * mas.appended(ele)
+         *  ```
+         * 变为
+         *  ```
+         * mas.appended(ele)
+         * grid.appendChild(ele)
+         *  ```
+         */
+        console.log(fragment.querySelectorAll('.grid-item'))
+        mas.appended(fragment.querySelectorAll('.grid-item'))
+        grid.appendChild(fragment)
+        mas.layout()
+      }, 200)
+
+    }
+  }, false)
+</script>
+<script>
+  var element = document.getElementById('ul'); // assuming ul exists
+  var fragment = document.createDocumentFragment();
+  var browsers = ['Firefox', 'Chrome', 'Opera',
+    'Safari', 'Internet Explorer'
+  ];
+
+  browsers.forEach(function (browser) {
+    var li = document.createElement('li');
+    li.textContent = browser;
+    console.log(li)
+    fragment.appendChild(li);
+  });
+  console.log(fragment.querySelectorAll('li'), 11111111)
+  console.dir(fragment)
+  element.appendChild(fragment);
+</script>
+
+</html>

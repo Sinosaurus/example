@@ -1,0 +1,29 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "browserify": "browserify ./node_modules/xml2json/index.js -o ./xml2json.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sinosaurus/example.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sinosaurus/example/issues"
+  },
+  "homepage": "https://github.com/Sinosaurus/example#readme",
+  "dependencies": {
+    "browserify": "^16.5.0",
+    "xml-objtree": "^0.24.2",
+    "xml2json": "^0.12.0"
+  }
+}
