@@ -1,0 +1,23 @@
+<!--
+ * @LastEditors: Sinosaurus
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>验证 JSON</title>
+</head>
+<body>
+  <script>
+    const str = `111`
+    const result = prompt(JSON.stringify(str))
+    // result 是 使用prompt弹框，输入的结果
+    console.log(result, 111)
+    // 使用 JSON.parse 解析时，会出错，若是单纯数字，会将 输入的字符串数字变为number数字
+    // 输入英文或汉字会报错
+    const json_result = JSON.parse(result)
+    console.log(json_result,222)
+  </script>
+</body>
+</html>

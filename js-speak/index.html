@@ -1,0 +1,48 @@
+<!--
+ * @LastEditors: Sinosaurus
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="content">
+    我是一只丑小鸭，咿呀咿呀哟
+  </div>
+  <button onclick="speak()">chrome需要点击才能播放</button>
+  <script src="./../node_modules/jquery/dist/jquery.js"></script>
+  <script src="./lib/articulate.js"></script>
+  <script>
+    // $(function () {
+      
+    //   $('.content').articulate('speak')
+    // })
+  </script>
+
+  <script>
+    const synth = window.speechSynthesis;
+
+    function speak() {
+      console.dir(synth.getVoices(),11)
+      let voices = synth.getVoices().filter(voice => voice.lang.startsWith(document.querySelector('html').lang));
+      console.log(voices)
+      if (voices.length == 0) return;
+      let utterThis = new SpeechSynthesisUtterance(document.querySelector('.content').innerText);
+      console.log(utterThis, 222)
+      utterThis.voice = voices[0];
+      synth.speak(utterThis);
+    }
+    // speechSynthesis.speak(new SpeechSynthesisUtterance("hello world"));
+
+    setTimeout(function () {
+      speak()
+    }, 300)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!--
+ * @LastEditors: Sinosaurus
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var ws = new WebSocket("ws://localhost:8080");
+
+    ws.addEventListener('open', evt => {
+      console.log("Connection open ...");
+      ws.send("Hello WebSockets!");
+    })
+
+    ws.addEventListener('message', evt => {
+      const { data } = evt
+      console.log("Received Message: " + data);
+
+      if(typeof data === String) {
+        console.log(`Received data string ${data}`);
+      }
+
+      if(data instanceof ArrayBuffer){
+        console.log(`Received arraybuffer ${data}`);
+      }
+      // ws.close();
+    })
+    
+    ws.addEventListener("close", evt => {
+      console.log(evt, 'close')
+    });
+
+    ws.addEventListener('error', evt => {
+      console.log(evt, 'error')
+    })
+  </script>
+</body>
+
+</html>
