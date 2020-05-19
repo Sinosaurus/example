@@ -2,40 +2,46 @@ const arr =[
   {
     "child": [
       {
-        "img": "bms.jpg",
-        "title": "【产品与服务】光环云网裸金属服务广州节点盛大上线",
-        "subTitle": "即日起至4月15日提供免费在线测试 光环云网与联云易通-广州数据中心联合提供全方位无接触测试服务",
-        "href": "https://www.sinnet-cloud.cn/product/node"
+        "img": "20200512home-banner.jpg",
+        "title": "【城市合伙人招募】光环云城市合伙人计划正式启动，全国招募开启！",
+        "subTitle": "光环云城市合伙人计划正式开启，以丰富产品、创新技术、伙伴资源和强大品牌支撑，招募杰出团队加盟，共同深耕城市政、商资源！",
+        "href": "https://mp.weixin.qq.com/s/VuWRMOXivRdREfIR_bv5FQ"
       },
       {
-        "img": "cdn.jpg",
-        "title": "【产品与服务】光环云正式宣布推出CDN加速服务",
-        "subTitle": "光环云网CDN，为客户提供页面加速、流媒体加速、下载加速以及动态加速的一站式解决方案。",
-        "href": "https://www.sinnet-cloud.cn/product/cdn"
+        "img": "20200512bms-high-machine.jpg",
+        "title": "【产品与服务】光环云网裸金属服务高端机型助力数据中心加速跑！",
+        "subTitle": "面对不同用户的个性化需求，配备可定制的裸金属服务。近期，光环云裸金属服务高端机型将在五月面向客户上线发布，",
+        "href": "https://mp.weixin.qq.com/s/5SvYj9gkOQXteepy4v6Nrg"
       },
       {
-        "img": "product.jpg",
-        "title": "【产品与服务】疫情过后更强大，光环云产品服务折扣计划",
-        "subTitle": "光环云产品服务折扣计划，为公共服务、医疗、教育、媒体、互联网、零售等提供稳定、安全的网络基础服务。",
-        "href": "https://mp.weixin.qq.com/s/LoMhXE1kZldS6aoGrT3law"
+        "img": "20200512zetro.jpg",
+        "title": "【产品与服务】Zerto灾备应用场景在光环云裸金属服务中开启免费测试！",
+        "subTitle": "​即日起至2020年6月30日，Zerto灾备应用场景在光环云裸金属服务中开启免费测试，助力您轻松保障业务连续性！",
+        "href": "https://mp.weixin.qq.com/s/kIBufUyiwqzAm8-my75NJA"
       },
       {
-        "img": "hc.png",
-        "title": "【解决方案】企业何时需要混合云？如何部署？",
-        "subTitle": "越来越多企业意识到混合云能兼顾安全性、可控性以及经济、高效、可扩展，能够满足企业的多种IT需要。",
-        "href": "https://mp.weixin.qq.com/s/GMH4BLBrdCGodUrKFWqFnQ"
+        "img": "20200512online-server.jpg",
+        "title": "【产品与服务】光环云在线咨询服务开通",
+        "subTitle": "通过sinnet-cloud.cn和光环云微信号，无论售前、售后，商务、产品、运维等问题，都能便捷获得实时在线对话和专业响应，欢迎点击体验。",
+        "href": "https://www.sinnet-cloud.cn"
       },
       {
-        "img": "cloudoffice.jpg",
-        "title": "【解决方案】企业远程办公解决方案",
-        "subTitle": "能稳定支撑业务的远程办公体系，应包含应用系统以及与之匹配的网络的能力，甚至将云、网、端通盘考虑。",
-        "href": "https://mp.weixin.qq.com/s/KZ08P77kkhZqX79C75GgpQ"
+        "img": "20200512thumap.jpg",
+        "title": "【重大合作项目】清华大学新一代地球观测数据与制图成果发布",
+        "subTitle": "完成了全球目前最高清10米分辨率地表覆盖制图，首套中国30米逐日无缝遥感观测数据集，将打造世界顶级在线制图服务平台，中国卫星遥感数据处理和信息提取的一场革命！",
+        "href": "https://mp.weixin.qq.com/s/tifvkpRSSmtJNOg_WwhdRQ"
       },
       {
-        "img": "partner.jpg",
-        "title": "【伙伴赋能营】即刻报名：光环云全产品概述及应用介绍",
-        "subTitle": "光环云网AWS产品（含培训）、光环云网网络服务（包括DX/SD-WAN/CDN等）、光环云网裸金属服务/光环云运营服务与应用集成",
-        "href": "https://mp.weixin.qq.com/s/6hJ0rOftCdkf5LR56IA-uA"
+        "img": "20200512sinnet-cloud.jpg",
+        "title": "【母公司年报】光环新网年报/季报发布",
+        "subTitle": "IDC和云业务稳定增长，资源布局和储备继续扩大，行业龙头地位进一步夯实。",
+        "href": "https://mp.weixin.qq.com/s/QNTaMuD-jMOUPHxpxZKL4Q"
+      },
+      {
+        "img": "20200512521partner.jpg",
+        "title": "【伙伴赋能营】即刻报名：零售行业云基础设施解决方案在线培训",
+        "subTitle": "与您分享光环云云网端的一体化解决方案，帮您解决零售行业数字化过程中终端分散、网络复杂、信息孤岛和数据安全等主要难题。",
+        "href": "https://mp.weixin.qq.com/s/EsJ-CIa2rBtmSKAmZW3YQg"
       }
     ],
     "title": "光环云快讯"
@@ -43,22 +49,10 @@ const arr =[
   {
     "child": [
       {
-        "img": "jy.jpg",
-        "title": "【高管专访】混云将是更优部署，IT人要成为布局者",
-        "subTitle": "疫中“大考”，云服务表现如何？光环云带你看“简约费控”如何通过云架构和科学IT部署，沉着应战备战！",
-        "href": "https://mp.weixin.qq.com/s/deWiVOstSzFaYhBCEsESfg"
-      },
-      {
-        "img": "yq.jpg",
-        "title": "【高管专访】云计算推深电子合同应用，中小企业仍存服务缺口",
-        "subTitle": "云计算应用日益深入，但中小企业服务仍存缺口，而这正推动着IT服务链的颠覆性变化...",
-        "href": "https://mp.weixin.qq.com/s/YEb4cuSDgNOwOdjllqOsMQ"
-      },
-      {
-        "img": "xy.jpg",
-        "title": "【高管专访】混合IT布局下的资产上云，借云计算突破边界",
-        "subTitle": "疫情之痛，渲染企业必须重新规划更合理的混合IT架构，资产上云，借云计算突破边界。",
-        "href": "https://mp.weixin.qq.com/s/vaBu1EuujtY5-DMbTcOqqw"
+        "img": "20200512high-interview.jpg",
+        "title": "【高端访谈】人工智能+数字基础设施升级，加速酒店业复苏",
+        "subTitle": "人工智能的应用，数字基础设施的整体升级，酒店业走出疫情后的低迷需要一场数字化革命...",
+        "href": "https://mp.weixin.qq.com/s/halo64AZYdSmCRAuEs2VSQ"
       }
     ],
     "title": "伙伴声音"
@@ -66,22 +60,22 @@ const arr =[
   {
     "child": [
       {
-        "img": "gartner.png",
-        "title": "Gartner：“新基建”五大关键领域见解及建议",
-        "subTitle": "新基建中7个有4个与IT相关，国家的IT起跑线将大幅提升，企业也需升级IT建设，才能享受新基建的国家红利。",
-        "href": "https://mp.weixin.qq.com/s/yub9d5kURfG96khbCcISTQ"
+        "img": "20200512unit.jpg",
+        "title": "疫情肆虐的Q1，这些政企单子强势落地！",
+        "subTitle": "2-3月项目量骤减，很多项目被暂停或延后，文章聚焦了政企领域共采集到648个项目",
+        "href": "https://mp.weixin.qq.com/s/fO43zkt97QBpPFRJNgwfgg"
       },
       {
-        "img": "sdwan.png",
-        "title": "SD-WAN江湖——原有网络市场格局将被彻底打破",
-        "subTitle": "2019年SD-WAN市场增速超130%，市场规模近7000万美元。其逐步成熟和智能，安全稳定性极大提高，是企业IT建设的明智之选。",
-        "href": "https://mp.weixin.qq.com/s/W_-QuPfHFA0yYnEou2JXvg"
+        "img": "20200512data-center.jpg",
+        "title": "公有云市场寡头化明显，数据中心成最大壁垒",
+        "subTitle": "公有云大玩家的数据中心军备竞赛异常激烈，得数据中心者，得云天下",
+        "href": "https://mp.weixin.qq.com/s/PUk7DZb7pQJ69bcV8qqkNw"
       },
       {
-        "img": "canalys.png",
-        "title": "Canalys 2019 年中国云市场份额：阿里云、腾讯云、AWS、百度智能云",
-        "subTitle": "2019年，中国云基础设施服务的开支增加63.7%，超过107亿美元。阿里云、腾讯云、AWS位列前三。",
-        "href": "https://mp.weixin.qq.com/s/KNh7KsiGq7WrG7qUpkDjoQ"
+        "img": "20200512update.jpg",
+        "title": "提升基础设施弹性，应对新冠疫情的冲击",
+        "subTitle": "疫情导致大量员工远程工作，甚至引发运营人员短缺，基础设施和运营负责人到底该如何应对流行病或大流行病对运营的冲击？",
+        "href": "https://mp.weixin.qq.com/s/x2CgYhQOpo3oNPd30Qjerg"
       }
     ],
     "title": "行业扫描"

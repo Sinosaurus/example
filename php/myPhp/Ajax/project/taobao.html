@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .fl {
+            float: left;
+        }
+        .fr {
+            float: right;
+        }
+        #container {
+            margin: 20px auto;
+            width: 600px;
+            background-color: #ccc;
+        }
+        input {
+            border: 0;
+            outline: none;
+            width: 100%;
+            height: 45px;
+            padding-left: 20px;
+            box-sizing: border-box;
+            background-color: deepskyblue;
+        }
+        ul {
+            width: 100%;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            height: 30px;
+            line-height: 30px;
+            padding: 0 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            background-color: blanchedalmond;
+
+        }
+        .clearfix::after {
+            content: ',';
+            height: 0;
+            line-height: 0;
+            visibility: hidden;
+            clear: both;
+        }
+
+    </style>
+    <script src="./../jquery-3.2.1.js"></script>
+    <script src="./template-web.js"></script>
+    <script type="text/html" id="temp">
+        {{each result}}
+            <li class="clearfix">
+                <div class="fl">{{$value[0]}}</div>
+                <div class="fr">{{$value[1]}}</div>
+            </li>
+        {{/each }}
+    </script>
+    <script>
+        $(function(){
+            $('#txt').on('keyup', function(){
+                $.ajax({
+                    url: 'https://suggest.taobao.com/sug',
+                    data: {
+                        q: $(this).val(),
+                        code: 'utf-8'
+                    },
+                    jsonp: 'callback',
+//                    jsonpCallback: 'long',
+                    dataType: 'jsonp',
+                    success: function(data) {
+                        var html = template('temp', data);
+                        $('ul').fadeIn(2000).html(html);
+//                        console.log(data);
+
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <div id="container">
+        <form>
+            <input type="text" id="txt">
+        </form>
+        <ul>
+
+        </ul>
+    </div>
+</body>
+</html>

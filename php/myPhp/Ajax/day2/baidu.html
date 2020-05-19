@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./../jquery-1.12.2.js"></script>
+    <script>
+        $(function(){
+            $('#txt').on('keyup', function(){
+                $.ajax({
+                    url: "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su",
+                    data: {
+                        wd: $(this).val()
+                    },
+                    jsonp: 'cb',
+                    dataType: 'jsonp',
+                    jsonpCallback: 'long',
+                    success: function(data) {
+                        var re = data.s;
+                        console.log(re);
+                        var str = '';
+                        $(re).each(function(k,v) {
+                            str += '<li>'+ v +'</li>';
+                        })
+                        $('ul').html(str);
+//                        $('head').removeChild()
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+<input type="text" id="txt">
+<input type="button" value="查询" id='btn'>
+<ul>
+    <li>1</li>
+</ul>
+<!--<script>
+    document.querySelector('#btn').onclick = function() {
+        window.fn = function(data) {
+//            console.log(data.s);
+            var str = '';
+            for (var i = 0; i < data.s.length; i++) {
+//                str += data.s[i];
+                str += '<li>'+ data.s[i] +'</li>';
+            }
+            document.querySelector('ul').innerHTML = str;
+        }
+        var script = document.createElement('script');
+        script.src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=' + document.querySelector('#txt').value + '&cb=fn';
+        document.querySelector('body').appendChild(script);
+    }
+</script>-->
+</body>
+</html>

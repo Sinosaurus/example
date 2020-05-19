@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./../jquery-1.12.2.js"></script>
+    <script>
+        $(function(){
+            $('#txt').on('keyup', function() {
+                $.ajax({
+                    url: "http://cdn.weather.hao.360.cn/api_weather_info.php",
+                    data: {
+                        app: 'hao360',
+                        code: $(this).val(),
+//                        jsonp: 'fn'
+                    },
+                    dataType: 'jsonp',
+//                    jsonpCallback: 'a',
+                    jsonp: '_jsonp',
+                    success: function(data) {
+                        console.log(data)
+//                        $('li:nth-of-type(2)').
+                        var area = data.area[0][0];
+                        $('.one span').text('(' + area + '未来五天)');
+//                        console.log(area);
+                        var date = data.pubdate.substr(5,4);
+                        console.log(date);
+                        $('li p:first-of-type').each(function(i){
+//                            console.log(i);
+//                            data.su
+                            var t = date.concat(i+1);
+                            $(this).text(t);
+                        });
+                        $('.temperature').each(function(i){
+//                            console.log(i);
+                            var day = data.weather[i].info.day[2];
+                            var night = data.weather[i].info.night[2];
+//                            console.log(day, night);
+                            $(this).find('.fl').text(day + '℃');
+                            $(this).find('.fr').text(night + '℃');
+                        });
+                        $('.tianqi').each(function(i){
+                            var day = data.weather[i].info.day[1];
+                            var night= data.weather[i].info.night[1];
+//                            console.log(one, two);
+                            $(this).find('.fl').text(day);
+                            $(this).find('.fr').text(night);
+
+                        });
+                        $('.pm').each(function(i){
+                            var pm = data.pm25.pm25[0];
+                            console.log(pm);
+                            var va = '';
+                            if (pm > 200) {
+                                va = '差';
+                            } else if (pm > 100) {
+                                va = '良';
+                            } else {
+                                va = '优';
+                            }
+
+                            $(this).find('.fl').text(pm);
+                            $(this).find('.fr').text(va);
+
+                        })
+
+
+//                        var a = getDay(data.weather[0].date);
+
+//                        console.log(re);
+                        $('li:nth-of-type(n+2)').each(function(i){
+                            var day = new Date(data.weather[i].date);
+                            var re = day.getDay();
+//                            console.log(i);
+                            var re1= '';
+                            switch (re) {
+                                case re = 1:
+                                    re1 = '星期一';
+                                    break;
+                                case re = 2:
+                                    re1 = '星期二';
+                                    break;
+                                case re = 3:
+                                    re1 = '星期三';
+                                    break;
+                                case re = 4:
+                                    re1 = '星期四';
+                                    break;
+                                case re = 5:
+                                    re1 = '星期五';
+                                    break;
+                                case re = 6:
+                                    re1 = '星期六';
+                                    break;
+                                case re = 0:
+                                    re1 = '星期天';
+                                    break;
+                                default:
+                                    re1 = '0';
+                                    break;
+                            }
+
+                            if (i == 0) {
+                                re1 = '今天';
+                            }
+                            $(this).find('p:nth-of-type(2)').text(re1);
+
+                        })
+
+
+
+                    }
+                })
+            })
+        })
+    </script>
+    <style>
+        ul,
+        li,
+        div,
+        p {
+            box-sizing: border-box;
+        }
+        .fl {
+            float: left;
+        }
+        .fr {
+            float: right;
+        }
+        ul {
+            margin: 30px auto;
+            display: inline-block;
+            /*height: 330px;*/
+            padding: 0 17px 20px;
+            list-style: none;
+            /*background-color: #08172e;*/
+            box-sizing: border-box;
+            background: linear-gradient(to right bottom, #1F7BAB, #0648A9);
+
+        }
+        li {
+            float: left;
+            height: 240px;
+            width: 170px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, .5);
+
+        }
+        li:nth-of-type(n+2) {
+            padding: 10px 20px;
+            box-sizing: border-box;
+            border-right: 1px dashed #ccc;
+        }
+        li:last-of-type {
+            border-right: 0;
+        }
+        .one {
+            float: none;
+            text-align: left;
+            width: 100%;
+            height: 40px;
+            margin-bottom: 20px;
+            /*background-color: blue;*/
+        }
+        .clearfix::after {
+            content: ",";
+            display: block;
+            height: 0;
+            line-height: 0;
+            visibility: hidden;
+            clear: both;
+        }
+        h2 {
+            margin: 0;
+            line-height: 40px;
+            color: #fff;
+            font-weight: 700;
+        }
+        .one span {
+            font-size: 12px;
+            color: #000;
+            font-weight: normal;
+        }
+        div span {
+            margin: 2px 0;
+            display: block;
+        }
+        div .fl, .fr {
+            padding: 2px 10px;
+            box-sizing: border-box;
+        }
+        p {
+            margin: 6px 0;
+        }
+        .pm {
+            width: 100%;
+            height: 26px;
+            line-height: 26px;
+            padding: 0 10px;
+            border-radius: 10px;
+            background-color: #ffb533;
+        }
+        .temperature {
+            padding: 0 5px;
+            color: darkblue;
+
+        }
+        .temperature span {
+            font-size: 20px;
+        }
+        .tianqi {
+            padding: 0 5px;
+        }
+    </style>
+</head>
+<body>
+<input type="text" id="txt">
+
+<ul class="clearfix">
+    <li class='one'>
+        <h2>天气预报 <span> (武汉未来5天) </span></h2>
+    </li>
+    <li>
+        <p>1-11</p>
+        <p>今天</p>
+        <div class="clearfix">
+            <div class="fl">
+                <img src="./w_01_01_00.png" alt="白天">
+                <span>白天</span>
+            </div>
+            <div class="fr">
+                <img src="./w_01_01_01.png" alt="夜间">
+                <span>夜间</span>
+            </div>
+        </div>
+        <p class="clearfix temperature">
+            <span class="fl">11℃</span>/ <span class="fr">-6℃</span>
+        </p>
+        <p class="clearfix tianqi">
+            <span class="fl">微风</span> <span class="fr">小于3级</span>
+        </p>
+        <p class="clearfix pm">
+            <span class="fl">83</span> <span class="fr">良</span>
+        </p>
+    </li>
+    <li>
+    <p>1-11</p>
+    <p>今天</p>
+    <div class="clearfix">
+        <div class="fl">
+            <img src="./w_01_01_00.png" alt="白天">
+            <span>白天</span>
+        </div>
+        <div class="fr">
+            <img src="./w_01_01_01.png" alt="夜间">
+            <span>夜间</span>
+        </div>
+    </div>
+    <p class="clearfix temperature">
+        <span class="fl">11℃</span>/ <span class="fr">-6℃</span>
+    </p>
+    <p class="clearfix tianqi">
+        <span class="fl">微风</span> <span class="fr">小于3级</span>
+    </p>
+    <p class="clearfix pm">
+        <span class="fl">83</span> <span class="fr">良</span>
+    </p>
+</li>
+    <li>
+        <p>01-11</p>
+        <p>今天</p>
+        <div class="clearfix">
+            <div class="fl">
+                <img src="./w_01_01_00.png" alt="白天">
+                <span>白天</span>
+            </div>
+            <div class="fr">
+                <img src="./w_01_01_01.png" alt="夜间">
+                <span>夜间</span>
+            </div>
+        </div>
+        <p class="clearfix temperature">
+            <span class="fl">11℃</span>/ <span class="fr">-6℃</span>
+        </p>
+        <p class="clearfix tianqi">
+            <span class="fl">微风</span> <span class="fr">小于3级</span>
+        </p>
+        <p class="clearfix pm">
+            <span class="fl">83</span> <span class="fr">良</span>
+        </p>
+    </li>
+    <li>
+        <p>01-11</p>
+        <p>今天</p>
+        <div class="clearfix">
+            <div class="fl">
+                <img src="./w_01_01_00.png" alt="白天">
+                <span>白天</span>
+            </div>
+            <div class="fr">
+                <img src="./w_01_01_01.png" alt="夜间">
+                <span>夜间</span>
+            </div>
+        </div>
+        <p class="clearfix temperature">
+            <span class="fl">11℃</span>/ <span class="fr">-6℃</span>
+        </p>
+        <p class="clearfix tianqi">
+            <span class="fl">微风</span> <span class="fr">小于3级</span>
+        </p>
+        <p class="clearfix pm">
+            <span class="fl">83</span> <span class="fr">良</span>
+        </p>
+    </li>
+    <li>
+        <p>1-11</p>
+        <p>今天</p>
+        <div class="clearfix">
+            <div class="fl">
+                <img src="./w_01_01_00.png" alt="白天">
+                <span>白天</span>
+            </div>
+            <div class="fr">
+                <img src="./w_01_01_01.png" alt="夜间">
+                <span>夜间</span>
+            </div>
+        </div>
+        <p class="clearfix temperature">
+            <span class="fl">11℃</span>/ <span class="fr">-6℃</span>
+        </p>
+        <p class="clearfix tianqi">
+            <span class="fl">微风</span> <span class="fr">小于3级</span>
+        </p>
+        <p class="clearfix pm">
+            <span class="fl">83</span> <span class="fr">良</span>
+        </p>
+    </li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>template</title>
+    <style>
+        #content {
+            width: 500px;
+        }
+        ul {
+
+            list-style: none;
+        }
+        li {
+            margin-top: 10px;
+            height: 30px;
+            line-height: 30px;
+            background-color: skyblue;
+
+        }
+    </style>
+    <script src="./../jquery-1.12.2.js"></script>
+    <script src="../project/template-web.js"></script>
+    <!--<script type="text/html" id="temp">
+            {{if (isflag)}}
+                <ul>
+                    {{each books as value i}}
+                        <li>{{value}}</li>
+                    {{/each}}
+                </ul>
+            {{/if}}
+    </script>
+    <script>
+        $(function(){
+            var obj1 = {
+                title: '曾经的书',
+                books: ['花', '界', '水', '火', '雷', '电'],
+                isflag: true
+            }
+            var html = template('temp', obj1);
+            $('#content').html(html);
+        })
+    </script>-->
+    <script type="text/html" id="temp">
+        <ul>
+            {{each books }}
+                <li>{{$value}}</li>
+            {{/each}}
+        </ul>
+    </script>
+    <script>
+        $(function(){
+            var obj1 = {
+                title: '曾经的书',
+                books: ['花', '界', '水', '火', '雷', '电'],
+                isflag: true
+            }
+            var html = template('temp', obj1);
+            $('#content').html(html);
+        })
+    </script>
+</head>
+    <body>
+        <div id="content">
+            <ul>
+                <li>11</li>
+            </ul>
+        </div>
+
+    </body>
+</html>

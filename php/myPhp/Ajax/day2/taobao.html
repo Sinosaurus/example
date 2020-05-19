@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./../jquery-1.12.2.js"></script>
+    <script>
+        $(function() {
+            $('#btn').on('click', function() {
+                $.ajax({
+                    url: 'https://suggest.taobao.com/sug',
+                    data: {
+                        q: $('#txt').val(),
+                        code: 'utf8'
+                    },
+                    dataType: 'jsonp',
+                    jsonpCallback: 'fn',
+                    success: function(data) {
+                        var re = data.result;
+//                        console.log(re);
+                        var str = '';
+                        $(re).each(function(k, v) {
+                            str += '<li>'+ v[0]+'</li>';
+                        })
+                        $('ul').html(str);
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+<input type="text" id="txt">
+<input type="button" value="搜索" id="btn">
+<ul>
+    <li>1</li>
+    <li>2</li>
+</ul>
+<!--<script>
+    /*function v(data) {
+
+    }*/
+    document.querySelector('#btn').onclick = function() {
+//        alert(1);
+        window.v= function(data) {
+//            document.querySelector('ul')
+            var result1 = data.result;
+            console.log(data);
+
+
+            var str = '';
+            for (var i = 0; i < result1.length; i++) {
+//                result1[i][0];
+                str += '<li>'+result1[i][0] +'</li>';
+
+            }
+
+            document.querySelector('ul').innerHTML = str;//有限制只能输入一个字
+        }
+        var script = document.createElement('script');
+        script.src = 'https://suggest.taobao.com/sug?q=' + document.querySelector('#txt').value + '&callback=v&code=utf8';
+        document.querySelector('body').appendChild(script);
+    }
+</script>-->
+
+
+</body>
+</html>

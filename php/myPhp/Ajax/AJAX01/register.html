@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>注册</title>
+</head>
+<body>
+	<h4>注册</h4>
+	<!-- <form action="checkUsername?aa=username">
+		用户名：<input type="text" name="user" id="txt"><input type="button" value="检测" id="btn">&emsp;<span id="result"></span><br />
+		密码&emsp;：<input type="password" name="pass" id=""><br />
+		<input type="submit" value="注册">
+	</form> -->
+	<!-- post -->
+	<form action="checkUsername" method="POST">
+		用户名：<input type="text" name="user" id="txt">
+		<input type="button" value="检测" id="btn">&emsp;
+		<span id="result"></span>
+		<br />
+		密码&emsp;：<input type="password" name="pass" id="">
+		<br />
+		<input type="submit" value="注册">
+	</form>
+</body>
+</html>
+<script>
+	window.onload = function() {
+		document.querySelector('#btn').onclick = function() {
+			var username = document.querySelector('#txt').value;
+//			console.log(username);
+			var xhr = new XMLHttpRequest();
+			xhr.open('post','./checkUsername.php',true);
+			xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+			var param = 'aa='+ username;
+			xhr.send(param);
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState === 4){
+					if(xhr.status === 200){
+						var result = xhr.responseText;
+//						console.log(result);
+						result = JSON.parse(result);
+						console.log(result);
+
+						if(result.status ==0){
+							document.querySelector('#result').innerText = result.message;	
+						} else if(result.status ==1){
+							document.querySelector('#result').innerText = result.message;
+						}
+					}
+				}
+			}
+		}
+	}  
+
+						
+</script>

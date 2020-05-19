@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Ajax</title>
+    <script src="./../jquery-1.12.2.js"></script>
+
+    <style>
+        form {
+            width: 500px;
+            height: 200px;
+            padding-left: 50px;
+            box-sizing: border-box;
+            background-color: deepskyblue;
+        }
+        input {
+            margin: 50px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+<form>
+    <label>用户名：
+        <input type="text" id="txt">
+        <span id="tips"></span>
+    </label>
+</form>
+
+<script>
+    $(function() {
+        $('#txt').on('blur', function(){
+            $.ajax({
+                type: 'get',
+                url: './condition.php',
+                datatype: 'text',
+                data: {
+                    user: $('#txt').val()
+                },
+                success: function(data){
+//                    console.log(data);
+                    if (data == 0) {
+                        $('#tips').text('用户名可用');
+                    } else {
+                        $('#tips').text('用户名已被注册');
+                    }
+                }
+
+            })
+        })
+
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<form action="./select.php" method="post">
+    <select name="pen" id="">
+        <option value="凌美">凌美</option>
+        <option value="英雄">英雄</option>
+        <option value="施耐德">施耐德</option>
+        <option value="派克">派克</option>
+        <option value="百乐">百乐</option>
+    </select>
+    <br>
+    <input type="radio" name="sex" value="1" checked>男
+    <input type="radio" name="sex" value="2">女
+    <input type="radio" name="sex" value="3">中
+    <br>
+
+    <input type="checkbox" name="check[]" value="送你一匹马">送你一匹马
+    <input type="checkbox" name="check[]" value="撒哈拉沙漠">撒哈拉沙漠
+    <input type="checkbox" name="check[]" value="活着">活着
+    <input type="checkbox" name="check[]" value="皮囊">皮囊
+    <input type="submit"   value="提交">
+</form>  <!-- action 不填写，且该本页面为php后缀，那么可以不填写，默认为该页面-->
+</body>
+</html>

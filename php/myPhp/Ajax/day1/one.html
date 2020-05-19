@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        form {
+            padding: 40px 0 0 20px;
+            margin: 10px auto;
+            width:500px;
+            height: 200px;
+            background-color: skyblue;
+            box-sizing: border-box;
+        }
+        input {
+            height: 20px;
+        }
+        #use, #email {
+            margin-bottom: 20px;
+        }
+        label {
+            position: relative;
+        }
+        span {
+            position: absolute;
+            top: 0;
+            right: -200px;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <label>用户名：
+            <input type="text" name="user" id="use">
+            <span id="u_i"></span>
+        </label>
+        <br>
+        <label>邮&nbsp;箱：
+            <input type="text" name="email" id="email">
+            <span id="e_i"></span>
+        </label>
+        <br>
+        <label>手机号：
+            <input type="text" name="phone" id="phone">
+            <span id="p_i"></span>
+        </label>
+    </form>
+    <script>
+//        用户名
+        var use = document.querySelector('#use');
+        var u_i = document.querySelector('#u_i');
+        use.onblur = function() {
+            var xhr = null;
+            if (window.XMLHttpRequest) {
+                xhr = new XMLHttpRequest();
+            } else {
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+//            获取文本
+            var u_v = use.value;
+            console.log(u_v);
+            xhr.open('get','./server/checkUsername.php?uname=' + u_v, true);
+            console.log('./server/checkUsername.php?uname=' + u_v);
+
+            xhr.send(null);
+            xhr.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var u_result = this.responseText;
+                    if (u_result == 'ok'){
+                        u_i.innerText = '用户名可用';
+                    } else {
+//                        console.log(0);
+                        u_i.innerText = '用户名已被使用';
+
+                    }
+                }
+            }
+        }
+
+//        邮箱
+        var email = document.getElementById('email');
+        var e_i   = document.getElementById('e_i');
+        console.log(11)
+        email.onblur = function() {
+
+            var xhr = null;
+            if (window.XMLHttpRequest) {
+                xhr = new XMLHttpRequest();
+            } else {
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            console.log(xhr.readyState ,'---',1);
+
+            xhr.open('post', './server/checkEmail.php', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+            console.log(xhr.readyState ,'---',2);
+
+            var e_v = e_i.value;
+            var param = 'e=' + e_v;
+            xhr.send(param);
+
+            console.log(xhr.readyState ,'---',3);
+
+
+            xhr.onreadystatechange = function() {
+
+                console.log(xhr.readyState ,'---',4);
+
+
+                if (this.readyState == 4 &&　this.status == 200) {
+
+                    console.log(xhr.readyState ,'---',5);
+
+
+                    var e_reusult = this.responseText;
+//                    console.log(e_reusult);
+                    if (e_reusult == 1) {
+                        e_i.innerText = '邮箱不可用';
+                    } else {
+                        e_i.innerText = '邮箱可用';
+
+                    }
+                }
+            }
+
+            console.log(xhr.readyState ,'---',6);
+
+        }
+
+//        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+
+//        JSON.parse() 将字符串转为json对象
+
+
+//        手机号
+        var phone = document.getElementById('phone');
+        var p_i   = document.getElementById('p_i');
+        phone.onblur = function() {
+            var xhr = null;
+            if (window.XMLHttpRequest) {
+                xhr = new XMLHttpRequest();
+            } else {
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xhr.open('post', './server/checkPhone.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            var param = 'phonenumber=' + phone.value;
+
+            xhr.send(param);
+            xhr.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var p_result = this.responseText;
+//                    console.log(p_result);
+//                    解析
+                    var j = JSON.parse(p_result);
+                    if (j.status == 0) {
+                        p_i.innerText = j.message.tips + j.message.phonefrom;
+                    } else {
+                        p_i.innerText = j.message;
+                    }
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

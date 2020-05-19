@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多文件检测</title>
+</head>
+<body>
+<!--file的name必须写成数组形式，这样将每个文件读取出来-->
+<form action="./morefile.php" method="post" enctype="multipart/form-data">
+    <input type="file" name="file[]" multiple accept="image/*">
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>

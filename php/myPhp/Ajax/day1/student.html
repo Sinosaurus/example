@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            width: 50%;
+            margin: 20px auto;
+            text-align: center;
+        }
+        th {
+            background-color: skyblue;
+
+        }
+        th, td {
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+        </tr>
+    </table>
+    <script>
+        var xhr = null;
+        if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest();
+        } else {
+            xhr = new ActiveXObject('Microsoft.XMLHTTP');
+        }
+        xhr.open('get', './server/getStudents.php');
+        xhr.send(null);
+        xhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var result = this.responseText;
+//                console.log(result);
+                result = JSON.parse(result);
+//                console.log(result);
+                var old = document.querySelector('table').innerHTML;
+                for (var i = 0; i < result.length; i++) {
+                    var text = "<tr><td>"+ result[i].name +"</td><td>"+ result[i].age +"</td><td>"+ result[i].sex +"</td></tr>";
+//                    console.log(text);
+                    old += text;
+                }
+//                console.log(old);
+                document.querySelector('table').innerHTML = old;
+            }
+        }
+
+        var strA = '[{"a":"1"}, {"b":"2"},{"c":"3"}]';
+        var strO = '{"a1":"11","b1":"22","c1":"33"}';
+
+        var arr = JSON.parse(strA);
+        var obj = JSON.parse(strO);
+        console.log(arr);
+        console.log(obj);
+
+
+    </script>
+</body>
+</html>

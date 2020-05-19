@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cros跨域</title>
+    <script src="./../jquery-1.12.2.js"></script>
+    <script>
+        $(function() {
+            $('#btn').on('click', function() {
+//                alert(111);
+                $.ajax({
+                    url: 'http://www.text.com/cros.php',
+                    data: {
+                        result: $('#txt').val()
+                    },
+                    dataType: 'text',
+                    type: 'get',
+                    success: function(data) {
+                        console.log(data);
+                    }
+
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <form>
+        <input type="text" id="txt">
+        <input type="button" value="查询" id="btn">
+    </form>
+</body>
+</html>

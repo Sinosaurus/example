@@ -7,8 +7,9 @@ const path = require('path')
 
 console.log('start')
 try {
-  const data = fs.readFileSync(path.join(__dirname, '1.txt'), 'utf8')
-  const res = data.split('\n')
+  const data = fs.readFileSync(path.join(__dirname, '2.txt'), 'utf8')
+  const res = data.trim().split('\n')
+  console.log(res)
   const indexs = []
   const titles = []
   const titleReg = /@.*@/g
@@ -17,15 +18,18 @@ try {
       indexs.push(index)
     }
   })
-  indexs.push(res.length - 1)
+  indexs.push(res.length)
+
   const items = []
   for (let i = 0; i < indexs.length; i++) {
     const first = indexs[i]
     const end = indexs[i + 1]
     if (!end) break
+    // slice 不包括end数据
     items.push(res.slice(first, end))
   }
-  console.log(items.length)
+  console.log(items)
+  // console.log(items,items.length)
   const result = []
   items.forEach(item => {
     if (Array.isArray(item)) {
@@ -38,7 +42,9 @@ try {
           obj.title = val.replace(/[@\t\r]/g, '')
         } else {
           const arr = val.trim().split(',')
-          valObj.img = arr[0].trim()
+          const date = new Date()
+          const dateStr = `${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, '0')}${String(date.getDate()).padStart(2, '0')}`
+          valObj.img =  dateStr + arr[0].trim()
           // 还需要加一个图片的标识
           // valObj.alt = 
           valObj.title = arr[1].trim()
@@ -47,6 +53,7 @@ try {
           obj.child.push(valObj)
         }
       })
+      console.log(obj.child.length)
       result.push(obj)
     }
   })

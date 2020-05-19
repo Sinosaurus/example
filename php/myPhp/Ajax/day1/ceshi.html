@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <input type="text">
+</form>
+<script>
+    var input = document.querySelector('input');
+    input.onblur = function() {
+        var xhr = new XMLHttpRequest();
+        console.log(xhr.readyState + "------" + '发送前');  //0
+        xhr.open('get', './server/checkUsername.php?uname=' + input.value, true);
+        console.log(xhr.readyState + "------" + '准备发送');//1
+        xhr.send(null);
+
+        console.log(xhr.readyState + "------" + '执行发送');//1
+        xhr.onreadystatechange = function() {
+            console.log(xhr.readyState + "------" + '返回值接收');  // 2, 3, 4
+
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(xhr.readyState + "------" + '返回值进入判断'); // 4
+
+                var result = this.responseText;
+                console.log(xhr.readyState + "------" + '返回值结果拿到'); //4
+
+                console.log(result+'----'+ '结果');  // ok
+            }
+        }
+        console.log(xhr.readyState + "------" + '最后');//1
+
+    }
+</script>
+</body>
+</html>
