@@ -1,0 +1,110 @@
+<!--
+ * @LastEditors: Sinosaurus
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+    }
+    .main {
+      background-color: skyblue;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .left {
+      background-color: #00e09e;
+    }
+    .right {
+      background-color: #88ada6;
+    }
+    .center {
+      background-color: #f2be45;
+    }
+    /* 2 6 2 */
+    .main-2-6-2 .left {
+      width: 20%;
+    }
+    .main-2-6-2 .right {
+      width: 20%;
+    }
+    .main-2-6-2 .center {
+      width: 60%;
+    }
+    /* 3 4 3 */
+    .main-3-4-3 .left {
+      width: 30%;
+    }
+    .main-3-4-3 .right {
+      width: 30%;
+    }
+    .main-3-4-3 .center {
+      width: 40%;
+    }
+    /* 均分 */
+    .main-1-1-1 .left {
+      width: 33.33%;
+    }
+    .main-1-1-1 .right {
+      width: 33.33%;
+    }
+    .main-1-1-1 .center {
+      width: 33.33%;
+    }
+  </style>
+</head>
+<body>
+  <!--  main-1-1-1 -->
+  <div class="main">
+    <div class="left"></div>
+    <div class="center"></div>
+    <div class="right"></div>
+  </div>
+  <!-- 现在需要清楚，宽度多少到多少选择什么样的布局 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      /**
+       * 必须无滚动条，无边框，无边距
+       */
+       resizeLayout()
+       window.addEventListener('resize', debounce(resizeLayout, 150), false)
+    }, false)
+    function resizeLayout () {
+      console.dir(window)
+      // innerHeight
+      // innerWidth
+      console.dir(document.body)
+      // clientHeight
+      // clientWidth
+      const { clientHeight, clientWidth } = document.body
+       const main = document.querySelector('.main')
+       const classList = Array.from(main.classList)
+       // 这块最好能有一个动态的数据来进行处理
+       if (clientHeight <= 400) {
+         main.classList.remove(...classList)
+         main.classList.add('main', 'main-1-1-1')
+       } else {
+          main.classList.remove(...classList)
+          main.classList.add('main', 'main-2-6-2')
+       }
+    }
+    function debounce (fn, wait, ...args) {
+      let timer = null
+      return function () {
+        if (timer) {
+          clearTimeout(timer)
+          timer = null
+        }
+        timer = setTimeout(() => {
+          fn.apply(this, args)
+        }, wait)
+      }
+    }
+  </script>
+</body>
+</html>

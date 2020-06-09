@@ -1,0 +1,74 @@
+<!--
+ * @LastEditors: Sinosaurus
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p>
+    iframe 无法点击，使用了一些方法都无解决，最终依赖下面的方式
+  </p>
+  <iframe src="https://cloudmap.sinnet-cloud.cn/#/map" frameborder="0" id="iframe"></iframe>
+  <script>
+    // https://stackoverflow.com/questions/6452502/adding-click-event-handler-to-iframe
+    const iframe = document.getElementById('iframe')
+    // iframe.addEventListener('click', function () {
+    //   console.log('iframe')
+    // }, false)
+    // iframe.addEventListener('load', function () {
+    //   console.dir(this)
+    //   console.log(this.document)
+    //   this.contentWindow.addEventListener('click', function () {
+    //     console.log(111)
+    //   }, false)
+    // }, false)
+
+    // https://www.cnblogs.com/limeiky/p/6632796.html
+
+    var IframeOnClick = {
+      resolution: 200,
+      iframes: [],
+      interval: null,
+      Iframe: function () {
+        this.element = arguments[0];
+        this.cb = arguments[1];
+        this.hasTracked = false;
+      },
+      track: function (element, cb) {
+        this.iframes.push(new this.Iframe(element, cb));
+        if (!this.interval) {
+          var _this = this;
+          this.interval = setInterval(function () {
+            _this.checkClick();
+          }, this.resolution);
+        }
+      },
+      checkClick: function () {
+        if (document.activeElement) {
+          var activeElement = document.activeElement;
+          for (var i in this.iframes) {
+            if (activeElement === this.iframes[i].element) { // user is in this Iframe  
+              if (this.iframes[i].hasTracked == false) {
+                this.iframes[i].cb.apply(window, []);
+                this.iframes[i].hasTracked = true;
+              }
+            } else {
+              this.iframes[i].hasTracked = false;
+            }
+          }
+        }
+      }
+    };
+    IframeOnClick.track(iframe, function () {
+      window.open(iframe.src, '_blank')
+    })
+  </script>
+</body>
+
+</html>
