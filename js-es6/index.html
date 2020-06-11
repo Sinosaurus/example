@@ -1,0 +1,45 @@
+<!--
+ * @LastEditors: Sinosaurus
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    
+    const pipe = (function () { // 自调用
+      return function (value) {
+        const funStack = []
+        const proxy = new Proxy({}, {
+          get(pipeObject, fnName) {
+            if (fnName === 'get') {
+              return funStack.reduce(function (val, fn) {
+                return fn(val)
+              }, value)
+            }
+            funStack.push(fnList[fnName])
+            return proxy
+          }
+        })
+        return proxy
+      }
+    }());
+    const double = n => n * 2
+    const pow = n => n * n
+    const reverseInt = n => n.toString().split('').reverse().join('') | 0
+    const fnList = {
+      double,
+      pow,
+      reverseInt
+    }
+    console.log(pipe(3).double.pow.reverseInt.get)
+  </script>
+</body>
+
+</html>
