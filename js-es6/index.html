@@ -12,33 +12,17 @@
 
 <body>
   <script>
-    
-    const pipe = (function () { // 自调用
-      return function (value) {
-        const funStack = []
-        const proxy = new Proxy({}, {
-          get(pipeObject, fnName) {
-            if (fnName === 'get') {
-              return funStack.reduce(function (val, fn) {
-                return fn(val)
-              }, value)
-            }
-            funStack.push(fnList[fnName])
-            return proxy
-          }
-        })
-        return proxy
+    // 拦截 defineProperty
+
+      const handler = {
+        defineProperty(target, property, descriptor) {
+          return false
+        } 
       }
-    }());
-    const double = n => n * 2
-    const pow = n => n * n
-    const reverseInt = n => n.toString().split('').reverse().join('') | 0
-    const fnList = {
-      double,
-      pow,
-      reverseInt
-    }
-    console.log(pipe(3).double.pow.reverseInt.get)
+      const target = {}
+      const proxy = new Proxy(target, handler)
+      proxy.foo = 'bar'
+      console.log(target, proxy)
   </script>
 </body>
 
