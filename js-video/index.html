@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link href="./video/video-js.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <iframe id=sbrxp src="//player.bilibili.com/player.html?aid=6763657" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 640px; height: 430px; max-width: 100%"> </iframe> 
+  <a href="https://www.cnblogs.com/stoneniqiu/p/5807568.html">参考链接</a>
+  <iframe src="https://live.bilibili.com/6763657" frameborder="0"></iframe>
+  <video id="my-player" class="video-js" controls preload="true">
+    <!-- <source src="ppt.mp4" type="video/mp4">
+    </source> -->
+    <object>
+      <embed src="https://s1.hdslb.com/bfs/static/blive/live-assets/player/flash/pageplayer-latest.swf?room_id=6763657&cid=6763657&state=LIVE" width="100%" height="100%"></embed>
+    </object>
+    <!-- <p class="vjs-no-js">
+      To view this video please enable JavaScript, and consider upgrading to a
+      web browser that
+      <a href="https://videojs.com/html5-video-support/" target="_blank">
+        supports HTML5 video
+      </a>
+    </p> -->
+  </video>
+  <button id="unmuteButton">11111111111</button>
+
+  <script src="./video/video.min.js"></script>
+  <script>
+     document.getElementById('unmuteButton').addEventListener('click', function() {
+       console.log(22222222 ,document.getElementById('my-player_html5_api'))
+
+      document.getElementById('my-player_html5_api').removeAttribute('muted');
+    });
+    // https://codepen.io/bav/pen/opvMmx
+    /**
+     * 自动播放需要添加
+     * autoplay: true, muted: true
+    */
+    var options = {autoplay: true, muted: true};
+    /**
+     * muted 静音
+     */
+
+    var player = videojs('my-player', options, function onPlayerReady() {
+      videojs.log('Your player is ready!');
+      // How about an event listener?
+      // this.setVolume(0.5)
+      this.on('ended', function () {
+        videojs.log('Awww...over so soon?!');
+      });
+    });
+  </script>
+</body>
+
+</html>

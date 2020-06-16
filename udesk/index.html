@@ -1,0 +1,41 @@
+<!--
+ * @LastEditors: Sinosaurus
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>udesk</title>
+</head>
+
+<body>
+  <h1>UDESK</h1>
+  <button id="none" data-id="27768">触发</button>
+  <button data-id="29548">触发</button>
+
+  <script>
+    (function(a,h,c,b,f,g){a["UdeskApiObject"]=f;a[f]=a[f]||function(){(a[f].d=a[f].d||[]).push(arguments)};g=h.createElement(c);g.async=1;g.charset="utf-8";g.src=b;c=h.getElementsByTagName(c)[0];c.parentNode.insertBefore(g,c)})(window,document,"script","https://assets-cli.s2.udesk.cn/im_client/js/udeskApi.js","ud");
+    ud({
+        "code": "129b6j6i",
+        "link": "https://sinnetcloud.s2.udesk.cn/im_client/?web_plugin_id=24466",
+        "selector": "button",
+        "targetSelector": "#none"
+    });
+
+    Array.from(document.querySelectorAll('button')).forEach(item => {
+      item.addEventListener('click', function (e) {
+        const { id } = e.target.dataset
+        console.log(id)
+        ud({
+          group_id: id
+        })
+      }, false)
+    })
+    
+
+  </script>
+</body>
+
+</html>

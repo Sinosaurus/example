@@ -1,0 +1,42 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--$_GET 方式-->
+
+    <form action="./text.php" method="get"> <!--服务器脚本名称--><!-- 提交方式  get post-->
+        <input type="text" name="use1"> <br>
+        <input type="password" name="pass" id=""> <br>
+        <input type="submit" value="提交">
+    </form>
+
+    <!--a 链接方式-->
+    <a href="./text.php?page=1">第一页</a>
+    <a href="./text.php?page=2">第二页</a>
+    <a href="./text.php?page=3">第三页</a>
+
+    <!--获取数据 js方式 a-->
+    <!--<script type="text/javascript">
+        var url = './text.php?page=1';
+//        location 的属性
+        location.href = url;
+//        location 的方法
+//        location.assign(url);
+    </script>
+-->
+    <!--&lt;!&ndash;php方式&ndash;&gt;
+    <?php
+        &lt;!&ndash;直接解析跳转&ndash;&gt;
+        header('location:./a.php?use=11');
+
+        &lt;!&ndash;先等5s后 ，再进行跳转&ndash;&gt;
+        header('refresh: 5; url=./a.php?page=2');
+
+    ?>-->
+</body>
+</html>

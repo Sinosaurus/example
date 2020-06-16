@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            margin: 20px auto;
+            width: 400px;
+            position: relative;
+        }
+        form {
+            padding-top: 50px;
+            text-align: center;
+        }
+        #txt {
+            width: 400px;
+            height: 40px;
+            border: 0;
+            outline: none;
+            background-color: skyblue;
+        }
+        ul {
+            position: absolute;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+        li {
+            height: 30px;
+            width: 100%;
+            margin-bottom: 6px;
+            text-align: left;
+            background-color: blueviolet;
+        }
+    </style>
+    <script src="./../jquery-1.12.2.js"></script>
+    <script src="./template-web.js"></script>
+    <script type="text/html" id="temp">
+
+        {{each s}}
+            <li>{{$value}}</li>
+        {{/each}}
+
+    </script>
+    <script>
+        $(function(){
+            $('#txt').on('keyup', function() {
+                $.ajax({
+                    url: 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+                    data: {
+                            wd: $(this).val()
+                    },
+                    dataType: 'jsonp',
+                    jsonp: 'cb',
+                    jsonpCallback:'abcd',
+                    success: function(data) {
+//                        console.log(data);
+                        var html = template('temp', data)
+                        $('ul').html(html);
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+<div>
+    <form>
+        <input type="text" id="txt">
+    </form>
+    <ul>
+    </ul>
+</div>
+
+
+</body>
+</html>

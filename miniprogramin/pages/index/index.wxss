@@ -1,0 +1,13 @@
+.scroll-view-item:nth-of-type(even) {
+  background-color: red;
+}
+.scroll-view-item:nth-of-type(odd) {
+  background-color: yellow;
+}
+scroll-view {
+  height: 100vh;
+}
+scroll-view view {
+  width: 100vw;
+  height: 300rpx;
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- <link rel="stylesheet" href="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css"> -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <link rel="stylesheet/less" type="text/css" href="index.less">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./../lib/json/prism.css">
+</head>
+
+<body>
+  <div id="app">
+    <h1><code class="language-js">element-ui</code> select下拉框位置偏移</h1>
+    <pre>
+      <code class="language-html">
+        {{html}}
+      </code>
+    </pre>
+    <pre>
+      <code class="language-css">
+        {{`
+          body {
+            position: relative;
+          }
+          #app {
+            margin-top: 70px;
+          }`}}</code>
+    </pre>
+    <p>
+      使用 <code class="language-css">{{` body {
+          position: relative;
+        }`}}</code> 时，会导致下拉框出现定位问题，特别是对 <code class="language-css">{{` #app {
+            margin-top: 70px;
+          }`}}</code> 便会出现下拉框离目标位置偏离
+    </p>
+    <div>
+      <el-select v-model="value" placeholder="请选择">
+        <el-option v-for="item in options" :key="item.code" :label="item.name" :value="item.name">
+        </el-option>
+      </el-select>
+    </div>
+
+  </div>
+  <div id="demo">
+    <pre>
+          <code class="language-css">
+            .item {
+              overflow: auto;
+            }
+          </code>
+        </pre>
+    <p>使用了<code class="language-css">overflow:auto</code>导致下拉框在盒子内部，而目前我使用是因为，避免布局出现错乱，不得不使用，从而导致添加<code
+        class="language-js">:popper-append-to-body="false"</code>不适用</p>
+    <div class="item">
+      <el-select v-model="value" placeholder="请选择" :popper-append-to-body="false">
+        <el-option v-for="item in options" :key="item.code" :label="item.name" :value="item.name">
+        </el-option>
+      </el-select>
+    </div>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="https://unpkg.com/vue-multiselect@2.1.0"></script>
+<script src="./../lib/json/prism.js"></script>
+<script>
+  Vue.component('vue-multiselect', window.VueMultiselect.default)
+  new Vue({
+    el: '#app',
+    data: {
+      html: `<el-select v-model="value" placeholder="请选择">
+          <el-option v-for="item in options" :key="item.code" :label="item.name" :value="item.name">
+          </el-option>
+        </el-select>`,
+      form: {
+
+      },
+      value: '',
+      options: [{
+          name: 'Vue.js',
+          code: 'vu'
+        },
+        {
+          name: 'Javascript',
+          code: 'js'
+        },
+        {
+          name: 'Open Source',
+          code: 'os'
+        }
+      ]
+    }
+  })
+
+  new Vue({
+    el: '#demo',
+    data: {
+      value: '',
+      options: [{
+          name: 'Vue.js',
+          code: 'vu'
+        },
+        {
+          name: 'Javascript',
+          code: 'js'
+        },
+        {
+          name: 'Open Source',
+          code: 'os'
+        }
+      ]
+    }
+  })
+</script>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .resume {
+      min-height: 300px;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr;
+      grid-template-areas:
+    "name photo"
+    "work about"
+    "work education"
+    "community skills";
+      border: 3px solid red;
+    }
+    .resume > section {
+      border: 1px solid #333;
+    }
+
+    .name {
+  grid-area : name;
+}
+
+.photo {
+  grid-area : photo;
+}
+
+  </style>
+</head>
+<body>
+  <a href="https://css-tricks.com/new-year-new-job-lets-make-a-grid-powered-resume/">grid</a>
+  <article class="resume">
+    <section class="name">name</section>
+    <section class="photo">photo</section>
+    <section class="about">about</section>
+    <section class="work">work</section>
+    <section class="education">education</section>
+    <section class="community">community</section>
+    <section class="skills">skills</section>
+  </article>
+</body>
+</html>

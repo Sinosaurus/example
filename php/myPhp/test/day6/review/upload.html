@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多文件上传</title>
+</head>
+<body>
+    <form action="./upload.php" method="post" enctype="multipart/form-data">
+        <input type="file" name="files[]" multiple>  <!--此处命名必须是以数组形式进行命名这样相互之间不会进行覆盖-->
+        <input type="submit">
+        
+    </form>
+</body>
+</html>

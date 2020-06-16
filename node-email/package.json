@@ -1,0 +1,22 @@
+{
+  "name": "test-mjml",
+  "version": "1.0.0",
+  "description": "尝试mjml来开发邮件",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "mjml -w src/input.mjml --config.beautify true -o dist/input.html"
+  },
+  "keywords": [
+    "mjml",
+    "node",
+    "email"
+  ],
+  "author": "Sinosaurus",
+  "license": "ISC",
+  "dependencies": {
+    "mjml": "^4.6.2",
+    "nodemailer": "^6.4.6",
+    "nodemailer-smtp-transport": "^2.7.4"
+  }
+}

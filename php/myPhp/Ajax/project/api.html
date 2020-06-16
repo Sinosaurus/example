@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>api测试</title>
+	<script src="./jquery.js"></script>
+	<style>
+		img {
+			width: 200px;
+
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="点击" id="btn">
+</body>
+</html>
+<script>
+	$(function(){
+		$('#btn').on('click', function(){
+			$.ajax({
+				url: 'https://www.apiopen.top/meituApi',
+				data: {
+					page: 4
+				},
+				success: function(data) {
+					var a = JSON.parse(data);
+					console.log(a)
+					$(a.data).each(function(index, item){
+						var html = `<img src="${item.url}"/>`;
+						$('body').append(html)
+					})
+				},
+				error: function(data){
+                       console.log(data)
+				}
+			})
+		})
+	})
+</script> 
+<!-- <script>
+	$(function(){
+		$('#btn').on('click', function(){
+			$.ajax({
+				url: 'https://www.juhe.cn',
+				data: {
+					page: 1
+				},
+				type: 'get',
+				dataType: 'json',
+				success: function(data) {
+					$(data.data).each(function(index, item){
+						var html = `<img src="${item.url}"/>`;
+						$('body').append(html)
+					})
+				}
+			})
+		})
+	})
+</script> -->

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>img</title>
+    <!--<link rel="stylesheet" href="">-->
+</head>
+<body>
+<img src="" alt="">
+<input type="text" id="txt">
+<script>
+    function fn(data) {
+        console.log(data);
+    }
+    var txt = document.querySelector('#txt');
+   /* txt.onkeyup = function() {
+        var script = document.createElement('script');
+        script.src = 'https://suggest.taobao.com/sug?q='+this.value+'&callback=fn';
+        document.querySelector('body').appendChild(script);
+    }*/
+    txt.onkeyup = function() {
+        /*var script = document.createElement('script');*/
+       var a = document.createElement('a');
+        a.href = 'https://suggest.taobao.com/sug?q='+this.value+'&callback=fn';
+//        document.querySelector('body').appendChild(script);
+        document.querySelector('body').appendChild(a);
+    }
+</script>
+</body>
+</html>

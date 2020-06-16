@@ -1,0 +1,11 @@
+{
+  "presets":[
+      "env",      
+      "stage-0" 
+  ],
+  "plugins":[
+    "tranform-runtime",
+    "@babel/plugin-proposal-class-properties",
+	  "@babel/plugin-transform-runtime"
+  ]
+}

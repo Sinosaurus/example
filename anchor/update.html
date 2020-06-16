@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.7.8/semantic.min.css">
+  <title>anchor</title>
+  <style>
+    .wide {
+      border: 1px solid #333;
+    }
+
+    .wide .sc {
+      padding: 20px;
+      border: 1px solid transparent;
+    }
+    .wide.target .sc,
+    .wide:target .sc {
+      border: 1px solid red;
+      box-shadow: 0 0 0 .2em pink;
+    }
+    
+
+    .wide+.wide {
+      margin-top: 60px;
+    }
+
+    #top {
+      position: fixed;
+      right: 30px;
+      bottom: 30px;
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      line-height: 50px;
+      border-radius: 8px;
+      background-color: #eee;
+      cursor: pointer;
+    }
+
+    .base {
+      margin-bottom: calc(2rem - .1428571428571429em);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="ui container base">
+    <h1>使用 <code>js</code> 获取 <code>url</code> 上的 <code>id</code> 进行页面定位</h1>
+  </div>
+  <div class="ui container">
+    <div class="wide segment" id="one">
+      <h2>one</h2>
+      <div class="sc">
+        <div class="ui placeholder fluid active inverted">
+          <div class="image header">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="paragraph">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wide " id="two">
+      <h2>two</h2>
+      <div class="sc">
+        <div class="ui placeholder fluid">
+          <div class="image header">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="paragraph">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wide" id="three">
+      <h2>three</h2>
+      <div class="sc">
+        <div class="ui placeholder fluid active inverted">
+          <div class="image header">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="paragraph">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wide" id="four">
+      <h2>four</h2>
+      <div class="sc">
+        <div class="ui placeholder fluid">
+          <div class="image header">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="paragraph">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wide" id="five">
+      <h2>five</h2>
+      <div class="sc">
+        <div class="ui placeholder fluid active inverted">
+          <div class="image header">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="paragraph">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="top">
+    <i class="arrow up icon"></i>
+  </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.7.8/semantic.min.js"></script>
+<script>
+  /** 消除chrome记录滚动位置
+   * 目前看起来 跟 锚点定位互斥
+   * https://cloud.tencent.com/developer/ask/35926
+   * https://developers.google.com/web/updates/2015/09/history-api-scroll-restoration
+  */
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  $(() => {
+    /**
+     * 第一步 需要通过url拿到对应的id
+     * 借助 scrollView 可以滚动到可视位置，但是会存在第一种base的情况，无法定义距离顶部的位置
+     * 因而需要进行计算方可
+     */
+    /**
+     * @description: 通过url获取对应元素
+     * @return: node
+     */
+    const getEl = () => {
+      const urlId = location.href.split('#')[1]
+      if (!urlId) return null
+      return document.getElementById(urlId.replace(/\?.*/, ''))
+    }
+    /**
+     * @description: 初始进入页面跳转到指定位置，同时生成focus效果
+     */
+     const elScroll = () => {
+      const el = getEl()
+      if (!el) return
+      
+      $(el).addClass('target')
+      // 此处用来获取需要滚动的位置
+      const scrollY = el.getBoundingClientRect().top + document.scrollingElement.scrollTop - 40
+      
+      // https://www.zhangxinxu.com/wordpress/2019/07/js-scrollto-scrollby
+      // https://github.com/iamdustan/smoothscroll
+      /**
+       * 此处有问题，若是携带参数，次数很ok，
+       * 但是若不携带参数，会同时触发 hash模式自动定位，以及下面的js，因而页面会有跳动的过程（体验上不是很好）
+       * 若是需要解决，需要判断是否是 携带参数，没有走 hash 模式，有走 js 模式
+      */
+      $(document.scrollingElement).scrollTop(scrollY)
+    }
+    /**
+     * @description: 监听地址栏hash值变化
+     */
+    const listenHashChange = () => {
+      window.addEventListener('hashchange', () => {
+        elScroll()
+      }, false)
+    }
+    // 链接改变页面不刷新 https://stackoverflow.com/questions/1397329/how-to-remove-the-hash-from-window-location-url-with-javascript-without-page-r/5298684#5298684
+    /**
+     * @description: 地址栏改变页面不刷新
+     */
+    const changeUrl = () => {
+      // 移除选中效果
+      getEl() && $(getEl()).removeClass('target')
+
+      const firstTop = document.scrollingElement.scrollTop
+      window.location.hash = ""
+      window.history.replaceState(null, null, window.location.pathname + window.location.search)
+      document.scrollingElement.scrollTop = firstTop
+     
+    }
+
+    elScroll()
+    listenHashChange()
+     /**
+     * @description: 若是通过链接进入当前页面，最好使用 `one`
+     * 如此事件只执行一次即可
+     * https://github.com/iamdustan/smoothscroll
+     */
+
+    $(document).on('click', function () {
+      changeUrl()
+    })
+    /**
+     * @description: 点击回到顶部
+     */
+    $('#top').click(() => {
+      $(document).scrollTop(0)
+    })
+  })
+</script>
+
+</html>

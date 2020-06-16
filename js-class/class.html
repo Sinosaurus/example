@@ -1,0 +1,66 @@
+<!--
+ * @LastEditors: Sinosaurus
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=x, initial-scale=1.0">
+   <title>class</title>
+ </head>
+ <body>
+   <script>
+    //  构造函数，静态方法，原型方法，getter和setter
+     // 匿名类
+     const T1 = class {
+      constructor (attr) {
+        this.attr = SVGPreserveAspectRatio
+      }
+     }
+     
+     // 具名类
+     const T2 = class Test {
+      constructor (attr) {
+        this.attr = SVGPreserveAspectRatio
+      }
+     }
+
+     // 原始方法
+     class Test1 {
+       constructor (height, width) {
+         this.height = height
+         this.width = width
+       }
+       // getter 
+       get area () {
+         return this.calcArea()
+       }
+
+       calcArea () {
+         return this.height * this.width
+       }
+     }
+
+     const t1 = new Test1(12, 10)
+     console.log(t1.area) // 120
+
+     // 静态方法
+     class Test2 {
+       constructor (x, y) {
+         this.x = x
+         this.y = y
+       }
+
+       static distance (a, b) {
+         const dx = a.x - b.x
+         const dy = a.y - b.y
+         return Math.hypot(dx, dy)
+       } 
+     }
+     const t2_1 = new Test2(10, 20)
+     const t2_2 = new Test2(20, 30)
+     console.log(t2_1, t2_2)
+     console.log(Test2.distance(t2_1, t2_2))
+   </script>
+ </body>
+ </html>

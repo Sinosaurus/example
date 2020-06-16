@@ -1,0 +1,54 @@
+<!--
+ * @LastEditors: Sinosaurus
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    p {
+      min-height: 10px;
+    }
+    div {
+      min-height: 10px;
+    }
+    /* https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Selectors */
+    p ~ div {
+      background-color: red;
+    }
+    a + div {
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+  <div id="one" style="display:inline-block;height: 100px; width: 100px;background-color: skyblue; padding-left: 10px; padding-right: 10px; border-left: 10px solid #eee; border-right: 10px solid #eee; margin-left: 10px; margin-right: 10px;"></div>
+  <div>
+    <ul>
+      <li>
+        <p></p>
+        <h2></h2>
+        <div></div>
+      </li>
+      <li>
+        <a></a>
+        <div></div>
+      </li>
+      <li>
+        <p></p>
+        <h1></h1>
+        <div></div>
+      </li>
+    </ul>
+  </div>
+  <div id="result"></div>
+  <script>
+    const one = document.getElementById('one')
+    const result = document.getElementById('result')
+    console.dir(one)
+    result.innerText = one.offsetWidth
+  </script>
+</body>
+</html>

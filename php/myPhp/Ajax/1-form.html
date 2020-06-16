@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        form {
+            margin: 50px auto;
+            padding: 20px;
+            width: 50%;
+            min-width: 400px;
+
+            height: 200px;
+            /*text-align: center;*/
+            background-color: skyblue;
+            box-sizing: border-box;
+        }
+        #user,
+        #pass {
+            width: 60%;
+            height: 40px;
+            background-color: cornflowerblue;
+            border: 0;
+            outline: none;
+            margin-bottom: 20px;
+        }
+        .sub {
+            width: 80%;
+            height: 40px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+<form action="./check-form.php" method="post">
+    <label>用户名：
+        <input type="text" name="user" id="user">
+        <input type="button" value="提交" id="btn">
+        <span id="resu"></span>
+    </label>
+    <label>密&nbsp;码：
+        <input type="password" name="pass" id="pass">
+        <input type="button" vaule="密码提交" id="passBtn" value='密码'>
+        <span id='passVal'></span>
+    </label>
+
+    <input type="submit" value="登录" class='sub'>
+</form>
+<!--<script>
+    window.onload = function() {
+        var user = document.getElementById('user');
+//        console.log(user);
+//        console.log(uValue);
+        var btn = document.getElementById('btn');
+        btn.onclick = function() {
+//            点击时获取value
+            var uValue = user.value;
+
+//            console.log(uValue);
+//            开始使用ajax
+            var xhr = new XMLHttpRequest();
+            xhr.open('get', './check-form.php?user=' + uValue, true);
+            xhr.send(null);
+            xhr.onreadystatechange = function(){
+//                console.log(xhr.responseText)
+                var result = xhr.responseText;
+                var resu = document.getElementById('resu');
+                resu.innerText = result;
+            }
+
+
+        }
+    }
+</script>-->
+<script>
+    var user = document.getElementById('user');
+    var btn  = document.getElementById('btn');
+    var resu = document.getElementById('resu');
+    btn.onclick = function() {
+        var userValue = user.value;
+        var xhr = null;
+//        兼容测试
+        if(window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest();
+        } else {
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+//        准备发送
+        xhr.open('post', './check-form.php', true);
+
+//        请求头
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//        执行发送
+//        请求体
+        var param = 'user=' + userValue;
+
+        xhr.send(param);
+
+//        拿到数据
+        xhr.onreadystatechange = function() {
+//            判断
+            if(xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    var text = xhr.responseText;
+//                    console.log(text);
+                    resu.innerText = text;
+                }
+            }
+        }
+    }
+//    密码
+    var pass    = document.getElementById('pass');
+    var passBtn = document.getElementById('passBtn');
+    var passVal = document.getElementById('passVal');
+    passBtn.onclick = function() {
+        var passV = pass.value;
+        console.log(passV);
+//        兼容性
+        var xhr = null;
+        if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest();
+        } else {
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+//        准备
+        xhr.open('get', './check-form.php?pass=' + passV, true);
+//        执行
+        xhr.send(null);
+//        回调 拿数据
+        xhr.onreadystatechange = function() {
+//            console.log(11111);
+            if (this.readyState == 4) {
+                if (this.status == 200) {
+//                    console.log(111);
+                    var result = this.responseText;
+//                    console.log(result);
+                    passVal.innerText = result;
+                }
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

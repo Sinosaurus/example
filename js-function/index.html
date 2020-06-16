@@ -1,0 +1,49 @@
+<!--
+ * @LastEditors: Sinosaurus
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>no_debounce</p>
+  <div id="no_debounce"></div>
+  <p>has_debounce</p>
+  <div id="has_debounce"></div>
+  <p>no_throttle</p>
+  <div id="no_throttle"></div>
+  <p>has_throttle</p>
+  <div id="has_throttle"></div>
+  <script src="./debounce.js"></script>
+  <script src="./throttle.js"></script>
+  <script>
+    let no_debounce = 1
+    let has_debounce = 1
+    document.addEventListener('mousemove', function (e) {
+      const noDebounce = document.getElementById('no_debounce')
+      noDebounce.innerText = no_debounce ++
+    }, false)
+    
+    document.addEventListener('mousemove', debounce(function () {
+        const hasDebounce = document.getElementById('has_debounce')
+        console.log(222)
+        hasDebounce.innerText = has_debounce ++
+      }, 150), false)
+  </script>
+  <script>
+    let no_throttle = 1
+    let has_throttle = 1
+    document.addEventListener('mousemove', function () {
+      const noThrottle = document.getElementById('no_throttle')
+      noThrottle.innerText = no_throttle ++
+    }, false)
+    document.addEventListener('mousemove', throttle(function () {
+      const hasThrottle = document.getElementById('has_throttle')
+      hasThrottle.innerText = has_throttle ++
+    }, 1500), false)
+  </script>
+</body>
+</html>

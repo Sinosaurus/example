@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul {
+            list-style: none;
+            background-color: skyblue;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            document.querySelector('#txt').onkeyup = function() {
+
+                window.fn = function(data) {
+                    var str = '';
+                    console.log(data.s);
+
+                    for (var i = 0; i < data.s.length; i++) {
+//                        console.log(1);
+//                        str += data.s[i][0];
+                        str += '<li>'+data.s[i]+'</li>';
+
+                    }
+//                    console.log(str);
+                    document.querySelector('ul').innerHTML = str;
+
+
+                    var js = document.querySelector('#js');
+//                    console.log(js);
+                    for (var j in js) {
+                        delete j[js];
+                    }
+                    document.head.removeChild(js);
+
+                }
+                var scr = document.createElement('script');
+                scr.id = 'js';
+                scr.src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+ document.querySelector('#txt').value + '&cb=fn';
+                document.querySelector('head').appendChild(scr);
+//                document.querySelector('head').removeChild('scr');
+
+
+            }
+        }
+    </script>
+    
+</head>
+<body>
+<form>
+    <label>
+        <input type="text" id="txt">
+        <input type="button" value="搜索" id="btn">
+    </label>
+</form>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,351 @@
+header {
+  height: 50px;
+  border-bottom: 1px solid #ccc;
+}
+header .container {
+  height: 100%;
+  line-height: 50px;
+}
+header .container .row div {
+  text-align: center;
+}
+header .container .row div .btn-danger {
+  border: none;
+  color: #fff;
+  background-color: #e92223;
+  padding: 4px 20px;
+}
+header .container .row div .btn-danger:hover,
+header .container .row div .btn-danger:focus {
+  background-color: #e92223;
+  border-color: #e92223;
+}
+header .container .row div .btn-link {
+  color: #666;
+}
+header .container .row div .btn-link:focus,
+header .container .row div .btn-link:hover {
+  color: #666;
+}
+header .container .row div .btn-link.btn {
+  padding: 4px 16px;
+  box-sizing: content-box;
+}
+header .container .row div:nth-of-type(-n + 3 ) {
+  border-right: 1px solid #ccc;
+}
+header .container .row div > a {
+  display: inline-block;
+}
+header .container .row div:first-of-type a {
+  display: block;
+  position: relative;
+}
+header .container .row div:first-of-type a img {
+  position: absolute;
+  display: none;
+  /* border: 1px solid #ccc;
+              border-top: 1px solid #fff;*/
+  z-index: 999;
+}
+.wjs_nav {
+  margin-bottom: 0;
+}
+.wjs_nav .navbar-header .navbar-toggle {
+  margin-top: 19px;
+  margin-bottom: 19px;
+}
+.wjs_nav .navbar-header .navbar-brand span {
+  font-size: 40px;
+  line-height: 50px;
+}
+.wjs_nav .navbar-header .navbar-brand span:first-of-type {
+  color: #e92223;
+}
+.wjs_nav .navbar-header .navbar-brand span:last-of-type {
+  color: #333;
+}
+.wjs_nav ul:first-of-type li:first-of-type {
+  border-bottom: 3px solid #e92223;
+}
+.wjs_nav ul li {
+  height: 80px;
+}
+.wjs_nav ul li a {
+  height: 100%;
+  color: #555 !important;
+  font-size: 16px;
+  line-height: 50px;
+  padding: 14px 16px;
+  background-color: transparent !important;
+}
+.wjs_nav ul li a:focus,
+.wjs_nav ul li a:hover {
+  color: #555 !important;
+}
+.wjs_nav ul li:hover {
+  border-bottom: 3px solid #e92223;
+}
+.carousel .carousel-inner a {
+  display: block;
+  width: 100%;
+  height: 410px;
+  background-position: center center;
+  background-size: cover;
+}
+.carousel .carousel-inner a img {
+  width: 100%;
+}
+.sixCase {
+  padding-top: 40px;
+}
+.sixCase .row > div a {
+  font-size: 26px;
+  display: block;
+  margin-top: 10px;
+}
+.sixCase .row > div a:hover {
+  color: #e92223;
+}
+.sixCase .row > div a p {
+  font-size: 14px;
+}
+.tips {
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  line-height: 50px;
+}
+.tips p {
+  line-height: 50px;
+  margin-bottom: 0;
+}
+.tips .col-sm-9 a:first-of-type {
+  font-weight: 900;
+}
+.tips .col-sm-9 a:first-of-type:hover {
+  color: #e92223;
+}
+.tips .col-sm-9 a:last-of-type {
+  color: #e92223;
+}
+.tips .wjs_icon {
+  font-size: 20px;
+}
+.tab {
+  background-color: #eee;
+  overflow: hidden;
+}
+.tab .nav-tabs li a {
+  height: 100px;
+  line-height: 100px;
+  padding: 10px 24px;
+  font-size: 16px;
+  border: none;
+  color: #333;
+  background-color: transparent;
+}
+.tab .nav-tabs li a:hover,
+.tab .nav-tabs li a:focus {
+  border: 0;
+  color: #333;
+  border-bottom: 3px solid #e92223;
+  background-color: transparent;
+}
+.tab .nav-tabs li:first-of-type a {
+  border-bottom: 3px solid #e92223;
+}
+.tab .tab-content {
+  margin-top: 5px;
+}
+.tab .tab-content .row > div {
+  margin-bottom: 10px;
+}
+.tab .tab-content .row > div .wjs_wrap {
+  height: 150px;
+  position: relative;
+  background-color: #fff;
+}
+.tab .tab-content .row > div .wjs_wrap .left {
+  padding-right: 100px;
+  height: 100%;
+  width: 100%;
+  font-size: 12px;
+  margin-left: 0 !important;
+  color: #777;
+}
+.tab .tab-content .row > div .wjs_wrap .left > div {
+  padding: 0 6px;
+  text-align: left;
+  margin-bottom: 0;
+  background-color: transparent;
+}
+.tab .tab-content .row > div .wjs_wrap .left > div:nth-of-type(2n) {
+  text-align: right;
+}
+.tab .tab-content .row > div .wjs_wrap .left h4 {
+  text-align: center;
+  font-size: 16px;
+}
+.tab .tab-content .row > div .wjs_wrap .right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-left: 1px dashed #ccc;
+  width: 100px;
+  height: 150px;
+  text-align: center;
+  color: #777;
+}
+.tab .tab-content .row > div .wjs_wrap .right::before {
+  content: "";
+  display: block;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background-color: #eee;
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  box-shadow: 0 -1px 0px inset;
+}
+.tab .tab-content .row > div .wjs_wrap .right::after {
+  content: "";
+  display: block;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background-color: #eee;
+  position: absolute;
+  bottom: -4px;
+  left: -4px;
+  box-shadow: 0 1px 0px inset  ;
+}
+.tab .tab-content .row > div .wjs_wrap .right span:first-of-type {
+  font-size: 50px;
+  margin-top: 20px;
+  display: inline-block;
+}
+.tab .tab-content .row > div .wjs_wrap .right span:last-of-type {
+  display: block;
+}
+.tab .tab-content .row > div .wjs_wrap .right sub {
+  bottom: 0;
+}
+.tab .tab-content .row > div:first-of-type .wjs_wrap {
+  background-color: #e92223;
+}
+.tab .tab-content .row > div:first-of-type .wjs_wrap .right,
+.tab .tab-content .row > div:first-of-type .wjs_wrap .left {
+  color: #fff;
+}
+.tab .tab-content .row > div:nth-of-type(2) {
+  position: relative;
+}
+.tab .tab-content .row > div:nth-of-type(2) .tip {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%);
+}
+.tab .tab-content .row > div:nth-of-type(2) .tip .bao,
+.tab .tab-content .row > div:nth-of-type(2) .tip .bei {
+  font-style: normal;
+  font-size: 14px;
+}
+.tab .tab-content .row > div:nth-of-type(2) .tip .bao {
+  color: #e92223;
+  border: 2px solid #e92223;
+  padding: 0;
+}
+.tab .tab-content .row > div:nth-of-type(2) .tip .bei {
+  color: blue;
+  border: 2px solid blue;
+  padding: 0;
+}
+.new {
+  padding-top: 20px;
+}
+.new .row > div > h4 {
+  position: relative;
+  font-size: 24px;
+  padding: 20px 0;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+.new .row > div > h4::after {
+  position: absolute;
+  bottom: -4px;
+  right: -8px;
+  content: '';
+  display: block;
+  height: 8px;
+  width: 8px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+}
+.new .row > ul {
+  position: relative;
+  height: 100%;
+  border: 0;
+}
+.new .row > ul li {
+  margin-bottom: 50px;
+}
+.new .row > ul li.active > a {
+  background-color: #e92223;
+}
+.new .row > ul li a {
+  display: block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background-color: #ccc;
+}
+.new .row > ul li a:focus {
+  background-color: #e92223;
+  border: none;
+}
+.new .row > ul li a .wjs_icon {
+  font-size: 30px;
+  color: #fff;
+}
+.new .row > ul li:last-of-type {
+  margin-bottom: 0;
+}
+@media screen and (min-width: 768px) {
+  .new .row > ul li {
+    margin-right: 40px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .new .row > ul li {
+    width: 25%;
+  }
+}
+.new .row > ul .line {
+  position: absolute;
+  width: 1px;
+  left: 30px;
+  height: 100%;
+  border: 1px dashed #e92223;
+}
+.new .row .tab-content ul {
+  padding-top: 20px;
+  list-style: none;
+}
+.new .row .tab-content ul li {
+  height: 50px;
+}
+footer ul {
+  list-style: none;
+}
+footer ul li a {
+  display: block !important;
+  padding: 0 .1rem;
+}
+footer ul li a span {
+  display: block;
+  font-size: .6rem;
+}

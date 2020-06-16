@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function a(r) {
+            console.log(r);
+        }
+    </script>
+    <!--<script src="http://www.text.com/ajax.php"></script>-->
+</head>
+<body>
+<form>
+    <input type="text" id='txt'>
+    <input type="button" value="查询" id='btn'>
+</form>
+
+<script >
+
+    var head = document.querySelector('head');
+
+    document.querySelector('#btn').onclick = function() {
+        var script = document.createElement('script');
+
+        script.src = 'http://www.text.com/ajax.php?add=' + document.querySelector('#txt').value;
+        head.appendChild(script);
+//        console.log(str, +'-------'+ 111);
+
+    }
+
+//    console.log(str, +'-------'+ 2222);
+
+</script>
+
+</body>
+</html>
