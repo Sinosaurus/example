@@ -10,6 +10,7 @@
   <title>Document</title>
   <style>
     body {
+      background-color: #001226;
       margin: 0;
       overflow-x: hidden;
       overflow-y: auto;
@@ -61,6 +62,7 @@
         :i="item.i"
         :key="item.i"
       >
+        <div class="item-content"></div>
         <!-- 使用 iframe时，会干扰拖拽效果 -->
         <iframe :src="item.url" border="0" width="100%" frameborder="0" height="100%" v-if="item.url"></iframe>
       </grid-item>
@@ -89,7 +91,7 @@
         "w": 3,
         "h": 3,
         "i": "2",
-        "url": "http://172.16.0.96:8282/"
+        // "url": "http://172.16.0.96:8282/"
       },
       {
         "x": 7,
