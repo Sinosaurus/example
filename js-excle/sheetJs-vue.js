@@ -36,8 +36,9 @@ Vue.component('html-preview', {
 					binary += String.fromCharCode(bytes[i]);
 				}
         /* read workbook */
-        // https://github.com/SheetJS/sheetjs#writing-options
-        var wb = XLSX.read(binary, {type: 'binary', cellDates: true});
+				// https://github.com/SheetJS/sheetjs#writing-options
+				// , cellDates: true
+        var wb = XLSX.read(binary, {type: 'binary', cellDates: true, dateNF: 0});
         
 				/* grab first sheet */
 				var wsname = wb.SheetNames[0];
@@ -49,7 +50,7 @@ Vue.component('html-preview', {
         })
         localStorage.setItem('val', JSON.stringify(jj))
         that.$emit('get-value', jj)
-        var HTML = XLSX.utils.sheet_to_html(ws);
+				var HTML = XLSX.utils.sheet_to_html(ws);
 				/* update table */
 				document.getElementById('out-table').innerHTML = HTML;
 				/* show export button */

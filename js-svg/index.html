@@ -4,8 +4,115 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    div {
+      margin: 20px;
+      display: table;
+      min-height: 100px;
+      min-width: 100px;
+      vertical-align: middle;
+      text-align: center;
+      border: 1px solid #ccc;
+    }
+  </style>
 </head>
 <body>
+  <p>https://www.ruanyifeng.com/blog/2018/08/svg.html</p>
+  <div>
+    <p>圆 circle 
+      <br>
+      cx 横坐标
+      cy 纵坐标
+      r 半径
+    </p>
+    <svg width="100%" height="100%" viewBox="50 50 50 50">
+      <circle cx="50" cy="50" r="50"></circle>
+    </svg>
+  </div>
+  <div>
+    <p>
+      fill：填充色
+      stroke：描边色
+      stroke-width：边框宽度
+    </p>
+    <svg width="300" height="100">
+      <circle cx="30" cy="50" r="25" style="fill: red;"></circle>
+      <circle cx="90" cy="50" r="25"></circle>
+      <circle cx="150" cy="50" r="25" style="fill:none; stroke: black; stroke-width: 3pt;"></circle>
+    </svg>
+  </div>
+  <div>
+    <p>
+      直线  line
+      x1,y1 起点
+      x2,y2 终点
+    </p>
+    <svg width="300" height="180">
+      <line x1="0" y1="0" x2="200" y2="150" style="stroke-width: 2; stroke: black;"/>
+    </svg>
+  </div>
+  <div>
+    <p>
+      polyline 折线
+
+      points="x1,y1 x2,y2 ..."
+    </p>
+    <svg>
+      <polyline points="3,3 50,50 120,9"  fill="none" stroke="black" stroke-width="10"/>
+    </svg>
+    <svg>
+      <polyline points="2,20 30,60 100,9"  fill="none" stroke="black" stroke-width="10"/>
+    </svg>
+  </div>
+  <div>
+    <p>
+      rect 矩形
+      x,y 左上角横纵坐标
+      width,height 宽度高度
+    </p>
+    <svg>
+      <rect x="0" y="0" width="100" height="200" fill="skyblue"/>
+    </svg>
+  </div>
+  <div>
+    <p>ellipse 椭圆
+      cx,xy 中心的横纵坐标
+      rx,ry 横向轴，纵向轴
+    </p>
+    <svg>
+      <ellipse cx="100" cy="50" rx="80" ry="50" />
+    </svg>
+  </div>
+  <div>
+    <p>
+      polygon 多边形
+      points="x1,y1 x2,y2 ..."
+    </p>
+    <svg>
+      <polygon points="10,10 80,50 70,90 10,80" fill="red"/>
+    </svg>
+  </div>
+  <div>
+    <p>path 路径
+      d="M x1,y1
+         L x2,y2
+         Z"
+      <br>
+      M：移动到（moveto）
+      L：画直线到（lineto）
+      Z：闭合路径
+    </p>
+    <svg>
+      <path id="path" d=" M 18,3
+                L 46,3
+                L 46,40
+                L 61,40
+                L 32,68
+                L 3,40
+                L 18,40
+                Z" fill="red"></path>
+    </svg>
+  </div>
   <div>
     <p>
       g 将多个形状组成一个组，方便复用
@@ -74,7 +181,36 @@
   </div>
   <div>
     <p>
-      animate 动画
+      text 绘制文本
+      x,y 文本基线起点的横纵坐标
+    </p>
+    <svg>
+      <text x="50" y="50" fill="blue">Hello SVG</text>
+    </svg>
+  </div>
+  <div>
+    <p>use  复制一个形状 
+      href 复制的节点
+      x,y 左上角横纵坐标
+      width，height
+    </p>
+    <svg>
+      <use href="#path" x="1" y="50"></use>
+    </svg>
+  </div>
+  <div>
+    <p>
+      g 用于将多个形状组成一个组，方便复用
+    </p>
+    <svg>
+      <g id="g">
+        <text x="50" y="50" fill="red">g</text>
+        <circle cx="50" ></circle>
+      </g>
+    </svg>
+  </div>
+  <div>
+     <p> animate 动画
     </p>
     <svg width="500px" height="500px">
       <rect
@@ -114,6 +250,53 @@
       </rect>
     </svg>
   </div>
+<<<<<<< HEAD
+=======
+  <div style="padding: 20px; background-color: rgba(0, 0, 0, .2);">
+    <svg id="mySvg">
+      <circle id="circle" cx="40" cy="40" r="20" fill="pink"></circle>
+    </svg>
+    <canvas id="canvas" />
+  </div>
+  <section style="padding: 20px; background-color: skyblue;">
+    <table border>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2020-06-16</td>
+          <td>60</td>
+        </tr>
+        <tr>
+          <td>2020-06-17</td>
+          <td>100</td>
+        </tr>
+      </tbody>
+    </table>
+    <svg width="400" height="300" style="margin-top: 20px;">
+      <g transform="translate(60, 10)">
+        <circle r="5" cx="0" cy="260"></circle>
+        <circle r="5" cx="90" cy="200"></circle>
+        <circle r="5" cx="180" cy="140"></circle>
+        <circle r="5" cx="270" cy="80"></circle>
+      </g>
+      <g>
+        <line x1="10" y1="0" x2="10" y2="320" style="stroke-width: 2; stroke: black;" />
+        <text x="15" y="240" dy="5">60</text>
+        <text x="15" y="200" dy="5">100</text>
+      </g>
+      <g transform="translate(0,120)">
+        <line x1="10" y1="170" x2="400" y2="170" style="stroke-width: 2; stroke: black;"/>
+        <!-- <text x="-30" y="20">2020-6</text>
+        <text x="240" y="20">16</text> -->
+      </g>
+    </svg>
+  </section>
+>>>>>>> b4ff072d7c628748dd647dabe3c8f41d9e295811
   <script src="./svg.js"></script>
 </body>
 </html>

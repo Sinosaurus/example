@@ -14,18 +14,26 @@ async function main() {
     port: 465,
     secure: true, // true for 465, false for other ports
     auth: {
-      user: '915747580@qq.com', // generated ethereal user
-      pass: 'glhfmehtwzmrbefj' // generated ethereal password
+      user: '****@qq.com', // generated ethereal user
+      pass: '*********' // generated ethereal password
     }
   }));
-  const html = await fs.readFileSync('./edm_compute_cloud_special.html', 'utf-8')
+  const html = await fs.readFileSync('./edm.html', 'utf-8')
   // send mail with defined transport object
+  // ,hui.shan@sinnet-cloud.cn
   let info = await transporter.sendMail({
-    from: '<915747580@qq.com>', // sender address
-    to: "shilong.li@sinnet-cloud.cn,hui.shan@sinnet-cloud.cn", // list of receivers
-    subject: "5月的EDM", // Subject line
+    from: '<********@qq.com>', // sender address
+    to: "****@sinnet-cloud.cn,********n@sinnet-cloud.cn", // list of receivers
+    subject: "6月的EDM", // Subject line
     // text: "", // plain text body
-    html: html // html body
+    html: html, // html body
+    attachments: [ // 附件
+      // https://nodemailer.com/message/attachments/
+      {
+        filename: 'edm.html',
+        path: './edm.html'
+      }
+    ]
   });
 
   console.log("Message sent: %s", info.messageId);

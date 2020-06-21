@@ -1,0 +1,24 @@
+{
+  "name": "js-d3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "d3": "^5.16.0",
+    "node-sass": "^4.14.1",
+    "sass": "^1.26.8",
+    "sass-loader": "^8.0.2",
+    "vue": "^3.0.0-beta.15"
+  },
+  "devDependencies": {
+    "@vue/compiler-sfc": "^3.0.0-beta.15",
+    "vite": "^0.20.8"
+  },
+  "keywords": [],
+  "author": "sinosaurus",
+  "license": "ISC"
+}

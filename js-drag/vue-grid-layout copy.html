@@ -1,0 +1,147 @@
+<!--
+ * @LastEditors: Sinosaurus
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: #001226;
+      margin: 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    .vue-grid-item:not(.vue-grid-placeholder) {
+      background: #ccc;
+      border: 10px solid black;
+      box-sizing: border-box;
+    }
+    .confirm-item {
+      border: 0 !important;
+    }
+    .btn {
+      position: fixed;
+      right: 10px;
+      top: 10px;
+      z-index: 999;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="btn">
+      <a href="https://github.com/jbaysolutions/vue-grid-layout/blob/master/README-zh_CN.md" style="margin-bottom: 10px;">参考链接</a>
+      <button @click="confirm">confirm</button>
+    </div>
+    <!-- :col-num="4" -->
+    <grid-layout
+      :cols="{lg: 8, md: 4, sm:4, xs:4, xss: 4}"
+      :layout.sync="layout"
+      :row-height="height"
+      :is-draggable="draggable"
+      :is-resizable="resizable"
+      :is-mirrored="false"
+      :vertical-compact="true"
+      :margin="[0, 0]"
+      :auto-size="true"
+      :responsive="true"
+      :use-css-transforms="true"
+    >
+      <grid-item
+        :class="{'confirm-item': isConfirm }"
+        v-for="item in layout"
+        :x="item.x"
+        :y="item.y"
+        :w="item.w"
+        :h="item.h"
+        :i="item.i"
+        :key="item.i"
+      >
+        <div class="item-content"></div>
+        <!-- 使用 iframe时，会干扰拖拽效果 -->
+        <iframe :src="item.url" border="0" width="100%" frameborder="0" height="100%" v-if="item.url"></iframe>
+      </grid-item>
+    </grid-layout>
+  </div>
+  <script src="./../node_modules/vue/dist/vue.js"></script>
+  <script src="./../node_modules/vue-grid-layout/dist/vue-grid-layout.umd.js"></script>
+  <script>
+    var testLayout = window.localStorage.getItem('layout') && JSON.parse(window.localStorage.getItem('layout')) || [{
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 3,
+        "i": "0"
+      },
+      {
+        "x": 1,
+        "y": 0,
+        "w": 2,
+        "h": 3,
+        "i": "1"
+      },
+      {
+        "x": 3,
+        "y": 0,
+        "w": 3,
+        "h": 3,
+        "i": "2",
+        // "url": "http://172.16.0.96:8282/"
+      },
+      {
+        "x": 7,
+        "y": 0,
+        "w": 2,
+        "h": 3,
+        "i": "3"
+      }
+    ]
+    new Vue({
+      el: '#app',
+      data: {
+        layout: testLayout,
+        height: 'auto',
+        // 用来确定是否可以了
+        isConfirm: false,
+        resizable: true,
+        draggable: true
+      },
+      created() {
+        this.update()
+      },
+      mounted() {
+        window.addEventListener('resize', this.debounce(this.update), false)
+      },
+      methods: {
+        update () {
+          this.height = window.innerHeight / 3
+        },
+        debounce (fn, wait, ...args) {
+          let timer = null
+          return function () {
+            if (timer) {
+              clearTimeout(timer)
+              timer = null
+            }
+            timer = setTimeout(() => {
+              fn.apply(this, args)
+            }, wait)
+          }
+        },
+        confirm () {
+          this.isConfirm = !this.isConfirm
+          this.resizable = !this.resizable
+          this.draggable = !this.draggable
+          window.localStorage.setItem('layout', JSON.stringify(this.layout))
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

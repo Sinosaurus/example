@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>数据变化触发页面DOM发生变化</p>
+  <div id="app"></div>
+  <button id="btn">click</button>
+  <script src="./vue-mini.js"></script>
+  <script>
+    const app = document.getElementById('app')
+    const btn = document.getElementById('btn')
+    const obj = {
+      name: 'Sinosaur',
+      age: 18
+    }
+
+    const o = reactive(obj)
+    const double = computed(() => o.age * 2)
+
+    effect(function () {
+      app.innerText = `name:${o.name}; age: ${o.age}; double: ${double.value}`
+    })
+
+    btn.onclick = function () {
+      o.age ++
+    }
+  </script>
+</body>
+</html>

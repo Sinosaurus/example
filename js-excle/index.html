@@ -28,64 +28,64 @@
         <option v-for="item in dateList" :key="item" :value="item">{{item}}</option>
       </select>
     </div>
-   <div class="container">
+    <div class="container">
       <div>
-          <table v-for="(item, key) in listMapResult" :key="key">
-            <thead>
-              <tr>
-                <td colspan="4">{{item.title}}</td>
+        <table v-for="(item, key) in listMapResult" :key="key">
+          <thead>
+            <tr>
+              <td colspan="4">{{item.title}}</td>
+            </tr>
+          </thead>
+          <tbody>
+            <template v-if="item.list.length">
+              <tr v-for="(val, index) in item.list" :key="index">
+                <td>{{val[0]}}</td>
+                <td>{{val[1] | filterDate}}</td>
+                <td>{{val[2] | filterDate}}</td>
+                <td>{{val[3]}}</td>
               </tr>
-            </thead>
-            <tbody>
-              <template v-if="item.list.length">
-                <tr v-for="(val, index) in item.list" :key="index">
-                  <td>{{val[0]}}</td>
-                  <td>{{val[1] | filterDate}}</td>
-                  <td>{{val[2] | filterDate}}</td>
-                  <td>{{val[3]}}</td>
-                </tr>
-              </template>
-              <template v-else>
-                <tr>
-                  <td colspan="4">暂无数据</td>
-                </tr>
-              </template>
-            </tbody>
-          </table>
-        </div>
-        <div>
-          <table>
-            <thead>
+            </template>
+            <template v-else>
               <tr>
-                <th>课程类型</th>
-                <th>培训地点</th>
-                <th>培训时间</th>
+                <td colspan="4">暂无数据</td>
               </tr>
-            </thead>
-            <tbody>
-              <template v-for="(value, name, index) of objMapResult">
-                <tr v-for="(item, key) in value">
-                  <td v-if="key === 0" :rowspan="value.length">
-                    {{item[0]}}
-                  </td>
-                  <td>{{item[3]}}</td>
-                  <td>{{item[1] | filterDate}} 至 {{item[2] | filterDate}}</td>
-                </tr>
-              </template>
-            </tbody>
-          </table>
-        </div>
-   </div>
+            </template>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>课程类型</th>
+              <th>培训地点</th>
+              <th>培训时间</th>
+            </tr>
+          </thead>
+          <tbody>
+            <template v-for="(value, name, index) of objMapResult">
+              <tr v-for="(item, key) in value">
+                <td v-if="key === 0" :rowspan="value.length">
+                  {{item[0]}}
+                </td>
+                <td>{{item[3]}}</td>
+                <td>{{item[1] | filterDate}} 至 {{item[2] | filterDate}}</td>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </body>
 <script src="./../lib/json/prism.js"></script>
-<script src="./node_modules/vue/dist/vue.js"></script>
+<script src="./../node_modules/vue/dist/vue.js"></script>
 <!-- Various shims -->
-<script src="./node_modules/xlsx/dist/shim.min.js"></script>
+<script src="../node_modules/xlsx/dist/shim.min.js"></script>
 <!-- SheetJS js-xlsx library -->
-<script src="./node_modules/xlsx/dist/xlsx.full.min.js"></script>
+<script src="../node_modules/xlsx/dist/xlsx.full.min.js"></script>
 <!-- SheetJS Vue components -->
-<script src="SheetJS-vue.js"></script>
+<script src="./sheetJS-vue.js"></script>
 
 <script lang="javascript">
   var app = new Vue({
@@ -139,7 +139,7 @@
           return newA
         }
       },
-      objMapResult () {
+      objMapResult() {
         const lesson = this.val1 || ''
         const date = this.val2 || ''
         const newA = JSON.parse(JSON.stringify(this.objMap))
@@ -166,8 +166,7 @@
           return {
             [lesson]: r
           }
-        }
-        else {
+        } else {
           return newA
         }
       }
@@ -175,16 +174,34 @@
     filters: {
       filterDate(val) {
         if (!val) return ''
-        const date = new Date(val)
+        // https://www.cnblogs.com/Jimc/p/10501883.html
+        // http://chitanda.me/2015/08/21/the-trivia-of-js-date-function/
+        // 2020-11-12T15:59:17.000Z x
+        const eightHour = 8 * 60 * 60 * 1000 // 与北京时间相差8小时
+        const date = new Date(Date.parse(val) + eightHour)
+        console.log(date)
         // 不是时间
         if (String(date) === 'Invalid Date') return val
         const year = String(date.getFullYear())
         const month = String(date.getMonth() + 1)
-        const day = (date.getDate()).toString()
+        const day = String(date.getDate())
         return `${year}年${month.padStart(2, '0')}月${day.padStart(2, '0')}日`
       }
     },
+
     methods: {
+      filterDate(val) {
+        if (!val) return ''
+        const eightHour = 8 * 60 * 60 * 1000 // 与北京时间相差8小时
+        const date = new Date(Date.parse(val) + eightHour)
+        // 不是时间
+        if (String(date) === 'Invalid Date') return val
+        const year = String(date.getFullYear())
+        const month = String(date.getMonth() + 1)
+        // TODO： 在转换过程中，时间出了问题，导致少一天，需要补上
+        const day = date.getDate().toString()
+        return `${year}年${month.padStart(2, '0')}月${day.padStart(2, '0')}日`
+      },
       getBaseLessonList(res) {
         const result = {}
         res.forEach(item => {
@@ -229,9 +246,55 @@
       },
       handleSetValue(val) {
         const res = val || JSON.parse(localStorage.getItem('val'))
+        if (!res) return
         console.log(res)
+        this.createTable(res)
         this.objMap = Object.assign({}, this.objMap, this.getBaseLessonList(res))
         this.listMap = this.getCommonWidthExcel(res)
+      },
+      createTable(res) {
+        const titleIndex = []
+        // 1.找到头部
+        res.forEach((item, index) => {
+          if (item.length === 1) titleIndex.push(index)
+        })
+        titleIndex.push(res.length)
+
+        const items = [] // 二维数组
+        for (let i = 0; i < titleIndex.length; i++) {
+          const first = titleIndex[i]
+          const last = titleIndex[i + 1]
+          if (!last) break
+          items.push(res.slice(first, last))
+        }
+
+        const strArr = []
+        items.forEach(value => {
+          value.forEach((item, index) => {
+            if (item.length === 1) {
+              const str = `
+            <table>
+              <tbody>
+                <tr>
+                  <td colspan="4">${item[0]}</td>
+                </tr>  
+            `
+              strArr.push(str)
+
+            } else {
+              const str = `
+              <tr>
+                <td>${item[0]}</td>
+                <td>${this.filterDate(item[1])}</td>
+                <td>${this.filterDate(item[2])}</td>
+                <td>${item[3]}</td>
+              </tr>
+            `
+              strArr.push(str)
+            }
+            if (value.length === index + 1) strArr.push(`</tbody></table>`)
+          })
+        })
       }
     },
     created() {
