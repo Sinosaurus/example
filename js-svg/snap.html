@@ -1,0 +1,334 @@
+<!--
+ * @LastEditors: Sinosaurus
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+    svg {
+      background-color: #001226;
+    }
+    .visible {
+      visibility: visible;
+    }
+    .hidden {
+      visibility: hidden;
+    }
+  </style>
+</head>
+<body>
+  
+  <svg id="svg" width="100%" height="100%" viewBox="0 0 534 260"></svg>
+  <script src="./../node_modules/snapsvg/dist/snap.svg.js"></script>
+  <script>
+    const svg = Snap('#svg')
+    const paper = svg.paper
+    // 生成底部线
+    function createPolyList () {
+      const polyline = paper.polyline(
+        12, 137,
+        120, 62,
+        200, 105,
+        272, 63,
+        322, 90,
+        375, 58,
+        452, 100,
+        500, 126,
+        390, 190,
+        328, 154,
+        284, 184,
+        233, 153,
+        197, 174,
+        167, 155,
+        100, 190,
+        12, 137
+      ).attr({
+        fill: "none",
+        stroke: "#16d628",
+        strokeWidth: 2
+      })
+      const line1 = paper.line(192, 80, 328, 154).attr({
+        fill: "none",
+        stroke: "#16d628",
+        strokeWidth: 2
+      })
+    }
+    // 生成点点
+    function createCircle () {
+      const circleList = {}
+      const circlePoints = [
+        [38, 118],
+        [165, 86],
+        [291, 73],
+        [422, 84],
+        [416, 175],
+        [300, 173],
+        [129, 175]
+      ]
+      circlePoints.forEach((item, index) => {
+        circleList[`circle${index}`] = paper.circle(item[0], item[1], 3).attr({
+          fill: '#fff',
+          filter: paper.filter(Snap.filter.blur(1))
+        })
+      })
+      return circleList
+    }
+    // 生成图片
+    function createImage () {
+      const imgData = [
+        {
+          src: './assets/ali',
+          x: 20,
+          y: 24
+        },
+        {
+          src: './assets/aws-bj',
+          x: 163,
+          y: 40
+        },
+        {
+          src: './assets/tencent',
+          x: 288,
+          y: 24
+        },
+        {
+          src: './assets/huawei',
+          x: 420,
+          y: 20
+        },
+        {
+          src: './assets/aws-nx',
+          x: 350,
+          y: 109
+        },
+        {
+          src: './assets/azure',
+          x: 234,
+          y: 130
+        },
+        {
+          src: './assets/ucloud',
+          x: 62,
+          y: 118
+        }
+      ]
+      const imgObj = {}
+      imgData.forEach((item, index) => {
+        imgObj[`img${index}`] = paper.image(item.src + '.png', item.x, item.y, 70, 102).attr({
+          viewBox: 'preserveAspectRatio',
+          class: index === 0 ? 'hidden' : ''
+        })
+        // 可以通过 attr 修改src属性来更改，现在不想动了，先这样吧
+        imgObj[`img${index}_active`] = paper.image(item.src + '-active.png', item.x, item.y, 70, 102).attr({
+          viewBox: 'preserveAspectRatio',
+          class: index === 0 ? '' : 'hidden'
+        })
+      })
+      return imgObj
+    }
+    
+    createPolyList()
+    const circleList = createCircle()
+    const imgObj = createImage()
+    
+    function imgToggle () {
+      let count = 0
+      const imgKeys = Object.keys(imgObj)
+      setInterval(function () {
+        const item = imgObj[imgKeys[count * 2]]
+        const item_active = imgObj[imgKeys[count * 2 + 1]]
+        for (const key in imgObj) {
+          if (key.indexOf('active') > -1) {
+            imgObj[key].node.classList.add('hidden')
+          } else {
+            imgObj[key].node.classList.remove('hidden')
+          }
+        }
+        item_active.node.classList.remove('hidden')
+        item.node.classList.add('hidden')
+        count++
+        if (count == imgKeys.length / 2) {
+          count = 0
+        }
+      }, 5000)
+    }
+    
+    function pointAnimate (circleList) {
+      const { circle0,circle1,circle2,circle3,circle4,circle5,circle6 } = circleList
+      const arrow = {
+        0: 'left',
+        1: 'left',
+        2: 'left',
+        3: 'left',
+        4: 'left',
+        5: 'left',
+        6: 'left'
+      }
+      const baseOptions = {
+        0: {
+          one: {
+            points: [38,118],
+          },
+          two: {
+            points: [12,137],
+          },
+          three: {
+            points: [64,168]
+          }
+        },
+        1: {
+          one: {
+            points: [165, 86],
+          },
+          two: {
+            points: [120, 62],
+          },
+          three: {
+            points: [84,86]
+          }
+        },
+        2: {
+          one: {
+            points: [291,73],
+          },
+          two: {
+            points: [272, 63],
+          },
+          three: {
+            points: [228, 88]
+          }
+        },
+        3: {
+          one: {
+            points: [422, 84],
+            // time: 700
+          },
+          two: {
+            points: [375, 58],
+            // time: 800
+          },
+          three: {
+            points: [352, 72],
+            // time: 600
+          }
+        },
+        4: {
+          one: {
+            points: [416,175],
+          },
+          two: {
+            points: [500,126],
+          },
+          three: {
+            points: [472,110]
+          }
+        },
+        5: {
+          one: {
+            points: [300,172],
+          },
+          two: {
+            points: [328, 154],
+          },
+          three: {
+            points: [352, 168]
+          }
+        }
+      }
+      // base
+      function myPromise (el, options, arrow = 'right') {
+        return new Promise((resolve, reject) => {
+          el.animate({
+            cx: options.points[0],
+            cy: options.points[1]
+          }, options.time || 1000, mina.linear, function () {
+            resolve(arrow)
+          })
+        })
+      }
+
+      function baseAnimate (index) {
+        const options = baseOptions[index]
+        if (arrow[index] === 'left') {
+          myPromise(circleList[`circle` + index], options.two).then(function () {
+            return myPromise(circleList[`circle` + index], options.three, 'right')
+          }).then(res => arrow[index] = res )
+        } else {
+          myPromise(circleList[`circle` + index], options.two).then(function () {
+            return myPromise(circleList[`circle` + index], options.one, 'left')
+          }).then(res => arrow[index] = res)
+        }
+      }
+      function circle0Animate () {
+        baseAnimate(0)
+      }
+      function circle1Animate () {
+        baseAnimate(1)
+      }
+      function circle2Animate () {
+        baseAnimate(2)
+      }
+
+      function circle3Animate () {
+        baseAnimate(3)
+      }
+      function circle4Animate () {
+        baseAnimate(4)
+      }
+      function circle5Animate () {
+        baseAnimate(5)
+      }
+      function circle6Animate () {
+        const index = 6
+        if (arrow[index]=== 'left') {
+          myPromise(circle6, { points: [165, 155] }).then(function () {
+            return myPromise(circle6, { points: [197, 174] })
+          }).then(function () {
+            return myPromise(circle6, { points: [233, 153] })
+          }).then(function () {
+            return myPromise(circle6, { points: [242, 157] }, 'right')
+          }).then(res => arrow[index] = res)
+        } else {
+          myPromise(circle6, { points: [233, 153] }).then(function () {
+            return myPromise(circle6, { points: [197, 174] })
+          }).then(function () {
+            return myPromise(circle6, { points: [165, 155] })
+          }).then(function () {
+            return myPromise(circle6, { points: [129, 175] }, 'left')
+          }).then(res => arrow[index] = res)
+        }
+      }
+      // init
+      circle0Animate()
+      circle1Animate()
+      circle2Animate()
+      circle3Animate()
+      circle4Animate()
+      circle5Animate()
+      circle6Animate()
+      setInterval(circle6Animate, 4100)
+      // 定时任务
+      setInterval(function () {
+        circle0Animate()
+        circle1Animate()
+        circle2Animate()
+        circle3Animate()
+        circle4Animate()
+        circle5Animate()
+      }, 2150)
+    }
+    function animate () {
+      imgToggle()
+      pointAnimate(circleList)
+    }
+    animate()
+  </script>
+</body>
+</html>
