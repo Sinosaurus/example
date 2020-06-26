@@ -22,4 +22,66 @@
       - 泛型 `Array<number>`
       - `number[]`
     + `元组`(Tuple) 表示一个已知元素数量和类型的数组，各元素的类型不必相同。
-      
+      ```ts
+        let tupList:[string, number] = ['string', 0]
+      ```
+    
+### 枚举 `enum`
+
++ 数字枚举  自动累加
+  ```ts
+    enum Direction {
+      Up,
+      Down,
+      Left,
+      Right
+    }
+    console.log(Direction.Up === 0) // true
+    console.log(Direction.Up === 1) // true
+    console.log(Direction.Up === 2) // true
+    console.log(Direction.Up === 3) // true
+  ```
+
+  > eg
+
+  ```ts
+    enum Direction {
+      Up = 10,
+      Down,
+      Left,
+      Right
+    }
+    Direction.Down === 11 // true
+    Direction.Left === 12 // true
+    Direction.Right === 13 // true
+  ```
+
++ 字符串枚举
+
+  ```ts
+    enum Direction {
+      Up = 'Up',
+      Down = 'Down',
+      Left = 'Left',
+      Right = 'Right'
+    }
+    Direction['Right'] === 'Right'
+    Direction.Up === 'Up'
+  ```
+
++ 异构枚举 字符串与数字混合【很少使用】
+
+  ```ts
+    enum StringAndNumber {
+      No = 0,
+      Yes = 'Yes'
+    }
+  ```
+
+#### 反向映射
+
+> eg
+
+```ts
+```
+
