@@ -78,10 +78,64 @@
     }
   ```
 
++ 常量枚举
+
+```ts
+const enum Directions {
+  Up = 'Up',
+  Down = 'Down',
+  Left = 'Left',
+  Right = 'Right'
+}
+```
+
++ 联合枚举类型
+
+  ```ts
+    enum Direction1 {
+      Up,
+      Down,
+      Left,
+      Right
+    }
+
+    let b: Direction1
+    // 此时b只能是 Direction1.Up | Direction1.Down | Direction1.Left | Direction1.Right 默认[0, 1, 2, 3]
+  ```
+
++ 枚举合并
+
+  ```ts
+    enum Animal1 {
+      Dog
+    }
+    enum Animal1 {
+      Cat = 1 // 需要赋值，不然默认0 有冲突
+    }
+  ```
+
++ 为枚举添加静态方法  
+
+
 #### 反向映射
 
 > eg
 
 ```ts
+  enum Direction {
+    Up,
+    Down,
+    Left,
+    Right
+  }
+  console.log(`
+    Direction.Up: ${Direction.Up}
+    Direction[0]: ${Direction[0]}
+  `)
+  /**
+   * Direction.Up: 0
+     Direction[0]: Up
+  */
 ```
+
 
