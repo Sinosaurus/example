@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>
+      <a href="https://www.cnblogs.com/xzzzys/p/7581832.html">前端加密</a>
+    </h1>
+    <p>目前用来测试一下，前端加密用户名密码，发现大型网站基本都是铭文显示</p>
+    <form action="/index.html">
+      <div>
+        <label for="name">用户名：</label><input type="text" id="name" />
+      </div>
+      <div>
+        <label for="password">密码：</label><input type="password" id="password" />
+        <div>
+          <div>输入的密码：<span id="pass"></span></div>
+          <div>发送的密码： <span id="encode"></span></div>
+          <div>后台解析返回的密码：<span id="decode"></span></div>
+        </div>
+      </div>
+      <div>
+        <button id="submit">submit</button>
+      </div>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/3.0.0-rc.1/jsencrypt.js"></script>
+    <script>
+      const submit = document.getElementById("submit");
+      submit.onclick = function (e) {
+        e.preventDefault();
+        const name = document.getElementById("name").value;
+        const password = document.getElementById("password").value;
+        if (!name || !password) return
+
+        document.getElementById('encode').innerText = setKey(password)
+        
+        const header = new Headers({
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        })
+        fetch("http://localhost:3000/login", {
+          method: "POST",
+          mode: "cors",
+          headers:header,
+          body: JSON.stringify({
+            name,
+            password: setKey(password)
+          })
+        })
+          .then((res) => {
+            return res.text();
+          })
+          .then((rd) => {
+            document.getElementById('decode').innerText = rd
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+      }
+
+      document.getElementById('password').oninput = function (e) {
+        document.getElementById('pass').innerText = e.target.value
+      }
+
+      function setKey(val) {
+        const public = `
+          -----BEGIN PUBLIC KEY-----
+          MIGeMA0GCSqGSIb3DQEBAQUAA4GMADCBiAKBgF/B0oQ6iQaMpJewl+ho/ccl5lc0
+          3y7isg6sPxJGVUHTZBwsMzIZnPAJfBevOd4D0Y0ijFpF2BVdFBiN+GWgfgUlTXYx
+          1nYnFL4rS6gXQYd2J6/48aRTGBc9Ku26XTLy3VARF6RyaozQ7yrn/RWjiRqltuug
+          GyOfTa7BYV57na+vAgMBAAE=
+          -----END PUBLIC KEY-----`
+        // Create the encryption object and set the key.
+        var crypt = new JSEncrypt()
+        //You can use also setPrivateKey and setPublicKey, they are both alias to setKey
+        crypt.setKey(public)
+        return crypt.encrypt(val)
+      }
+    </script>
+  </body>
+</html>

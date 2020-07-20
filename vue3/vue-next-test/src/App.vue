@@ -1,15 +1,14 @@
 <template>
   <div id="app">
+    <HelloWorld />
     <button @click="increment">
       Count is: {{ state.count }}, double is: {{ state.double }}
     </button>
-    <HelloWorld />
   </div>
 </template>
 
 <script>
 import { reactive, computed } from 'vue'
-import HelloWorld from './components/HelloWorld'
 export default {
   name: 'App',
   components: {
@@ -29,6 +28,7 @@ export default {
     }
   }
 }
+import HelloWorld from './components/HelloWorld'
 </script>
 
 <style>

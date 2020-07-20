@@ -1,0 +1,62 @@
+<!--
+ * @LastEditors: Sinosaurus
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container  {
+        border: 1px solid #ccc;
+        display: flex;
+      }
+      ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+      }
+      li {
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        border: 1px solid #ccc;
+      }
+      .left {
+        width: 30%;
+      }
+      .right {
+        width: 70%;
+      }
+      .right li {
+        cursor: grab;
+      }
+
+    </style>
+  </head>
+  <body>
+    <h3>
+      <a href="https://github.com/SortableJS/Sortable#cdn">文档地址 sortable</a>
+    </h3>
+    <div class="container">
+      <ul class="left">
+        <li>1967</li>
+        <li>1987</li>
+        <li>2001</li>
+      </ul>
+      <ul class="right" id="drag">
+        <li>aaa</li>
+        <li>bbb</li>
+        <li>ccc</li>
+      </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script>
+      const el = document.getElementById("drag");
+      const sortable = Sortable.create(el);
+    </script>
+  </body>
+</html>

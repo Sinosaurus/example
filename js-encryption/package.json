@@ -1,0 +1,30 @@
+{
+  "name": "js-encryption",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon --exec ts-node -- ./app.ts "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@koa/router": "^9.3.1",
+    "@types/koa": "^2.11.3",
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/koa-cors": "^0.0.0",
+    "@types/koa-router": "^7.4.1",
+    "@types/node": "^14.0.22",
+    "@types/node-rsa": "^1.0.0",
+    "jsencrypt": "^3.0.0-rc.1",
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-cors": "^0.0.16",
+    "koa-router": "^9.1.0",
+    "node-rsa": "^1.0.8",
+    "nodemon": "^2.0.4",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.6"
+  }
+}

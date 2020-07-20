@@ -1,0 +1,42 @@
+<!--
+ * @LastEditors: Sinosaurus
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="open">打开</button>
+  <button id="close">关闭</button>
+ <script src="./decorator.js"></script> 
+ <script>
+   function changeOpenButtonText () {
+     const open = document.getElementById('open')
+     open.innerText = '快去登录'
+   }
+   function disableOpenButton () {
+     const open = document.getElementById('open')
+     open.setAttribute('disabled', true)
+   }
+   function changeOpenButtonStatus () {
+     changeOpenButtonText()
+     disableOpenButton()
+   }
+
+   // class 方式
+   const openButton = new OpenModelByButton()
+   const decorator = new Decorator(openButton)
+
+   document.getElementById('open').addEventListener('click', function () {
+    //  openModel()
+    //  changeOpenButtonStatus()
+    decorator.onClick()
+   },false)
+
+   
+ </script>
+</body>
+</html>
