@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			html,
+			body {
+				height: 100%;
+				width: 100%;
+			}
+			body {
+				margin: 0;
+				display: grid;
+				grid-template-rows: 60px 1fr 60px;
+			}
+			header {
+				background-color: rgba(0, 0, 0, 0.6);
+			}
+			main {
+				border: 10px solid #ccc;
+				overflow: auto;
+			}
+			footer {
+				background-color: skyblue;
+			}
+
+			section {
+				height: 150vh;
+				background: linear-gradient(
+						217deg,
+						rgba(255, 0, 0, 0.8),
+						rgba(255, 0, 0, 0) 70.71%
+					),
+					linear-gradient(
+						127deg,
+						rgba(0, 255, 0, 0.8),
+						rgba(0, 255, 0, 0) 70.71%
+					),
+					linear-gradient(
+						336deg,
+						rgba(0, 0, 255, 0.8),
+						rgba(0, 0, 255, 0) 70.71%
+					);
+			}
+			h1:first-child {
+				margin: 0;
+			}
+			#top h1 {
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<header></header>
+		<main>
+			<section>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<div id="top">
+					<h1>滚动到指定位置</h1>
+				</div>
+			</section>
+		</main>
+		<footer>
+			<button id="btn">触发</button>
+		</footer>
+		<script>
+			document.getElementById('btn').onclick = function () {
+				const elTop = document.getElementById('top')
+        // const top = elTop.getBoundingClientRect().top
+        // const absTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
+        // console.log(top, absTop)
+        // consol
+        // 　var X= this.getBoundingClientRect().left+document.documentElement.scrollLeft;
+        
+				// top.scrollTo(10, 0)
+
+      function getElementViewTop(element){
+  　　　　var actualTop = element.offsetTop;
+  　　　　var current = element.offsetParent;
+  　　　　while (current !== null){
+  　　　　　　actualTop += current. offsetTop;
+  　　　　　　current = current.offsetParent;
+  　　　　}
+  　　　　return actualTop
+    　　}
+
+    var scrollSmoothTo = function (position) {
+        // 当前滚动高度
+        const main = document.querySelector('main')
+
+        var scrollTop = getElementViewTop(main)
+        // 滚动step方法
+        
+        var step = function () {
+            // 距离目标滚动距离
+            var distance = position - scrollTop
+            // 目标滚动位置
+            scrollTop = scrollTop + distance/ 5;
+            if (Math.abs(distance) < 1) {
+                main.scrollTo(0, position);
+            } else {
+                main.scrollTo(0, scrollTop);
+                requestAnimationFrame(step);
+            }
+        };
+        step();
+    };
+
+    scrollSmoothTo(getElementViewTop(elTop))
+				// main.scrollTo({
+				// 	top: getElementViewTop(elTop),
+				// 	// behavior: 'smooth',
+				// })
+			}
+		</script>
+	</body>
+</html>
