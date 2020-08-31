@@ -79,7 +79,20 @@
 				<h1>滚动到指定位置</h1>
 				<div id="top">
 					<h1>滚动到指定位置</h1>
-				</div>
+        </div>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+				<h1>滚动到指定位置</h1>
+        
 			</section>
 		</main>
 		<footer>
@@ -127,8 +140,31 @@
         };
         step();
     };
-
-    scrollSmoothTo(getElementViewTop(elTop))
+    const BackToTop = (rate = 2, num = 0) => {
+      // const doc = document.body.scrollTop ? document.body : document.documentElement
+      const doc = document.querySelector('main')
+      // 距离顶部的值
+      let scrollTop = doc.scrollTop
+			debugger
+      const top = function () {
+          // scrollTop = scrollTop + (num - scrollTop);
+          scrollTop = scrollTop + (num - scrollTop) / rate;
+					console.log(scrollTop, 'scrollTop')
+          // 临界判断，终止动画
+          if (scrollTop < (num + 1)) {
+              doc.scrollTop = num;
+              return;
+          }
+          doc.scrollTop = scrollTop;
+          // 动画gogogo!
+          requestAnimationFrame(top);
+      };
+      top();
+    }
+    const topP = elTop.getBoundingClientRect().top + ( window.pageYOffset || document.documentElement.scrollTop ) - ( document.documentElement.clientTop || 0 ) - 60
+    console.log(topP)
+    BackToTop(2, topP)
+    // scrollSmoothTo(getElementViewTop(elTop) - 60)
 				// main.scrollTo({
 				// 	top: getElementViewTop(elTop),
 				// 	// behavior: 'smooth',
