@@ -1,311 +1,584 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			section {
+				margin-top: 60px;
+				margin-left: 40px;
+				display: flex;
+				max-height: 600px;
+				max-width: 600px;
+				border: 1px solid red;
+			}
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    section {
-      margin-top: 60px;
-      margin-left: 40px;
-      display: flex;
-      max-height: 600px;
-      max-width: 600px;
-      border: 1px solid red;
-    }
+			nav {
+				width: 200px;
+			}
 
-    nav {
-      width: 200px;
-    }
+			main {
+				flex: 1;
+				overflow-y: auto;
+				padding-right: 20px;
+			}
 
-    main {
-      flex: 1;
-      overflow-y: auto;
-      padding-right: 20px;
-    }
+			ul {
+				padding-right: 20px;
+				padding-left: 0;
+				margin: 0;
+				list-style: none;
+			}
 
-    ul {
-      padding-right: 20px;
-      padding-left: 0;
-      margin: 0;
-      list-style: none;
-    }
+			li {
+				padding: 20px;
+				text-align: center;
+				cursor: pointer;
+				border-bottom: 1px dashed #ccc;
+			}
 
-    li {
-      padding: 20px;
-      text-align: center;
-      cursor: pointer;
-      border-bottom: 1px dashed #ccc;
-    }
+			div {
+				padding: 10px;
+			}
 
-    div {
-      padding: 10px;
-    }
+			div:nth-of-type(even) {
+				border: 3px solid #eee;
+			}
+		</style>
+	</head>
 
-    div:nth-of-type(even) {
-      border: 3px solid #eee;
-    }
-  </style>
-</head>
+	<body>
+		<p><a href="https://imweb.io/topic/57c5409e808fd2fb204eef52">scroll</a></p>
+		<section>
+			<nav>
+				<ul id="link">
+					<li data-id="link-1">link-1</li>
+					<li data-id="link-2">link-2</li>
+					<li data-id="link-3">link-3</li>
+					<li data-id="link-4">link-4</li>
+					<li data-id="link-5">link-5</li>
+					<li data-id="link-6">link-6</li>
+				</ul>
+			</nav>
+			<main id="scroll">
+				<div id="link-1">
+					<h3>111111</h3>
+					<h3>111111</h3>
+					<h3>111111</h3>
+					<h3>111111</h3>
+					<h3>111111</h3>
+					<h3>111111</h3>
+				</div>
+				<div id="link-2">
+					<h3>222222222</h3>
+					<h3>222222222</h3>
+					<h3>222222222</h3>
+					<h3>222222222</h3>
+					<h3>222222222</h3>
+					<h3>222222222</h3>
+				</div>
+				<div id="link-3">
+					<h3>3333333</h3>
+					<h3>3333333</h3>
+					<h3>3333333</h3>
+					<h3>3333333</h3>
+					<h3>3333333</h3>
+					<h3>3333333</h3>
+				</div>
+				<div id="link-4">
+					<h3>4444444</h3>
+					<h3>4444444</h3>
+					<h3>4444444</h3>
+					<h3>4444444</h3>
+					<h3>4444444</h3>
+					<h3>4444444</h3>
+				</div>
+				<div id="link-5">
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+					<h3>55555555</h3>
+				</div>
+				<div id="link-6">
+					<h3>666666</h3>
+					<h3>666666</h3>
+					<h3>666666</h3>
+					<h3>666666</h3>
+					<h3>666666</h3>
+					<h3>666666</h3>
+				</div>
+			</main>
+		</section>
+		<script>
+			/**
+			 *
+			 * Created by Borbás Geri on 12/17/13
+			 * Copyright (c) 2013 eppz! development, LLC.
+			 *
+			 * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+			 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+			 * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+			 *
+			 */
 
-<body>
-  <p><a href="https://imweb.io/topic/57c5409e808fd2fb204eef52">scroll</a></p>
-  <section>
-    <nav>
-      <ul id="link">
-        <li data-id="link-1">link-1</li>
-        <li data-id="link-2">link-2</li>
-        <li data-id="link-3">link-3</li>
-        <li data-id="link-4">link-4</li>
-        <li data-id="link-5">link-5</li>
-        <li data-id="link-6">link-6</li>
-      </ul>
-    </nav>
-    <main id="scroll">
-      <div id="link-1">
-        <h3>111111</h3>
-        <h3>111111</h3>
-        <h3>111111</h3>
-        <h3>111111</h3>
-        <h3>111111</h3>
-        <h3>111111</h3>
-      </div>
-      <div id="link-2">
-        <h3>222222222</h3>
-        <h3>222222222</h3>
-        <h3>222222222</h3>
-        <h3>222222222</h3>
-        <h3>222222222</h3>
-        <h3>222222222</h3>
-      </div>
-      <div id="link-3">
-        <h3>3333333</h3>
-        <h3>3333333</h3>
-        <h3>3333333</h3>
-        <h3>3333333</h3>
-        <h3>3333333</h3>
-        <h3>3333333</h3>
-      </div>
-      <div id="link-4">
-        <h3>4444444</h3>
-        <h3>4444444</h3>
-        <h3>4444444</h3>
-        <h3>4444444</h3>
-        <h3>4444444</h3>
-        <h3>4444444</h3>
-      </div>
-      <div id="link-5">
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-        <h3>55555555</h3>
-      </div>
-      <div id="link-6">
-        <h3>666666</h3>
-        <h3>666666</h3>
-        <h3>666666</h3>
-        <h3>666666</h3>
-        <h3>666666</h3>
-        <h3>666666</h3>
-      </div>
-    </main>
-  </section>
-  <script>
-    /**
-     *
-     * Created by Borbás Geri on 12/17/13
-     * Copyright (c) 2013 eppz! development, LLC.
-     *
-     * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-     * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-     *
-     */
+			var EPPZScrollTo = {
+				/**
+				 * Helpers.
+				 */
+				documentVerticalScrollPosition: function () {
+					if (self.pageYOffset) return self.pageYOffset // Firefox, Chrome, Opera, Safari.
+					if (document.documentElement && document.documentElement.scrollTop)
+						return document.documentElement.scrollTop // Internet Explorer 6 (standards mode).
+					if (document.body.scrollTop) return document.body.scrollTop // Internet Explorer 6, 7 and 8.
+					return 0 // None of the above.
+				},
 
+				viewportHeight: function () {
+					return document.compatMode === 'CSS1Compat'
+						? document.documentElement.clientHeight
+						: document.body.clientHeight
+				},
 
-    var EPPZScrollTo = {
-      /**
-       * Helpers.
-       */
-      documentVerticalScrollPosition: function () {
-        if (self.pageYOffset) return self.pageYOffset; // Firefox, Chrome, Opera, Safari.
-        if (document.documentElement && document.documentElement.scrollTop) return document.documentElement
-          .scrollTop; // Internet Explorer 6 (standards mode).
-        if (document.body.scrollTop) return document.body.scrollTop; // Internet Explorer 6, 7 and 8.
-        return 0; // None of the above.
-      },
+				documentHeight: function () {
+					return document.height !== undefined
+						? document.height
+						: document.body.offsetHeight
+				},
 
-      viewportHeight: function () {
-        return (document.compatMode === "CSS1Compat") ? document.documentElement.clientHeight : document.body
-          .clientHeight;
-      },
+				documentMaximumScrollPosition: function () {
+					return this.documentHeight() - this.viewportHeight()
+				},
 
-      documentHeight: function () {
-        return (document.height !== undefined) ? document.height : document.body.offsetHeight;
-      },
+				elementVerticalClientPositionById: function (id) {
+					var element = document.getElementById(id)
+					var rectangle = element.getBoundingClientRect()
+					return rectangle.top
+				},
 
-      documentMaximumScrollPosition: function () {
-        return this.documentHeight() - this.viewportHeight();
-      },
+				/**
+				 * Animation tick.
+				 */
+				scrollVerticalTickToPosition: function (
+					currentPosition,
+					targetPosition
+				) {
+					var filter = 0.2
+					var fps = 60
+					var difference =
+						parseFloat(targetPosition) - parseFloat(currentPosition)
 
-      elementVerticalClientPositionById: function (id) {
-        var element = document.getElementById(id);
-        var rectangle = element.getBoundingClientRect();
-        return rectangle.top;
-      },
+					// Snap, then stop if arrived.
+					var arrived = Math.abs(difference) <= 0.5
+					if (arrived) {
+						// Apply target.
+						scrollTo(0.0, targetPosition)
+						return
+					}
 
-      /**
-       * Animation tick.
-       */
-      scrollVerticalTickToPosition: function (currentPosition, targetPosition) {
-        var filter = 0.2;
-        var fps = 60;
-        var difference = parseFloat(targetPosition) - parseFloat(currentPosition);
+					// Filtered position.
+					currentPosition =
+						parseFloat(currentPosition) * (1.0 - filter) +
+						parseFloat(targetPosition) * filter
 
-        // Snap, then stop if arrived.
-        var arrived = (Math.abs(difference) <= 0.5);
-        if (arrived) {
-          // Apply target.
-          scrollTo(0.0, targetPosition);
-          return;
-        }
+					// Apply target.
+					scrollTo(0.0, Math.round(currentPosition))
 
-        // Filtered position.
-        currentPosition = (parseFloat(currentPosition) * (1.0 - filter)) + (parseFloat(targetPosition) * filter);
+					// Schedule next tick.
+					setTimeout(
+						'EPPZScrollTo.scrollVerticalTickToPosition(' +
+							currentPosition +
+							', ' +
+							targetPosition +
+							')',
+						1000 / fps
+					)
+				},
 
-        // Apply target.
-        scrollTo(0.0, Math.round(currentPosition));
+				/**
+				 * For public use.
+				 *
+				 * @param id The id of the element to scroll to.
+				 * @param padding Top padding to apply above element.
+				 */
+				scrollVerticalToElementById: function (id, padding) {
+					var element = document.getElementById(id)
+					if (element == null) {
+						console.warn("Cannot find element with id '" + id + "'.")
+						return
+					}
 
-        // Schedule next tick.
-        setTimeout("EPPZScrollTo.scrollVerticalTickToPosition(" + currentPosition + ", " + targetPosition + ")", (
-          1000 / fps));
-      },
+					var targetPosition =
+						this.documentVerticalScrollPosition() +
+						this.elementVerticalClientPositionById(id) -
+						padding
+					var currentPosition = this.documentVerticalScrollPosition()
 
-      /**
-       * For public use.
-       *
-       * @param id The id of the element to scroll to.
-       * @param padding Top padding to apply above element.
-       */
-      scrollVerticalToElementById: function (id, padding) {
-        var element = document.getElementById(id);
-        if (element == null) {
-          console.warn('Cannot find element with id \'' + id + '\'.');
-          return;
-        }
+					// Clamp.
+					var maximumScrollPosition = this.documentMaximumScrollPosition()
+					if (targetPosition > maximumScrollPosition)
+						targetPosition = maximumScrollPosition
 
-        var targetPosition = this.documentVerticalScrollPosition() + this.elementVerticalClientPositionById(id) -
-          padding;
-        var currentPosition = this.documentVerticalScrollPosition();
+					// Start animation.
+					this.scrollVerticalTickToPosition(currentPosition, targetPosition)
+				},
+			}
+		</script>
+		<script>
+      // https://github.com/heyui/heyui/edit/master/src/plugins/scroll-into-view/index.js
+			/**
+scrollIntoView(someElement, {
+  time: 500, // half a second
+  ease: function(value){
+    return Math.pow(value,2) - value; // Do something weird.
+  },
+  validTarget: function(target, parentsScrolled){
+    // Only scroll the first two elements that don't have the class "dontScroll"
+    return parentsScrolled < 2 && target !== window && !target.matches('.dontScroll');
+  },
+  align:{
+    top: 0 to 1, default 0.5 (center)
+    left: 0 to 1, default 0.5 (center)
+    topOffset: pixels to offset top alignment
+    leftOffset: pixels to offset left alignment
+  },
+  isScrollable: function(target, defaultIsScrollable){
+    // By default scroll-into-view will only attempt to scroll elements that have overflow not set to `"hidden"` and who's scroll width/height is larger than their client height.
+    // You can override this check by passing an `isScrollable` function to settings:
+    return defaultIsScrollable(target) || ~target.className.indexOf('scrollable');
+  }
+});
+*/
 
-        // Clamp.
-        var maximumScrollPosition = this.documentMaximumScrollPosition();
-        if (targetPosition > maximumScrollPosition) targetPosition = maximumScrollPosition;
+			const COMPLETE = 'COMPLETE'
+			const CANCELED = 'CANCELED'
 
-        // Start animation.
-        this.scrollVerticalTickToPosition(currentPosition, targetPosition);
-      }
-    };
-  </script>
-  <script>
-    var scrollSmoothTo = function (el, position) {
-      if (!window.requestAnimationFrame) {
-        window.requestAnimationFrame = function (callback, element) {
-          return setTimeout(callback, 1000 / 60);
-        };
-      }
-      // 当前滚动高度
-      var scrollTop = 0
-      // TODO: 需要判断下，是否是相同的位置，若是就跳出
-      // 滚动step方法
-      var step = function () {
-        // 距离目标滚动距离
-        var distance = position - scrollTop;
-        // 目标滚动位置
-        scrollTop = scrollTop + distance / 5;
-        if (Math.abs(distance) < 1) {
-          el.scrollTo(0, position);
-        } else {
-          el.scrollTo(0, scrollTop);
-          requestAnimationFrame(step);
-        }
-      };
-      step();
-    };
-    
-    document.addEventListener('DOMContentLoaded', function () {
-      const link = document.getElementById('link')
-      const scroll = document.getElementById('scroll')
-      link.addEventListener('click', e => {
-        if (e.target.nodeName !== 'LI') return;
-        const id = e.target.dataset.id
-        const targetContent = document.getElementById(id)
-        const top1 = targetContent.offsetTop
-        const { 
-          scrollTop,
-          scrollHeight,
-          clientHeight,
-          clientTop,
-          offsetTop,
-          offsetHeight
-        } = targetContent
-        const { 
-          y,
-          top
-        } = targetContent.getBoundingClientRect()
-        console.log(`
+			function requestAnimation(task) {
+				if ('requestAnimationFrame' in window) {
+					return window.requestAnimationFrame(task)
+				}
+
+				setTimeout(task, 16)
+			}
+
+			function setElementScroll(element, x, y) {
+				if (element === window) {
+					element.scrollTo(x, y)
+				} else {
+					element.scrollLeft = x
+					element.scrollTop = y
+				}
+			}
+
+			function getTargetScrollLocation(target, parent, align) {
+				let targetPosition = target.getBoundingClientRect()
+				let parentPosition = null
+				let x = null
+				let y = null
+				let differenceX = null
+				let differenceY = null
+				let targetWidth = null
+				let targetHeight = null
+				let leftAlign = align && align.left != null ? align.left : 0.5
+				let topAlign = align && align.top != null ? align.top : 0.5
+				let leftOffset =
+					align && align.leftOffset != null ? align.leftOffset : 0
+				let topOffset = align && align.topOffset != null ? align.topOffset : 0
+				let leftScalar = leftAlign
+				let topScalar = topAlign
+
+				if (parent === window) {
+					targetWidth = Math.min(targetPosition.width, window.innerWidth)
+					targetHeight = Math.min(targetPosition.height, window.innerHeight)
+					x =
+						targetPosition.left +
+						window.pageXOffset -
+						window.innerWidth * leftScalar +
+						targetWidth * leftScalar
+					y =
+						targetPosition.top +
+						window.pageYOffset -
+						window.innerHeight * topScalar +
+						targetHeight * topScalar
+					x -= leftOffset
+					y -= topOffset
+					differenceX = x - window.pageXOffset
+					differenceY = y - window.pageYOffset
+				} else {
+					targetWidth = targetPosition.width
+					targetHeight = targetPosition.height
+					parentPosition = parent.getBoundingClientRect()
+					let offsetLeft =
+						targetPosition.left - (parentPosition.left - parent.scrollLeft)
+					let offsetTop =
+						targetPosition.top - (parentPosition.top - parent.scrollTop)
+					x =
+						offsetLeft +
+						targetWidth * leftScalar -
+						parent.clientWidth * leftScalar
+					y =
+						offsetTop +
+						targetHeight * topScalar -
+						parent.clientHeight * topScalar
+					x = Math.max(Math.min(x, parent.scrollWidth - parent.clientWidth), 0)
+					y = Math.max(
+						Math.min(y, parent.scrollHeight - parent.clientHeight),
+						0
+					)
+					x -= leftOffset
+					y -= topOffset
+					differenceX = x - parent.scrollLeft
+					differenceY = y - parent.scrollTop
+				}
+
+				return {
+					x,
+					y,
+					differenceX,
+					differenceY,
+				}
+			}
+
+			function animate(parent) {
+				requestAnimation(function () {
+					let scrollSettings = parent.scrollOption
+					if (!scrollSettings) {
+						return
+					}
+
+					let location = getTargetScrollLocation(
+						scrollSettings.target,
+						parent,
+						scrollSettings.align
+					)
+					let time = Date.now() - scrollSettings.startTime
+					let timeValue = Math.min((1 / scrollSettings.time) * time, 1)
+
+					if (time > scrollSettings.time + 20) {
+						setElementScroll(parent, location.x, location.y)
+						parent.scrollOption = null
+						return scrollSettings.end(COMPLETE)
+					}
+
+					let easeValue = 1 - scrollSettings.ease(timeValue)
+
+					setElementScroll(
+						parent,
+						location.x - location.differenceX * easeValue,
+						location.y - location.differenceY * easeValue
+					)
+
+					animate(parent)
+				})
+			}
+
+			function transitionScrollTo(target, parent, settings, callback) {
+				let idle = !parent.scrollOption
+				let lastSettings = parent.scrollOption
+				let now = Date.now()
+				let endHandler
+
+				if (lastSettings) {
+					lastSettings.end(CANCELED)
+				}
+
+				function end(endType) {
+					parent.scrollOption = null
+					if (parent.parentElement && parent.parentElement.scrollOption) {
+						parent.parentElement.scrollOption.end(endType)
+					}
+					callback(endType)
+					parent.removeEventListener('touchstart', endHandler)
+				}
+
+				parent.scrollOption = {
+					startTime: lastSettings ? lastSettings.startTime : Date.now(),
+					target,
+					time:
+						settings.time + (lastSettings ? now - lastSettings.startTime : 0),
+					ease: settings.ease,
+					align: settings.align,
+					end,
+				}
+
+				endHandler = end.bind(null, CANCELED)
+				parent.addEventListener('touchstart', endHandler)
+
+				if (idle) {
+					animate(parent)
+				}
+			}
+
+			function defaultIsScrollable(element) {
+				return (
+					element === window ||
+					((element.scrollHeight !== element.clientHeight ||
+						element.scrollWidth !== element.clientWidth) &&
+						getComputedStyle(element).overflow !== 'hidden')
+				)
+			}
+
+			function defaultValidTarget() {
+				return true
+			}
+
+			function scrollTo (target, settings, callback) {
+				if (!target) {
+					return
+				}
+
+				if (typeof settings === 'function') {
+					callback = settings
+					settings = null
+				}
+
+				if (!settings) {
+					settings = {}
+				}
+
+				settings.time = isNaN(settings.time) ? 1000 : settings.time
+				settings.ease =
+					settings.ease ||
+					function (v) {
+						return 1 - Math.pow(1 - v, v / 2)
+					}
+
+				let parent = target.parentElement
+				let parents = 0
+
+				function done(endType) {
+					parents -= 1
+					if (!parents && callback) {
+						callback(endType)
+					}
+				}
+
+				let validTarget = settings.validTarget || defaultValidTarget
+				let isScrollable = settings.isScrollable
+
+				while (parent) {
+					if (
+						validTarget(parent, parents) &&
+						(isScrollable
+							? isScrollable(parent, defaultIsScrollable)
+							: defaultIsScrollable(parent))
+					) {
+						parents += 1
+						transitionScrollTo(target, parent, settings, done)
+					}
+
+					parent = parent.parentElement
+
+					if (!parent) {
+						return
+					}
+
+					if (parent.tagName === 'BODY') {
+						parent = window
+					}
+				}
+			}
+		</script>
+		<script>
+			var scrollSmoothTo = function (el, position) {
+				if (!window.requestAnimationFrame) {
+					window.requestAnimationFrame = function (callback, element) {
+						return setTimeout(callback, 1000 / 60)
+					}
+				}
+				// 当前滚动高度
+				var scrollTop = 0
+				// TODO: 需要判断下，是否是相同的位置，若是就跳出
+				// 滚动step方法
+				var step = function () {
+					// 距离目标滚动距离
+					var distance = position - scrollTop
+					// 目标滚动位置
+					scrollTop = scrollTop + distance / 5
+					if (Math.abs(distance) < 1) {
+						el.scrollTo(0, position)
+					} else {
+						el.scrollTo(0, scrollTop)
+						requestAnimationFrame(step)
+					}
+				}
+				step()
+			}
+
+			document.addEventListener(
+				'DOMContentLoaded',
+				function () {
+					const link = document.getElementById('link')
+					const scroll = document.getElementById('scroll')
+					link.addEventListener(
+						'click',
+						(e) => {
+							if (e.target.nodeName !== 'LI') return
+							const id = e.target.dataset.id
+							const targetContent = document.getElementById(id)
+							const top1 = targetContent.offsetTop
+							// const r = getTargetScrollLocation(scroll)
+							const {
+								scrollTop,
+								scrollHeight,
+								clientHeight,
+								clientTop,
+								offsetTop,
+								offsetHeight,
+							} = targetContent
+							const { y, top } = targetContent.getBoundingClientRect()
+							console.log(`
           scrollTop: ${scrollTop}
           scrollHeight: ${scrollHeight}
           clientHeight: ${clientHeight}
@@ -315,14 +588,18 @@
           top: ${top}
           y: ${y}
         `)
-        // scroll.scroll({
-        //   top,
-        //   behavior: 'smooth'
-        // })
-        scrollSmoothTo(scroll, top1)
-      }, false)
-    }, false)
-  </script>
-</body>
-
+              scrollTo(targetContent, {
+                time: 500,
+                align: {
+                  top: 0
+                }
+              })
+						},
+						false
+					)
+				},
+				false
+			)
+		</script>
+	</body>
 </html>
