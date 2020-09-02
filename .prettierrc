@@ -1,0 +1,13 @@
+# https://prettier.io/docs/en/options.html
+# 书写长度
+printWidth: 80
+# tab缩进大小,默认为2
+tabWidth: 2
+# 使用tab缩进，默认false
+useTabs: true
+# 使用分号, 默认true
+semi: false
+# 使用单引号, 默认false(在jsx中配置无效, 默认都是双引号)
+singleQuote: true
+# 行尾逗号,默认none,可选 none|es5|all
+bracketSpacing: true
