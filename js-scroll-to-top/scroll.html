@@ -50,6 +50,7 @@
 </head>
 
 <body>
+  <p><a href="https://imweb.io/topic/57c5409e808fd2fb204eef52">scroll</a></p>
   <section>
     <nav>
       <ul id="link">
@@ -259,6 +260,31 @@
     };
   </script>
   <script>
+    var scrollSmoothTo = function (el, position) {
+      if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = function (callback, element) {
+          return setTimeout(callback, 1000 / 60);
+        };
+      }
+      // 当前滚动高度
+      var scrollTop = 0
+      // TODO: 需要判断下，是否是相同的位置，若是就跳出
+      // 滚动step方法
+      var step = function () {
+        // 距离目标滚动距离
+        var distance = position - scrollTop;
+        // 目标滚动位置
+        scrollTop = scrollTop + distance / 5;
+        if (Math.abs(distance) < 1) {
+          el.scrollTo(0, position);
+        } else {
+          el.scrollTo(0, scrollTop);
+          requestAnimationFrame(step);
+        }
+      };
+      step();
+    };
+    
     document.addEventListener('DOMContentLoaded', function () {
       const link = document.getElementById('link')
       const scroll = document.getElementById('scroll')
@@ -266,11 +292,34 @@
         if (e.target.nodeName !== 'LI') return;
         const id = e.target.dataset.id
         const targetContent = document.getElementById(id)
-        const top = targetContent.offsetTop
-        scroll.scroll({
-          top,
-          behavior: 'smooth'
-        })
+        const top1 = targetContent.offsetTop
+        const { 
+          scrollTop,
+          scrollHeight,
+          clientHeight,
+          clientTop,
+          offsetTop,
+          offsetHeight
+        } = targetContent
+        const { 
+          y,
+          top
+        } = targetContent.getBoundingClientRect()
+        console.log(`
+          scrollTop: ${scrollTop}
+          scrollHeight: ${scrollHeight}
+          clientHeight: ${clientHeight}
+          clientTop: ${clientTop}
+          offsetTop: ${offsetTop}
+          offsetHeight: ${offsetHeight}
+          top: ${top}
+          y: ${y}
+        `)
+        // scroll.scroll({
+        //   top,
+        //   behavior: 'smooth'
+        // })
+        scrollSmoothTo(scroll, top1)
       }, false)
     }, false)
   </script>
