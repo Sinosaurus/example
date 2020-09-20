@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<style>
+			div.section_maodian {
+				height: 500px;
+				width: 100%;
+			}
+			ul,
+			li {
+				list-style: none;
+			}
+			ul {
+				position: fixed;
+				right: 10px;
+				width: 100px;
+			}
+			li {
+				height: 20px;
+				background: burlywood;
+				padding: 10px;
+				cursor: pointer;
+			}
+			li.active {
+				background-color: brown;
+			}
+			li.active {
+				color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="section_maodian">秒杀专区</div>
+		<div class="section_maodian">买一赠一</div>
+		<div class="section_maodian">品牌齐聚</div>
+		<script>
+			const ScrollAnchorModule = (function () {
+				let scrollH =
+					document.documentElement.scrollTop || document.body.scrollTop
+				//scroll更新
+				const updateNav = (secItems, navItems) => {
+					if (getScrollTop() === 0) navon(0, navItems)
+					if (getScrollTop() + getWindowHeight() === getScrollHeight())
+						navon(secItems.length - 1, navItems)
+					else {
+						secItems.forEach((item, index) => {
+							if (getScrollTop() >= item.offsetTop) {
+								navon(index, navItems)
+							}
+						})
+					}
+				}
+				//定位
+				const toScroll = (index, secItems) => {
+					//计算位置
+					let scrollY = secItems[index].offsetTop
+					window.scrollTo(0, scrollY)
+				}
+				//当前锚点
+				const navon = (index, navItems) => {
+					navItems.forEach((item) => {
+						item.classList = ''
+					})
+					navItems[index].classList = 'active'
+				}
+				//防抖
+				const debounce = (fn, wait) => {
+					let timeout = null
+					return function () {
+						if (timeout !== null) clearTimeout(timeout)
+						timeout = setTimeout(fn, wait)
+					}
+				}
+				//节流
+				const throttle = (fn, delay) => {
+					let prev = Date.now() //记录上一次触发回调的时间
+					return function () {
+						let context = this //保留调用时的this上下文
+						let args = arugments //保留调用时传入的参数
+						let now = Date.now() //记录本次触发回调的时间
+						if (now - prev >= delay) {
+							//判断上次触发回调的时间和本次触发回调的时间差十分小于时间间隔的阈值
+							fn.apply(context, args) //大于设定的阈值，则执行回调
+							prev = Date.now()
+						}
+					}
+				}
+				//滚动条在Y轴上的滚动距离
+				const getScrollTop = () => {
+					let scrollTop = 0,
+						bodyScrollTop = 0,
+						documentScrollTop = 0
+					if (document.body) {
+						bodyScrollTop = document.body.scrollTop
+					}
+					if (document.documentElement) {
+						documentScrollTop = document.documentElement.scrollTop
+					}
+					scrollTop =
+						bodyScrollTop - documentScrollTop > 0
+							? bodyScrollTop
+							: documentScrollTop
+					return scrollTop
+				}
+				//文档的总高度
+				const getScrollHeight = () => {
+					let scrollHeight = 0,
+						bodyScrollHeight = 0,
+						documentScrollHeight = 0
+					if (document.body) {
+						bodyScrollHeight = document.body.scrollHeight
+					}
+					if (document.documentElement) {
+						documentScrollHeight = document.documentElement.scrollHeight
+					}
+					scrollHeight =
+						bodyScrollHeight - documentScrollHeight > 0
+							? bodyScrollHeight
+							: documentScrollHeight
+					return scrollHeight
+				}
+				//浏览器视口(窗口)的高度
+				const getWindowHeight = () => {
+					let windowHeight = 0
+					if (document.compatMode == 'CSS1Compat') {
+						windowHeight = document.documentElement.clientHeight
+					} else {
+						windowHeight = document.body.clientHeight
+					}
+					return windowHeight
+				}
+				return {
+					//模块返回接口
+					init: (options) => {
+						let html =
+							`<ul class="sideMaodian">` +
+							options.navMenu
+								.map((item, index) => {
+									return `<li class="nav_maodian ">${item}</li>`
+								})
+								.join('') +
+							`</ul>`
+						document.body.insertAdjacentHTML('afterbegin', html)
+
+						let navItems = document.querySelectorAll(options.navClass)
+						let secItems = document.querySelectorAll(options.secClass)
+						let sideMaodian = document.querySelector('.sideMaodian')
+						if (scrollH === 0) navon(0, navItems)
+
+						//利用事件冒泡机制，在点击的li元素的祖先元素ul标签上注册click事件
+						sideMaodian.addEventListener(
+							'click',
+							(event) => {
+								let item = event.target
+								let lists = Array.from(sideMaodian.querySelectorAll('li'))
+								let index = lists.indexOf(item) //li 索引
+								if (event.target.tagName.toLowerCase() === 'li') {
+									navon(index, navItems)
+									toScroll(index, secItems)
+								}
+							},
+							false
+						)
+						//注册scroll事件
+						window.addEventListener(
+							'scroll',
+							(event) => {
+								event.stopPropagation()
+								debounce(updateNav(secItems, navItems), 1000)
+							},
+							false
+						)
+					},
+				}
+			})()
+			var options = {
+				navClass: '.nav_maodian',
+				secClass: '.section_maodian',
+				navMenu: ['秒杀专区', '买一赠一', '品牌齐聚'],
+			}
+			ScrollAnchorModule.init(options)
+		</script>
+	</body>
+</html>
