@@ -7,7 +7,6 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "browserify": "browserify ./node_modules/xml2json/index.js -o ./xml2json.js"
   },
   "repository": {
