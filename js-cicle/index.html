@@ -1,0 +1,170 @@
+<!--
+ * @LastEditors: Sinosaurus
+-->
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>画圆</title>
+		<style>
+			.container {
+        position: relative;
+				width: 600px;
+				height: 600px;
+				margin: 50px auto;
+				border: 1px solid red;
+        
+			}
+      .container::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        height: 100%;
+        border-right: 1px solid red;
+      }
+      .container::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        border-top: 1px solid red;
+      }
+			.circle {
+				position: relative;
+				width: 100%;
+				height: 100%;
+				border-radius: 50%;
+				box-shadow: 0 9px 30px 3px rgba(0, 0, 0, 0.46);
+			}
+			.circle__item {
+				position: absolute;
+				width: 40px;
+				height: 40px;
+				background: linear-gradient(70deg, #0ebeff, #ffdd40, #ae63e4, #47cf73);
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<label for="angle">开始度数</label>
+			<input
+				type="range"
+				id="angle"
+				value="200"
+				name="angle"
+				min="0"
+				max="360"
+				step="10"
+			/>
+		</div>
+		<div>
+			<label for="circle">平分多大的圆</label>
+			<input type="number" id="circle" value="330" step="5" min="0" max="360" />
+		</div>
+		<div class="container">
+			<div class="circle">
+				<div class="circle__item"></div>
+				<div class="circle__item"></div>
+				<div class="circle__item"></div>
+				<div class="circle__item"></div>
+				<div class="circle__item"></div>
+				<div class="circle__item"></div>
+				<div class="circle__item"></div>
+				<div class="circle__item"></div>
+				<div class="circle__item"></div>
+			</div>
+		</div>
+	</body>
+	<script>
+		/**
+		 * 目标：
+		 * 1. 围绕圆旋转
+		 * 2. 在圆的内部紧贴边缘
+		 * 3. 可以指定开始结束位置
+		 * 4. 依次均匀分开摆放
+		 */
+		const container = document.querySelector('.container')
+		const containerWidth = container.clientWidth
+		const circleList = Array.from(document.querySelectorAll('.circle__item'))
+		console.log(circleList)
+		// 角度转弧度
+		const transformToRadians = (degrees) => degrees * (Math.PI / 180)
+		// 圆半径
+		const circleRadius = containerWidth / 2
+		// 圆心
+		const circlePointX = circleRadius
+		const circlePointY = circleRadius
+		// 划分多少等分
+		const count = circleList.length
+
+		/**
+		 * @description: 根据已知角度算出每个元素的具体位置
+		 * @param {number} angleStart 开始的角度
+		 * @param {number} circle 划分多大的圆
+		 */
+		let cache = {}
+		function changeItemAngle(
+			options = {
+				angleStart: 200,
+				circle: 330,
+			}
+		) {
+			cache = {
+				...cache,
+				...options,
+			}
+			// 划分的角度
+      const angle = Math.floor(cache.circle / count)
+      
+			circleList.forEach((item, index) => {
+        const itemAngle = (angle * (index + 1) + cache.angleStart) % 360
+				// 弧度
+				const itemRadians = transformToRadians(itemAngle)
+        const { clientWidth, clientHeight } = item;
+
+        let top = circleRadius * Math.sin(itemRadians) + circlePointY
+        let left = circleRadius * Math.cos(itemRadians) + circlePointX
+
+        if (itemAngle < 90 && itemAngle >= 0 ) {
+          top -= clientHeight
+          left -= clientWidth
+        } else if (itemAngle >= 90 && itemAngle < 180) {
+          top -= clientHeight
+        } else if (itemAngle >= 270 &&  itemAngle < 360)  {
+          left -= clientWidth
+        }
+        
+				item.style.top = top + 'px'
+				item.style.left = left + 'px'
+				item.innerText = itemAngle
+			})
+		}
+		
+		function changeItemStartAngle() {
+			const slide = document.getElementById('angle')
+			slide.addEventListener(
+				'input',
+				function (e) {
+					const angle = Number(e.target.value)
+					changeItemAngle({ angleStart: angle })
+				},
+				false
+			)
+		}
+		function changeItemDiveCircle() {
+			const circle = document.getElementById('circle')
+			circle.addEventListener(
+				'input',
+				function (e) {
+					const angle = Number(e.target.value)
+					changeItemAngle({ circle: angle })
+				},
+				false
+			)
+    }
+    changeItemStartAngle()
+		changeItemDiveCircle()
+		changeItemAngle()
+	</script>
+</html>
