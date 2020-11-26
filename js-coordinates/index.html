@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html {
+      box-sizing: border-box;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: inherit;
+    }
+
+    .circle__container {
+      margin: 10vh auto;
+      width: 80vh;
+      height: 80vh;
+      position: relative;
+      border: 1px solid black;
+    }
+
+    .circle {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 1px solid red;
+      border-radius: 50%;
+    }
+
+    .circle__item {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: skyblue;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="circle__container">
+      <div class="circle"></div>
+      <div v-for="n in 10" :key="n" class="circle__item">
+        <h3>{{n}}</h3>
+      </div>
+    </div>
+  </div>
+  <script src="./../node_modules/vue/dist/vue.js"></script>
+  <script>
+    // https://zhuanlan.zhihu.com/p/42323283
+    // https://blog.csdn.net/chelen_jak/article/details/80451193
+    // 弧度数 这个用不上
+    const rad = deg => deg * (Math.PI / 180)
+    const vm = new Vue({
+      el: '#app',
+      mounted() {
+        this.$nextTick(() => {
+          this.layout();
+        })
+      },
+      methods: {
+        layout() {
+          const circleList = Array.from(document.querySelectorAll('.circle__item'))
+          const circleContainer = document.querySelector('.circle__container')
+
+          // 半径
+          const R = circleContainer.clientWidth / 2;
+
+          // 中心点
+          const X = R
+          const Y = R
+
+          // 多少个子
+          const length = circleList.length
+
+          // 需要平分多大的圆
+          const deg = 340;
+
+          // 一圈内摆满，每个占多少份
+          const eachDeg = deg / length;
+
+          // 0deg 开始角度
+          const startDeg = 210;
+
+          // 计算出每个子所在的角度
+          // const degArr = []
+          for (let i = 0; i < length; i++) {
+            const itemDeg = rad(startDeg + eachDeg * i)
+            const itemY = Math.sin(itemDeg) * R + R
+            const itemX = Math.cos(itemDeg) * R + R
+            
+            circleList[i].style.top = itemY - (circleList[i].clientHeight / 2) + 'px'
+            circleList[i].style.left = itemX - (circleList[i].clientWidth / 2) + 'px'
+            circleList[i].innerText = `${i} ${itemDeg}`
+
+          }
+
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
