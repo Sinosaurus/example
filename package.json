@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/Sinosaurus/example#readme",
   "dependencies": {
+    "ajv": "^7.0.3",
+    "ajv-keywords": "^4.0.0",
     "browser-sync": "^2.26.7",
     "browserify": "^16.5.0",
     "echarts": "^4.8.0",
